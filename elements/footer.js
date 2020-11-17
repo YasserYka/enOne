@@ -1,5 +1,7 @@
 "use strict";
 
+const Conatiner = require("./containers/container");
+
 module.exports = class Footer extends Conatiner {
 
     toHtml() {
