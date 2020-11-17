@@ -1,20 +1,23 @@
 "use strict";
 
-module.exports = class Image {
+const TextualConatiner = require("./containers/textualcontainer");
 
-    constructor(src, alt){
-        
-        if(!src)
-            throw new Error("src can't be null or undifined");
+module.exports = class Image extends TextualConatiner {
+
+    constructor(src, alt) {
+
+        if (!safeType(src))
+            throw new Error(`The URL can't be of type ${typeof url}`);
 
         this.src = src;
-        this.alt = alt;
+        this.alt = alt ? alt : "Card-Image";
     }
 
-    toHtml(){
+    toHtml() {
+
         return `
             <img src="${src}" class="card-img-top" alt="${alt}" />
-        `;  
+        `;
     }
 
 }

@@ -1,16 +1,14 @@
 "use strict";
 
-module.exports = class Header {
+const Conatiner = require("./containers/container");
 
-    constructor(text){
-        
-        this.text = text;
-    }
+module.exports = class Header extends Conatiner {
 
-    toHtml(){
+    toHtml() {
+
         return `
             <div class="card-header">
-                ${this.text}
+                ${super.childrenToHtml()}
             </div>
         `;
     }
