@@ -1,43 +1,50 @@
+// you can import libraries you need
+const indeed_scraper = require('indeed-scraper');
 
-card.title(card.anchor("https://opensource.indeedeng.io/api-documentation/" ,"Indeed API"));
+// import our plugin library
+const { colors, card } = require('personal-plugin');
+// import our plugin engine
+const plugin_engine = require('personal-engine');
 
-card.image("jobs.jpg");
+// define your own code to get the data needed for your plugin
+const scrape_indeed = () => {
 
-card.color(colors.DARK);
+    indeed_scraper.query({
+        host: 'www.indeed.com',
+        query: 'Software',
+        city: 'Seattle, WA',
+        radius: '25',
+        level: 'entry_level',
+        jobType: 'fulltime',
+        maxAge: '7',
+        sort: 'date',
+        limit: 100
+    }).then(jobs => { create_plugin_card(jobs); });
 
-card.table(
-    [    
-        {
-            "jobtitle":"Java Developer",
-            "company":"Initech",
-            "city":"Austin",
-            "date":"Mon, 02 Aug 2020 10:21:44 GMT",
-            "url": card.anchor("https://jobposturl.com/java_developer", "The URL")
-        },
-        {   
-            "jobtitle":"Backend Developer",
-            "company":"Acme Corporation",
-            "city":"NYC",
-            "date":"Fri, 05 Sep 2020 16:21:01 GMT",
-            "url":"https://jobposturl.com/backend_developer"
-        },
-        {
-            "jobtitle":"Python Developer",
-            "company":"Hooli",
-            "city":"Dayton",
-            "date":"Mon, 02 Aug 2020 11:12:40 GMT",
-            "url": card.anchor("https://jobposturl.com/python_developer", "Post URL")
-        },
-        {   
-            "jobtitle":"Data Scientist",
-            "company":"Massive Dynamic",
-            "city":"Madison",
-            "date":"Sat, 02 Oct 2020 02:08:58 GMT",
-            "url":"https://jobposturl.com/data_scientist"
-        },
-    ]
-);
+};
 
-card.body(card.paragraph("Indeed's jobs in the last 24H"));
+// define your own function and use our API to construct a card for your plugin
+const create_plugin_card = jobs => {
 
-card.footer(card.mutedText("Creator: H3xo0"));
+    // display an anchor in card's title
+    card.title(card.anchor("https://opensource.indeedeng.io/api-documentation/", "Indeed API"));
+
+    // display an image (so far only external images are supported)
+    card.image("https://jobspic.jpg");
+
+    // change the color of the card
+    card.color(colors.DARK);
+
+    // create a table from array of objects 
+    card.table(jobs);
+
+    // adds a paragraph to card's body
+    card.body(card.paragraph("Indeed's jobs in the last 24H"));
+
+    // adds a muted text to card's footer
+    card.footer(card.mutedText("Creator: H3xo0"));
+
+    // pass your external packages used and your card object into our plugin engine
+    plugin_engine.packages(['indeed-scraper']).generate(card);
+
+}
