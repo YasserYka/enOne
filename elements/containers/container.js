@@ -1,7 +1,7 @@
 "use strict";
 
 // super class for nestedable elements
-module.exports = class Conatiner {
+module.exports = class Container {
 
     add(children){
 
@@ -25,3 +25,4 @@ module.exports = class Conatiner {
     }
 
 }
+s
