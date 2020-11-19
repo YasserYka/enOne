@@ -5,8 +5,9 @@ const TextualConatiner = require("./containers/textualcontainer");
 module.exports = class Anchor extends TextualConatiner {
 
     constructor(url, text) {
+        super();
 
-        if (!safeType(url))
+        if (!this.safeType(url))
             throw new Error(`The URL can't be of type ${typeof url}`);
 
         this.url = url;
