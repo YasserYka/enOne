@@ -10,12 +10,12 @@ const Card = require('./elements/card');
 const Body = require('./elements/body');
 
 
-class plugin {
+module.exports = class Plugin {
 
     /**
      * @param {string} src the URL of the source image
      */
-    card(child) {
+    static card(child) {
 
         (this._card || (this._card = new Card())).add(child);
     }
@@ -23,7 +23,7 @@ class plugin {
     /**
      * @param {string} src the URL of the source image
      */
-    image(src) {
+    static image(src) {
 
         return new Image(src);
     }
@@ -31,7 +31,7 @@ class plugin {
     /**
      * @param {function} child to be nested in title it can be any function of title, text, anchor or paragraph
      */
-    body(child) {
+    static body(child) {
 
         (this._body || (this._body = new Body())).add(child);
 
@@ -41,7 +41,7 @@ class plugin {
     /**
      * @param {color} color of the card
      */
-    color(color) {
+    static color(color) {
 
         return color;
     }
@@ -49,7 +49,7 @@ class plugin {
     /**
      * @param {string} text of card's title
      */
-    title(text) {
+    static title(text) {
 
         return new Title(text);
     }
@@ -57,7 +57,7 @@ class plugin {
     /**
      * @param {string} text of paragraph
      */
-    paragraph(text) {
+    static paragraph(text) {
 
         return new Paragraph(text);
     }
@@ -66,7 +66,7 @@ class plugin {
      * @param {string} url of anchor
      * @param {string} text of anchor
      */
-    anchor(url, text) {
+    static anchor(url, text) {
 
         return new Anchor(url, text);
     }
@@ -74,7 +74,7 @@ class plugin {
     /**
      * @param {function} child to be nested in header it can be any function of text, anchor or paragraph
      */
-    header(child) {
+    static header(child) {
 
         (this._header || (this._header = new Header())).add(child);
 
@@ -84,16 +84,11 @@ class plugin {
     /**
      * @param {function} child to be nested in footer it can be any function of text, anchor or paragraph
      */
-    footer(child) {
+    static footer(child) {
 
-        //return new Footer(child);
         (this._footer || (this._footer = new Footer())).add(child);
 
         return this._footer;
     }
 
-}
-
-module.exports = {
-    plugin: plugin
 }
