@@ -2,7 +2,8 @@
 
 const Container = require('./containers/container');
 
-module.exports = class Footer extends Container {
+// holds title, text, paragraph and achor
+module.exports = class Body extends Container {
 
     constructor() {
         
@@ -12,7 +13,7 @@ module.exports = class Footer extends Container {
     toHtml() {
 
         return `
-            <div class="card-footer">
+            <div class="card-body">
                 ${this.childrenToHtml()}
             </div>
         `;

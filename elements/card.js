@@ -6,6 +6,7 @@ const COLORS = require('./color');
 module.exports = class Card extends Container {
 
     constructor() {
+        
         super();
     }
 

@@ -5,8 +5,9 @@ const TextualConatiner = require("./containers/textualcontainer");
 module.exports = class Title extends TextualConatiner {
 
     constructor(text) {
+        super();
 
-        if (!safeType(text))
+        if (!this.safeType(text))
             throw new Error(`The text can't be of type ${typeof text}`);
 
         this.text = text;
