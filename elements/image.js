@@ -5,8 +5,9 @@ const TextualConatiner = require("./containers/textualcontainer");
 module.exports = class Image extends TextualConatiner {
 
     constructor(src, alt) {
+        super();
 
-        if (!safeType(src))
+        if (!this.safeType(src))
             throw new Error(`The URL can't be of type ${typeof url}`);
 
         this.src = src;
