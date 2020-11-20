@@ -6,14 +6,14 @@ module.exports = class Container {
     add(child) {
 
         if (!this.safeType(child))
-            throw new Error(`child of type ${children.constructor.name} can't be nested in ${this.constructor.name}`);
+            throw new Error(`child of type ${child.constructor.name} can't be nested in ${this.constructor.name}`);
 
         (this.children || (this.children = [])).push(child);
     }
 
     childrenToHtml() {
 
-        return this.children.map(child => child.toHtml());
+        return this.children.map(child => child.toHtml()).join(' ');
     }
 
     // check the type of child because some objects can't be nested
@@ -21,7 +21,8 @@ module.exports = class Container {
 
         return child.constructor.name == 'Paragraph' ||
             child.constructor.name == 'Anchor' ||
-            child.constructor.name == 'Text';
+            child.constructor.name == 'Text' || 
+            typeof child == 'string';
     }
 
 }
