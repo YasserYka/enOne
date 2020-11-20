@@ -2,7 +2,7 @@
 
 const TextualConatiner = require("./containers/textualcontainer");
 
-module.exports = class Title extends TextualConatiner {
+module.exports = class Text extends TextualConatiner {
 
     constructor(text) {
         super();

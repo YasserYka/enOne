@@ -29,7 +29,7 @@ module.exports = class Card extends Container {
     }
 
     toHtml() {
-
+        console.log()
         return `
             <div class="card ${this.color || COLORS.DEFAULT}" style="width: 18rem;margin: 0 auto;">
                 ${this.childrenToHtml()}
