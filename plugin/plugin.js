@@ -1,13 +1,15 @@
 "use strict";
 
-const Paragraph = require('./elements/paragraph');
-const Anchor = require('./elements/anchor');
-const Header = require('./elements/header');
-const Footer = require('./elements/footer');
-const Title = require('./elements/title');
-const Image = require('./elements/image');
-const Card = require('./elements/card');
-const Body = require('./elements/body');
+const Paragraph = require('../elements/paragraph');
+const Anchor = require('../elements/anchor');
+const Header = require('../elements/header');
+const Footer = require('../elements/footer');
+const Title = require('../elements/title');
+const Image = require('../elements/image');
+const Card = require('../elements/card');
+const Body = require('../elements/body');
+const Text = require('../elements/text');
+
 
 
 module.exports = class Plugin {
@@ -89,6 +91,14 @@ module.exports = class Plugin {
         (this._footer || (this._footer = new Footer())).add(child);
 
         return this._footer;
+    }
+
+    /**
+     * @param {string} text
+     */
+    static text(text) {
+
+        return new Text(text);
     }
 
 }

@@ -1,16 +1,16 @@
-const { open: openbrowser } = require('open');
+const open = require('open');
 
 /**
  * @param {string} filename is HTML file to be opened in the browser
  */
-const open = filename => {
+const lanuch = filename => {
 
     (async() => {
-        await openbrowser(filename, { "wait": true });
+        await open(filename);
     })();
 
 }
 
 module.exports = {
-    open
+    lanuch: lanuch
 };
