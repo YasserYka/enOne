@@ -3,12 +3,19 @@
 // super class for nestedable elements
 module.exports = class Container {
 
+    constructor(){
+
+        this.children = []
+    }
+
     add(child) {
 
         if (!this.safeType(child))
             throw new Error(`child of type ${child.constructor.name} can't be nested in ${this.constructor.name}`);
 
-        (this.children || (this.children = [])).push(child);
+        if (!this.children.includes(child)) 
+            this.children.push(child);
+
     }
 
     childrenToHtml() {
