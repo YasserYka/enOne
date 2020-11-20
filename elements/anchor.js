@@ -16,7 +16,7 @@ module.exports = class Anchor extends TextualConatiner {
 
     toHtml() {
 
-        return url `
+        return `
             <a href=${this.url} class="card-link">
                 ${this.text}
             </a>
