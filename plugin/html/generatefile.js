@@ -1,5 +1,5 @@
 const fs = require('fs');
-const HTML_FILE_PATH = '../';
+const HTML_FILE_PATH = './';
 const GENERATED_HTML_FILENAME = "outputcard.html";
 
 
@@ -26,6 +26,12 @@ const writefile = (filepath, data) => {
 
 }
 
+const getPath = () => {
+
+    return `${HTML_FILE_PATH}${GENERATED_HTML_FILENAME}`;
+}
+
 module.exports = {
-    generate: generatefile
+    generate: generatefile,
+    getPath: getPath
 };

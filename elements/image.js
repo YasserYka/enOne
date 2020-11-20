@@ -17,7 +17,7 @@ module.exports = class Image extends TextualConatiner {
     toHtml() {
 
         return `
-            <img src="${src}" class="card-img-top" alt="${alt}" />
+            <img src="${this.src}" class="card-img-top" alt="${this.alt}" />
         `;
     }
 
