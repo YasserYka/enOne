@@ -36,7 +36,7 @@ module.exports = class Plugin {
      */
     static listItem(item) {
 
-        return new ListItem(item);
+        return new ListItem(item, this._backgroundcolor);
     }
 
     /**
@@ -65,7 +65,8 @@ module.exports = class Plugin {
      */
     static background(color) {
 
-        this._card.color(color);
+        this._backgroundcolor = color;
+        (this._card || (this._card = new Card())).color(color);
     }
 
     /**
@@ -125,7 +126,7 @@ module.exports = class Plugin {
      */
     static fontawesome(icon, size) {
 
-        return new FontAwesome(icon);
+        return new FontAwesome(icon, size);
     }
 
 
