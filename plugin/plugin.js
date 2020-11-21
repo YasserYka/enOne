@@ -55,8 +55,8 @@ module.exports = class Plugin {
         items.forEach(item => {
             (this._list || (this._list = new List())).add(item)
         });
-    
-        return this._list;
+
+        this.body(this._list);
     }
 
     /**
@@ -82,7 +82,7 @@ module.exports = class Plugin {
      */
     static title(text) {
 
-        return new Title(text);
+        this.body(new Title(text));
     }
 
     /**
