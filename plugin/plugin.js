@@ -9,8 +9,8 @@ const Image = require('../elements/image');
 const Card = require('../elements/card');
 const Body = require('../elements/body');
 const Text = require('../elements/text');
-
-
+const ListItem = require('../elements/listItem');
+const List = require('../elements/list');
 
 module.exports = class Plugin {
 
@@ -27,7 +27,27 @@ module.exports = class Plugin {
      */
     static image(src) {
 
-        return new Image(src);
+        this.card(new Image(src));
+    }
+
+    /**
+     * @param {ListItem} item of any type to be in list
+     */
+    static listItem(item) {
+
+        return new ListItem(item);
+    }
+
+    /**
+     * @param {function} child to be nested in title it can be any function of title, text, anchor or paragraph
+     */
+    static list(...items) {
+
+        items.forEach(item => {
+            (this._list || (this._list = new List())).add(item)
+        });
+    
+        return this._list;
     }
 
     /**
@@ -36,16 +56,15 @@ module.exports = class Plugin {
     static body(child) {
 
         (this._body || (this._body = new Body())).add(child);
-
-        return this._body;
+        this.card(this._body);
     }
 
     /**
      * @param {color} color of the card
      */
-    static color(color) {
+    static background(color) {
 
-        return color;
+        this._card.color(color);
     }
 
     /**
