@@ -11,6 +11,7 @@ const Body = require('../elements/body');
 const Text = require('../elements/text');
 const ListItem = require('../elements/listItem');
 const List = require('../elements/list');
+const FontAwesome = require('../elements/fontawesome');
 
 module.exports = class Plugin {
 
@@ -108,8 +109,7 @@ module.exports = class Plugin {
     static footer(child) {
 
         (this._footer || (this._footer = new Footer())).add(child);
-
-        return this._footer;
+        this.card(this._footer);
     }
 
     /**
@@ -120,4 +120,20 @@ module.exports = class Plugin {
         return new Text(text);
     }
 
+    /**
+     * @param {string} text
+     */
+    static fontawesome(icon, size) {
+
+        return new FontAwesome(icon);
+    }
+
+
+    /**
+     * @param {string} text
+     */
+    static fontawesome(icon) {
+
+        return new FontAwesome(icon);
+    }
 }
