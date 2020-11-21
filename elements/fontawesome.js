@@ -2,7 +2,7 @@
 
 const TextualConatiner = require('./containers/textualcontainer');
 
-module.exports = class Footer extends TextualConatiner {
+module.exports = class FontAwesome extends TextualConatiner {
 
     /**
      * @param {string} icon name (e.g., camera) 
@@ -15,7 +15,7 @@ module.exports = class Footer extends TextualConatiner {
 
     /**
      * @param {string} icon name (e.g., camera)
-     * @param {number} size of name (e.g., camera)
+     * @param {number} size of icon, must be a number between 1 and 5
      */
     constructor(icon, size) {
         super();

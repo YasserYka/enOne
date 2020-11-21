@@ -2,7 +2,6 @@
 
 const TextualConatiner = require('./containers/textualcontainer');
 
-// item can be an anchor or string
 module.exports = class ListItem extends TextualConatiner {
 
     constructor(item) {
@@ -11,18 +10,19 @@ module.exports = class ListItem extends TextualConatiner {
         this.item = item;
     }
     
-    // check the type of child because some objects can't be nested
+    // item can be an anchor or string
     safeType(item) {
 
-        return item.constructor.name === 'Anchor' || typeof item === 'string';
+        return item.constructor.name === 'Anchor' ||
+            item.constructor.name === 'Text';
     }
 
     toHtml() {
 
         return typeof this.item === 'string' ? 
-            `<li class="list-group-item"> ${element} </li>`    
+            `<li class="text-white list-group-item"> ${this.item.text} </li>`    
                 :
-            `<a href="${this.item.url}" class="list-group-item list-group-item-action"> ${this.item.text} </a>`;
+            `<a target="_blank" href="${this.item.url}" class="text-white list-group-item list-group-item-action"> ${this.item.text} </a>`;
 
     }
 

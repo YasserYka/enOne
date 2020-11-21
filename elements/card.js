@@ -10,7 +10,7 @@ module.exports = class Card extends Container {
         super();
     }
 
-    setColor(color) {
+    color(color) {
 
         this.color = color;
     }
@@ -25,13 +25,13 @@ module.exports = class Card extends Container {
             child.constructor.name == 'Header' || 
             child.constructor.name == 'Footer' || 
             child.constructor.name == 'Body' ||
-            child.constructor.name == 'Image';
-    }
+            child.constructor.name == 'Image'
+        }
 
     toHtml() {
-        console.log()
+        
         return `
-            <div class="card ${this.color || COLORS.DEFAULT}" style="width: 18rem;margin: 0 auto;">
+            <div class="card shadow ${this.color || COLORS.DEFAULT} text-center" style="width: 18rem;margin: 0 auto;">
                 ${this.childrenToHtml()}
             </div>
         `;

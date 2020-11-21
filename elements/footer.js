@@ -13,7 +13,7 @@ module.exports = class Footer extends Container {
 
         return `
             <div class="card-footer">
-                ${this.childrenToHtml()}
+                <i class="fa fa-spotify fa-2x" aria-hidden="true"></i>
             </div>
         `;
     }

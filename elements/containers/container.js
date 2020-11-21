@@ -29,7 +29,8 @@ module.exports = class Container {
         return child.constructor.name == 'Paragraph' ||
             child.constructor.name == 'Anchor' ||
             child.constructor.name == 'Text' || 
-            typeof child == 'string';
+            typeof child == 'string' ||
+            child.constructor.name == 'FontAwesome';
     }
 
 }
