@@ -1,13 +1,15 @@
 "use strict";
 
-const TextualConatiner = require('./containers/textualcontainer');
+const Conatiner = require('./containers/container');
+const TextColor = require('../stylie/textcolor');
 
-module.exports = class ListItem extends TextualConatiner {
+module.exports = class ListItem extends Conatiner {
 
-    constructor(item) {
+    constructor(item, textcolor) {
         super();
 
         this.item = item;
+        this.textcolor = textcolor ? TextColor.textColorFor(textcolor) : TextColor.color.DARK_TEXT;
     }
     
     // item can be an anchor or string
@@ -20,9 +22,9 @@ module.exports = class ListItem extends TextualConatiner {
     toHtml() {
 
         return typeof this.item === 'string' ? 
-            `<li class="text-white list-group-item"> ${this.item.text} </li>`    
+            `<li class="${this.textcolor} list-group-item"> ${this.item.text} </li>`    
                 :
-            `<a target="_blank" href="${this.item.url}" class="text-white list-group-item list-group-item-action"> ${this.item.text} </a>`;
+            `<a target="_blank" href="${this.item.url}" class="${this.textcolor} list-group-item list-group-item-action"> ${this.item.text} </a>`;
 
     }
 
