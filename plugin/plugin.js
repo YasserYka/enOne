@@ -1,19 +1,19 @@
 "use strict";
 
-const Paragraph = require('../elements/paragraph');
-const Anchor = require('../elements/anchor');
-const Header = require('../elements/header');
-const Footer = require('../elements/footer');
-const Title = require('../elements/title');
-const Image = require('../elements/image');
-const Card = require('../elements/card');
-const Body = require('../elements/body');
-const Text = require('../elements/text');
-const ListItem = require('../elements/listItem');
-const List = require('../elements/list');
-const FontAwesome = require('../elements/fontawesome');
-const cardcolor = require('../elements/cardcolor');
-const textcolor = require('../stylie/textcolor');
+const Paragraph = require('./elements/paragraph');
+const Anchor = require('./elements/anchor');
+const Header = require('./elements/header');
+const Footer = require('./elements/footer');
+const Title = require('./elements/title');
+const Image = require('./elements/image');
+const Card = require('./elements/card');
+const Body = require('./elements/body');
+const Text = require('./elements/text');
+const ListItem = require('./elements/listItem');
+const List = require('./elements/list');
+const FontAwesome = require('./elements/fontawesome');
+const cardcolor = require('./stylie/cardcolor');
+const textcolor = require('./stylie/textcolor');
 
 module.exports = class Plugin {
     
@@ -74,7 +74,7 @@ module.exports = class Plugin {
     static background(color) {
 
         this._card.color(color);
-        this._textcolor = color == cardcolor.DEFAULT ? textcolor.defaultColor() : textcolor.whiteColor();
+        this._textcolor = color == cardcolor.COLOR.DEFAULT ? textcolor.defaultColor() : textcolor.COLOR.WHITE_TEXT;
     }
 
     /**

@@ -10,7 +10,7 @@ const whiteColor = () => {
     return colors.WHITE_TEXT; 
 }
 
-const colors =  Object.freeze({
+const color =  Object.freeze({
     BLUE_TEXT: "--primary",
     GRAY_TEXT: "--secondary",
     GREEN_TEXT: "--success",
@@ -23,7 +23,6 @@ const colors =  Object.freeze({
 }); 
 
 module.exports = {
-    color: colors,
+    COLOR: color,
     defaultColor: defaultColor,
-    whiteColor: whiteColor
 }

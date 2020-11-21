@@ -1,8 +1,8 @@
 const plugin = require('../plugin/plugin');
 const engine = require('../plugin/engine');
-const color = require('../elements/cardcolor');
+const color = require('../plugin/stylie/cardcolor');
 
-plugin.background(color.DARK);
+plugin.background(color.COLOR.DARK);
 
 plugin.image('https://pngimg.com/uploads/triangle/triangle_PNG30.png');
 

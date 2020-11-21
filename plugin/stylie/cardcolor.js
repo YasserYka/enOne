@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = Object.freeze({
+const color = Object.freeze({
     BLUE: "text-white bg-primary",
     GRAY: "text-white bg-secondary",
     GREEN: "text-white bg-success",
@@ -10,3 +10,7 @@ module.exports = Object.freeze({
     DEFAULT: "bg-light",
     DARK: "text-white bg-dark"
 });
+
+module.exports = {
+    COLOR: color
+}

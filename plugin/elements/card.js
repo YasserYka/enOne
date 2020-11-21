@@ -1,7 +1,7 @@
 "use strict";
 
 const Container = require('./containers/container');
-const COLORS = require('./cardcolor');
+const cardcolor = require('../stylie/cardcolor');
 
 module.exports = class Card extends Container {
 
@@ -31,7 +31,7 @@ module.exports = class Card extends Container {
     toHtml() {
         
         return `
-            <div class="card shadow ${this.color || COLORS.DEFAULT} text-center" style="width: 18rem;margin: 0 auto;">
+            <div class="card shadow ${this.color || cardcolor.COLOR.DEFAULT} text-center" style="width: 18rem;margin: 0 auto;">
                 ${this.childrenToHtml()}
             </div>
         `;
