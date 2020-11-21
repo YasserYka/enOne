@@ -1,23 +1,11 @@
 "use strict";
 
 const TextualConatiner = require('./containers/textualcontainer');
+const DEFAULT_ICON_SIZE = 3;
 
 module.exports = class FontAwesome extends TextualConatiner {
 
-    /**
-     * @param {string} icon name (e.g., camera) 
-     */
-    constructor(icon) {
-        super();
-
-        this.icon = icon;
-    }
-
-    /**
-     * @param {string} icon name (e.g., camera)
-     * @param {number} size of icon, must be a number between 1 and 5
-     */
-    constructor(icon, size) {
+    constructor(icon, size = DEFAULT_ICON_SIZE) {
         super();
 
         if(typeof size != "number" || size < 1 || size > 5)

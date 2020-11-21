@@ -1,7 +1,7 @@
 "use strict";
 
 const Container = require('./containers/container');
-const COLORS = require('./color');
+const COLORS = require('./cardcolor');
 
 module.exports = class Card extends Container {
 

@@ -1,7 +1,9 @@
+
+// TODO: move the html file into separate file with placeholder
 /**
  * @param {Card} card object
  */
-const get = card => {
+const get = (card, textcolor) => {
 
     return `
         <!doctype html>
@@ -21,15 +23,17 @@ const get = card => {
                         z-index: 1;
                         height:100%
                     }           
-                    body {
+                    body{
                         display:flex;
                         align-items:center;
                     } 
-                    .list-group-item {
-                        background-color: transparent;
+                    .list-group-item, a  {
+                        background-color: transparent !important;
+                        color: var(${textcolor});
                     }
                     .card {
                         box-shadow: 0 .5rem 1rem rgba(0,0,0,.70) !important;
+                        color: var(${textcolor});
                     }
                 </style>
                 

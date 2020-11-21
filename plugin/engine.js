@@ -8,7 +8,7 @@ const browser = require('./browser');
  */
 const engine = plugin => {
     
-    generatefile.generate(boilerplate.get(plugin._card.toHtml()));
+    generatefile.generate(boilerplate.get(plugin._card.toHtml(), plugin._textcolor));
 
     browser.lanuch(generatefile.getPath());
 }

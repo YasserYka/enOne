@@ -12,15 +12,23 @@ const Text = require('../elements/text');
 const ListItem = require('../elements/listItem');
 const List = require('../elements/list');
 const FontAwesome = require('../elements/fontawesome');
+const cardcolor = require('../elements/cardcolor');
+const textcolor = require('../stylie/textcolor');
 
 module.exports = class Plugin {
+    
+    static _initializer = (() => {
+        
+        this._card = new Card();
+        this._body = new Body();
+    })();
 
     /**
      * @param {string} src the URL of the source image
      */
     static card(child) {
 
-        (this._card || (this._card = new Card())).add(child);
+        this._card.add(child);
     }
 
     /**
@@ -36,7 +44,7 @@ module.exports = class Plugin {
      */
     static listItem(item) {
 
-        return new ListItem(item, this._backgroundcolor);
+        return new ListItem(item);
     }
 
     /**
@@ -56,7 +64,7 @@ module.exports = class Plugin {
      */
     static body(child) {
 
-        (this._body || (this._body = new Body())).add(child);
+        this._body.add(child);
         this.card(this._body);
     }
 
@@ -65,8 +73,8 @@ module.exports = class Plugin {
      */
     static background(color) {
 
-        this._backgroundcolor = color;
-        (this._card || (this._card = new Card())).color(color);
+        this._card.color(color);
+        this._textcolor = color == cardcolor.DEFAULT ? textcolor.defaultColor() : textcolor.whiteColor();
     }
 
     /**
@@ -122,7 +130,8 @@ module.exports = class Plugin {
     }
 
     /**
-     * @param {string} text
+     * @param {string} icon name (e.g., camera)
+     * @param {number} size of icon, must be a number between 1 and 5
      */
     static fontawesome(icon, size) {
 
@@ -131,7 +140,7 @@ module.exports = class Plugin {
 
 
     /**
-     * @param {string} text
+     * @param {string} icon name (e.g., camera)
      */
     static fontawesome(icon) {
 
