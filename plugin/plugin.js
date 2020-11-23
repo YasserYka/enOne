@@ -21,6 +21,7 @@ module.exports = class Plugin {
         
         this._card = new Card();
         this._body = new Body();
+        this.color = cardcolor.COLOR;
     })();
 
     /**
@@ -146,4 +147,5 @@ module.exports = class Plugin {
 
         return new FontAwesome(icon);
     }
+
 }
