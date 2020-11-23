@@ -2,12 +2,7 @@
 
 const defaultColor = () => {
     
-    return colors.DARK_TEXT; 
-}
-
-const whiteColor = () => {
-    
-    return colors.WHITE_TEXT; 
+    return color.DARK_TEXT; 
 }
 
 const color =  Object.freeze({

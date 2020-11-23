@@ -1,5 +1,17 @@
 #!/bin/bash
 
+echo "                                                                       "
+echo "*      .     .  *        *        .          *      .           *     *"
+echo "                                                                       "
+echo "       .                .        .               *      .      *     . "
+echo "                                                                       "
+echo ".  *         .  *             SETUP    *          *                    "
+echo "         *                 .                                *          "
+echo "    .              *   .        .            *        .            *   "
+echo " .            .                                                        "
+echo "         *          .    *           *     .           *           *   "
+echo "                                                                       "
+
 read -rep $'What\'s the name of your plugin?\n> ' plugin_name
 
 read -rep $'What\'s the description of your plugin?\n> ' plugin_description
