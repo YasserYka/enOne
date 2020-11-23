@@ -5,7 +5,7 @@ echo "*      .     .  *        *        .          *      .           *     *"
 echo "                                                                       "
 echo "       .                .        .               *      .      *     . "
 echo "                                                                       "
-echo ".  *         .  *             SETUP    *          *                    "
+echo ".  *         .  *           S E T U P    *          *           .      "
 echo "         *                 .                                *          "
 echo "    .              *   .        .            *        .            *   "
 echo " .            .                                                        "
@@ -18,6 +18,8 @@ read -rep $'What\'s the description of your plugin?\n> ' plugin_description
 
 read -rep $'Would you like to include your Github account in plugin details? \n(y/n) > ' accept_github_link
 
-read -rep $'Enter your Github account \n > ' github_link
+if [[ ${accept_github_link,,} == 'y' ]]; then
+	read -rep $'Enter your Github account:\n> ' github_link
+fi
 
 read -rep $'What browser do you prefer to test your plugin?\n> ' browser_name
