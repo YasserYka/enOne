@@ -23,3 +23,11 @@ if [[ ${accept_github_link,,} == 'y' ]]; then
 fi
 
 read -rep $'What browser do you prefer to test your plugin?\n> ' browser_name
+
+mkdir -p output
+
+rm -f output/$plugin_name.js
+
+touch output/$plugin_name.js
+
+cat boilerplate.txt > output/$plugin_name.js
