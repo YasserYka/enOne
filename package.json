@@ -1,0 +1,25 @@
+{
+  "name": "personaldashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "open": "^7.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "plugin/./setup"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YasserYka/Personal-Dashboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YasserYka/Personal-Dashboard/issues"
+  },
+  "homepage": "https://github.com/YasserYka/Personal-Dashboard#readme"
+}
