@@ -36,12 +36,10 @@ if [[ ${accept_github_link,,} == 'y' ]]; then
 	read -rep $'Enter your Github account:\n> ' github_link
 fi
 
-read -rep $'What browser do you prefer to test your plugin?\n> ' browser_name
+SETUP_FILE_LOCATION='development'
 
-mkdir -p output
+mkdir -p $SETUP_FILE_LOCATION
 
-rm -f output/$plugin_name.js
+rm -f $SETUP_FILE_LOCATION/$plugin_file_name.js && touch $SETUP_FILE_LOCATION/$plugin_file_name.js
 
-touch output/$plugin_name.js
-
-cat boilerplate.txt > output/$plugin_name.js
+cat boilerplate.txt > /$plugin_name.js
