@@ -5,33 +5,19 @@ echo "*      .     .  *        *        .          *      .           *     *"
 echo "                                                                       "
 echo "       .                .        .               *      .      *     . "
 echo "                                                                       "
-echo ".  *         .  *           S E T U P    *          *           .      "
-echo "         *                .P L U G I N                      *          "
+echo ".  *         .  *            S E T U P    *          *                 "
+echo "         *                 .                                *          "
 echo "    .              *   .        .            *        .            *   "
 echo " .            .                                                        "
 echo "         *          .    *           *     .           *           *   "
 echo "                                                                       "
 
-while [[ -z $plugin_name ]]; do
-	read -rep $'What\'s the name of your plugin?\n> ' plugin_name
-done
-
-read -rep $'setup\'s file name:\n> '"(${pluginname// /}.js)"' ' plugin_file_name
+read -rep $'What\'s the name of your plugin?\n> ' plugin_name
 
 read -rep $'What\'s the description of your plugin?\n> ' plugin_description
 
 read -rep $'Would you like to include your Github account in plugin details? \n(y/n) > ' accept_github_link
 
-if [[ ${accept_github_link,,} == 'y' ]]; then
-	read -rep $'Enter your Github account:\n> ' github_link
-fi
+read -rep $'Enter your Github account \n > ' github_link
 
 read -rep $'What browser do you prefer to test your plugin?\n> ' browser_name
-
-mkdir -p output
-
-rm -f output/$plugin_name.js
-
-touch output/$plugin_name.js
-
-cat boilerplate.txt > output/$plugin_name.js
