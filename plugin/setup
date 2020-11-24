@@ -43,3 +43,9 @@ mkdir -p $SETUP_FILE_LOCATION
 rm -f $SETUP_FILE_LOCATION/$plugin_file_name.js && touch $SETUP_FILE_LOCATION/$plugin_file_name.js
 
 cat boilerplate.txt > /$plugin_name.js
+
+rm -f $SETUP_FILE_LOCATION/meta.js touch $SETUP_FILE_LOCATION/meta.json
+
+echo '{"author":"'"$plugin_author"'","description":"'"$plugin_description"'","targetlocation":"'"$plugin_file_name"'"}' > $SETUP_FILE>
+
+echo 'your setup file was generated in /'"${SETUP_FILE_LOCATION}/${plugin_file_name}"' '
