@@ -18,6 +18,16 @@ done
 
 read -rep $'setup\'s file name:\n> '"(${pluginname// /}.js)"' ' plugin_file_name
 
+# default file name if empty
+if [[ -z "$plugin_file_name" ]]; then
+	plugin_file_name=${plugin_name// /}
+# remove js extension if exists
+elif [[ "$plugin_file_name" == .js ]]; then
+	plugin_file_name="${plugin_file_name%.}"
+fi
+
+read -rep $'Enter author name:\n> ' plugin_author
+
 read -rep $'What\'s the description of your plugin?\n> ' plugin_description
 
 read -rep $'Would you like to include your Github account in plugin details? \n(y/n) > ' accept_github_link
