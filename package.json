@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "open": "^7.3.0",
-    "vm2": "^3.9.2"
+    "open": "^7.3.0"
   },
   "devDependencies": {},
   "scripts": {
