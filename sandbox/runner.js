@@ -1,8 +1,12 @@
 var vm = require('vm');
 
-const run = code => {
+// to add code in private scope
+const wrapper = code => {
 
-    return vm.runInThisContext(code);
+    return `(() => {
+        "use strict";
+        ${code}
+    })()`;
 }
 
 module.exports = {
