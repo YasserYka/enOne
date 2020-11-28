@@ -19,9 +19,8 @@ const isPopular = async package => {
 }
 
 // chick if package is already instaled in node_module
-const isInstalled = code => {
-
-    return false;
+const isInstalled = package => {
+  try { require.resolve(package); return true; } catch(e) { return false; }
 }
 
 // install npm package by name
