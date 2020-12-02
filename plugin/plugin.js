@@ -49,7 +49,7 @@ module.exports = class Plugin {
     }
 
     /**
-     * @param {function} child to be nested in title it can be any function of title, text, anchor or paragraph
+     * @param {function} items of type ListItem
      */
     static list(...items) {
 
@@ -114,6 +114,18 @@ module.exports = class Plugin {
     }
 
     /**
+     * @param {function} items of type TableItem
+     */
+    static table(...items) {
+
+        items.forEach(item => {
+            (this._table || (this._table = new Table())).add(item)
+        });
+
+        this.body(this._table);   
+    }
+
+    /**
      * @param {function} child to be nested in footer it can be any function of text, anchor or paragraph
      */
     static footer(child) {
@@ -139,7 +151,6 @@ module.exports = class Plugin {
         return new FontAwesome(icon, size);
     }
 
-
     /**
      * @param {string} icon name (e.g., camera)
      */
@@ -148,4 +159,13 @@ module.exports = class Plugin {
         return new FontAwesome(icon);
     }
 
+    static toHtml(){
+
+        return this._card.toHtml();
+    }
+    
+    static getTextColor(){
+
+        return this._textcolor;
+    }
 }
