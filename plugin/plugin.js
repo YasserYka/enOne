@@ -11,6 +11,8 @@ const Body = require('./elements/body');
 const Text = require('./elements/text');
 const ListItem = require('./elements/listItem');
 const List = require('./elements/list');
+const TableItem = require('./elements/tableItem');
+const Table = require('./elements/table');
 const FontAwesome = require('./elements/fontawesome');
 const cardcolor = require('./stylie/cardcolor');
 const textcolor = require('./stylie/textcolor');
@@ -111,6 +113,14 @@ module.exports = class Plugin {
         (this._header || (this._header = new Header())).add(child);
 
         return this._header;
+    }
+
+    /**
+     * @param {function} items of type TableItem
+     */
+    static tableItem(...items) {
+
+        return new sTableItem();  
     }
 
     /**
