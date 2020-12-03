@@ -18,12 +18,12 @@ module.exports = class TableItem extends Conatiner {
 
     getHead(){
 
-        return Object.keys(this.item).map(key => `<th scope="col">${key}</th>`);
+        return Object.keys(this.item).map(key => `<th scope="col">${key}</th>`).join(' ');
     }
 
     toHtml() {
 
-        return Object.values(obj).map(value => `<td>${value}</td>`);
+        return `<tr>${Object.values(this.item).map(value => `<td>${value}</td>`).join(' ')}</tr>`;
     }
 
 }

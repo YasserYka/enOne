@@ -12,15 +12,22 @@ module.exports = class Table extends Conatiner {
     // check the type of child because some objects can't be nested
     safeType(child) {
 
-        return child.constructor.name === 'ListItem';
+        return child.constructor.name === 'TableItem';
     }
 
     toHtml() {
 
         return `
-            <ul class="table">
-                ${this.childrenToHtml()}
-            </ul>
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        ${this.children[0].getHead()}
+                    </tr>
+                </thead>
+                <tbody>
+                    ${this.childrenToHtml()}
+                </tbody>
+            </table>
         `;
     }
 
