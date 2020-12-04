@@ -14,8 +14,6 @@ const List = require('./elements/list');
 const TableItem = require('./elements/tableItem');
 const Table = require('./elements/table');
 const FontAwesome = require('./elements/fontawesome');
-const cardcolor = require('./stylie/cardcolor');
-const textcolor = require('./stylie/textcolor');
 
 module.exports = class Plugin {
     
@@ -23,11 +21,10 @@ module.exports = class Plugin {
         
         this._card = new Card();
         this._body = new Body();
-        this.color = cardcolor.COLOR;
     })();
 
     /**
-     * @param {string} src the URL of the source image
+     * @param {function} child 
      */
     static card(child) {
 
@@ -35,7 +32,7 @@ module.exports = class Plugin {
     }
 
     /**
-     * @param {string} src the URL of the source image
+     * @param {string} src of image
      */
     static image(src) {
 
@@ -43,7 +40,7 @@ module.exports = class Plugin {
     }
 
     /**
-     * @param {ListItem} item of any type to be in list
+     * @param {string} item of type string
      */
     static listItem(item) {
 
@@ -51,7 +48,7 @@ module.exports = class Plugin {
     }
 
     /**
-     * @param {function} items of type ListItem
+     * @param {function} items list or multiple of list item
      */
     static list(...items) {
 
@@ -63,7 +60,7 @@ module.exports = class Plugin {
     }
 
     /**
-     * @param {function} child to be nested in title it can be any function of title, text, anchor or paragraph
+     * @param {function} child
      */
     static body(child) {
 
@@ -72,20 +69,11 @@ module.exports = class Plugin {
     }
 
     /**
-     * @param {color} color of the card
+     * @param {function} child of type ~ 
      */
-    static background(color) {
-
-        this._card.color(color);
-        this._textcolor = color == cardcolor.COLOR.DEFAULT ? textcolor.defaultColor() : textcolor.COLOR.WHITE_TEXT;
-    }
-
-    /**
-     * @param {string} text of card's title
-     */
-    static title(text) {
-
-        this.body(new Title(text));
+    static title(child) {
+        
+        this.body(new Title(child));
     }
 
     /**
@@ -106,7 +94,7 @@ module.exports = class Plugin {
     }
 
     /**
-     * @param {function} child to be nested in header it can be any function of text, anchor or paragraph
+     * @param {function} child of type ~
      */
     static header(child) {
 
@@ -116,15 +104,15 @@ module.exports = class Plugin {
     }
 
     /**
-     * @param {function} items of type TableItem
+     * @param {object} items of table
      */
-    static tableItem(...items) {
+    static tableItem(item) {
 
-        return new sTableItem();  
+        return new TableItem(item);  
     }
 
     /**
-     * @param {function} items of type TableItem
+     * @param {function} items of type tableItem
      */
     static table(...items) {
 
@@ -136,7 +124,7 @@ module.exports = class Plugin {
     }
 
     /**
-     * @param {function} child to be nested in footer it can be any function of text, anchor or paragraph
+     * @param {function} child of type ~
      */
     static footer(child) {
 
@@ -154,7 +142,7 @@ module.exports = class Plugin {
 
     /**
      * @param {string} icon name (e.g., camera)
-     * @param {number} size of icon, must be a number between 1 and 5
+     * @param {number} size of icon, number between 1 and 5
      */
     static fontawesome(icon, size) {
 
@@ -174,8 +162,4 @@ module.exports = class Plugin {
         return this._card.toHtml();
     }
     
-    static getTextColor(){
-
-        return this._textcolor;
-    }
 }
