@@ -10,47 +10,45 @@
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
-            html, body { 
-                z-index: 1;
-                height:100%
-            }           
+  
             body{
-                display:flex;
-                align-items:center;
+                padding: 30px 0 30px 0;
                 background: url('https://source.unsplash.com/twukN12EN7c/1920x1080') no-repeat center center fixed;
                 -webkit-background-size: cover;
                 -moz-background-size: cover;
                 background-size: cover;
                 -o-background-size: cover;
             }
-            .navbar, .btn{
-                background-color: rgba(0,0,0,0.30);
+            .navbar{
+                background-color: transparent !important;
+            }
+            .btn, .list-group-item{
+                color: var(--white);
+            }
+            .btn, .card{
+                background-color: rgba(0,0,0,0.50) !important;
             }
             .card {
-                border-radius: 6px;
-                background-color: rgba(0,0,0,0.50) !important;
-                margin: 50px;
+                border-radius: 15px;
                 box-shadow: 0 .5rem 1rem rgba(0,0,0,.70) !important;
                 color: var(--white);
             }
-            .list-group-item, a  {
+            .list-group-item, .table  {
                 background-color: transparent !important;
-                color: var(--white);
             }
-            .fa {
-                color:white
-            }
+
         </style>
     </head>
     <body>
         <nav class="navbar fixed-top navbar-light">
             <button class="btn"><i class="fa fa-plus"></i></button>
+            <button class="btn"><i class="fa fa-bars"></i></button>
         </nav>
-
         <div class="container">
+            <div class="card-columns">
 
+            </div>
         </div>
-
         <!-- JavaScript -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
