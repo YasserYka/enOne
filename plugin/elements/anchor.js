@@ -14,10 +14,15 @@ module.exports = class Anchor extends TextualConatiner {
         this.text = text ? text : url;
     }
 
+    toString(){
+
+        return {[this.constructor.name]: {'url': this.url, 'text': this.text}};
+    }
+
     toHtml() {
 
         return `
-            <a target="_blank" href=${this.url} class="card-link">
+            <a target="_blank" href=${this.url} class="text-white card-link">
                 ${this.text}
             </a>
         `;
