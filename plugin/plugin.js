@@ -50,7 +50,7 @@ module.exports = class Plugin {
     /**
      * @param {function} items list or multiple of list item
      */
-    static list(...items) {
+    static list(items) {
 
         items.forEach(item => {
             (this._list || (this._list = new List())).add(item)
@@ -99,8 +99,7 @@ module.exports = class Plugin {
     static header(child) {
 
         (this._header || (this._header = new Header())).add(child);
-
-        return this._header;
+        this.card(this._header);   
     }
 
     /**
@@ -114,10 +113,11 @@ module.exports = class Plugin {
     /**
      * @param {function} items of type tableItem
      */
-    static table(...items) {
+    static table(items) {
 
         items.forEach(item => {
-            (this._table || (this._table = new Table())).add(item)
+            (this._table || (this._table = new Table())).add(item);
+            console.log(item)
         });
 
         this.body(this._table);   
@@ -146,15 +146,7 @@ module.exports = class Plugin {
      */
     static fontawesome(icon, size) {
 
-        return new FontAwesome(icon, size);
-    }
-
-    /**
-     * @param {string} icon name (e.g., camera)
-     */
-    static fontawesome(icon) {
-
-        return new FontAwesome(icon);
+        return new FontAwesome(icon, size || 3);
     }
 
     static toHtml(){
