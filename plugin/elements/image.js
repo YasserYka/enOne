@@ -14,9 +14,15 @@ module.exports = class Image extends TextualConatiner {
         this.alt = alt ? alt : "Card-Image";
     }
 
+    toString(){
+
+        return {[this.constructor.name]: {'src': this.src, 'alt': this.alt}};
+    }
+
     toHtml() {
 
         return `
+        
             <img src="${this.src}" class="card-img-top" alt="${this.alt}" />
         `;
     }
