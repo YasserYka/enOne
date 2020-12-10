@@ -16,7 +16,8 @@ module.exports = class Body extends Container {
             child.constructor.name == 'Anchor' ||
             child.constructor.name == 'Text' ||
             child.constructor.name == 'Title' ||
-            child.constructor.name == 'List';
+            child.constructor.name == 'List' || 
+            child.constructor.name == 'Table';
     }
 
     toHtml() {

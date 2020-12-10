@@ -13,6 +13,11 @@ module.exports = class Paragraph extends TextualConatiner {
         this.text = text;
     }
 
+    toString(){
+
+        return {[this.constructor.name]: {'text': this.text}};
+    }
+
     toHtml() {
 
         return `

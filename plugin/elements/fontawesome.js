@@ -12,6 +12,7 @@ module.exports = class FontAwesome extends TextualConatiner {
             throw new Error('size must be of type int or size must be of type between 1 and 5')
 
         this.icon = icon;
+        console.log('size: ', size)
         this.size = this.getSizeFor(size);
     }
 
@@ -21,9 +22,15 @@ module.exports = class FontAwesome extends TextualConatiner {
             2: "fa-lg",
             3: "fa-2x",
             4: "fa-3x",
-            4: "fa-5x"
+            5: "fa-5x"
         }[size];
     }
+
+    toString(){
+
+        return {[this.constructor.name]: {'icon': this.icon, 'size': this.size}};
+    }
+
 
     toHtml() {
 

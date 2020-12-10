@@ -10,11 +10,6 @@ module.exports = class Card extends Container {
         super();
     }
 
-    color(color) {
-
-        this.color = color;
-    }
-
     // TODO: work around this please?
     safeType(child) {
 
@@ -31,7 +26,7 @@ module.exports = class Card extends Container {
     toHtml() {
         
         return `
-            <div class="card shadow ${this.color || cardcolor.COLOR.DEFAULT} text-center" style="width: 18rem;margin: 0 auto;">
+            <div class="card mt-2 shadow bg-dark text-center" style="margin: 0 auto;">
                 ${this.childrenToHtml()}
             </div>
         `;

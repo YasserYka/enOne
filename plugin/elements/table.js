@@ -18,7 +18,8 @@ module.exports = class Table extends Conatiner {
     toHtml() {
 
         return `
-            <table class="table table-borderless">
+            <div class="table-responsive">
+            <table class="table table-borderless table-sm table-dark">
                 <thead>
                     <tr>
                         ${this.children[0].getHead()}
@@ -28,6 +29,7 @@ module.exports = class Table extends Conatiner {
                     ${this.childrenToHtml()}
                 </tbody>
             </table>
+            </div>
         `;
     }
 

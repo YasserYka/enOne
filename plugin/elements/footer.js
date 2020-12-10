@@ -12,7 +12,7 @@ module.exports = class Footer extends Container {
     toHtml() {
 
         return `
-            <div class="card-footer">
+            <div class="card-footer text-white">
                 ${this.childrenToHtml()}
             </div>
         `;
