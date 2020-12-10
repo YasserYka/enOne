@@ -20,6 +20,11 @@ module.exports = class Body extends Container {
             child.constructor.name == 'Table';
     }
 
+    toString() {
+
+        return {[this.constructor.name]: {'children': this.childrenToString()}};
+    }
+
     toHtml() {
 
         return `

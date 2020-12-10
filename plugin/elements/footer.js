@@ -9,6 +9,11 @@ module.exports = class Footer extends Container {
         super();
     }
 
+    toString() {
+
+        return {[this.constructor.name]: {'children': this.childrenToString()}};
+    }
+
     toHtml() {
 
         return `

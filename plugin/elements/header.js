@@ -9,6 +9,11 @@ module.exports = class Header extends Container {
         super();
     }
 
+    toString() {
+
+        return {[this.constructor.name]: {'children': this.childrenToString()}};
+    }
+
     toHtml() {
 
         return `

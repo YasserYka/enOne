@@ -21,7 +21,12 @@ module.exports = class Card extends Container {
             child.constructor.name == 'Footer' || 
             child.constructor.name == 'Body' ||
             child.constructor.name == 'Image'
-        }
+    }
+
+    toString() {
+
+        return {[this.constructor.name]: {'children': this.childrenToString()}};
+    }
 
     toHtml() {
         

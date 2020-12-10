@@ -18,6 +18,11 @@ module.exports = class Container {
 
     }
 
+    childrenToString() {
+
+        return this.children.map(child => child.toString()).join(' ');
+    }
+
     childrenToHtml() {
 
         return this.children.map(child => child.toHtml()).join(' ');
