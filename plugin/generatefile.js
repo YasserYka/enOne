@@ -1,14 +1,13 @@
 const fs = require('fs');
 const environment = require('./environment');
 
-const FILE_PATH = __dirname + '../development/';
+const FILE_PATH = __dirname + '/../development/';
 const GENERATED_HTML_FILENAME = "outputcard.html";
 const GENERATED_JS_FILENAME = "outputcard.js";
 
 const generatefile = (file, env) => {
-    const filename = env == environment.TESTING ? GENERATED_HTML_FILENAME : GENERATED_JS_FILENAME;
 
-    writefile(`${FILE_PATH}${filename}`, file);
+    writefile(`${FILE_PATH}${getFilenameFor(env)}`, file);
 }
 
 const writefile = (filepath, data) => {
@@ -22,9 +21,14 @@ const writefile = (filepath, data) => {
 
 }
 
+const getFilenameFor = (env) => {
+
+    return env == environment.TESTING ? GENERATED_HTML_FILENAME : GENERATED_JS_FILENAME;
+}
+
 const getPath = (env) => {
 
-    return `${env == environment.TESTING ? GENERATED_HTML_FILENAME : GENERATED_JS_FILENAME}${GENERATED_HTML_FILENAME}`;
+    return `${FILE_PATH}${getFilenameFor(env)}`;
 }
 
 module.exports = {
