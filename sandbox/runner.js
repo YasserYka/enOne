@@ -17,6 +17,12 @@ const wrapper = code => {
     })()`;
 }
 
+// replace config.variables hardcoded string into variable
+const injectConfig = (config, code) => {
+
+    return code.replace(/config\.([a-zA-Z0-9_]+)/g, (_,g)=> config[g]);
+}
+
 module.exports = {
     run: run
 };
