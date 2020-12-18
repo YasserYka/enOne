@@ -30,19 +30,71 @@
     </style>
     </head>
     <body>
-
+        <nav class="navbar fixed-top navbar-light">
+            <div class="dropdown">
+                <button class="btn" id="navbardropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"></i></button>
+                <div class="dropdown-menu" aria-labelledby="navbardropdown">
+                    <a class="dropdown-item" href="#">Account</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="#">Manage Extensions</a>
+                </div>
+            </div>
+            <button class="btn"><i class="fa fa-home"></i></button>
+        </nav>
 
         <div class="container">  
             <h3>Marketplace <i class="fa fa-shopping-cart"></i> </h3>    
             <ul class="list-group  text-left">  
-                <li class="list-group-item">Weather API <button class="btn ml-1 float-right"><i class="fa fa-download"></i></button> <button class="btn float-right"><i class="fa fa-info"></i></button> </li>
-                <li class="list-group-item">Indeed Jobs <button class="btn ml-1 float-right"><i class="fa fa-download"></i></button> <button class="btn float-right"><i class="fa fa-info"></i></button></li>  
-                <li class="list-group-item">Spotify Recommendtion <button class="btn ml-1 float-right"><i class="fa fa-download"></i></button> <button class="btn float-right"><i class="fa fa-info"></i></button></li>  
-        </ul>  
+                <li class="list-group-item">
+                    Weather API 
+                    <button class="btn ml-1 float-right">
+                        <i class="fa fa-download"></i>
+                    </button>
+                    <button class="btn float-right" data-toggle="modal" data-target="#details">
+                        <i class="fa fa-info"></i>
+                    </button>
+                </li>
+                <li class="list-group-item">
+                    Indeed Jobs 
+                    <button class="btn ml-1 float-right">
+                        <i class="fa fa-download"></i>
+                    </button>
+                    <button class="btn float-right" data-toggle="modal" data-target="#details">
+                        <i class="fa fa-info"></i>
+                    </button>
+                </li>  
+                <li class="list-group-item">
+                    Spotify Recommendtion
+                    <button class="btn ml-1 float-right">
+                        <i class="fa fa-download"></i>
+                    </button> 
+                    <button class="btn float-right" data-toggle="modal" data-target="#details">
+                        <i class="fa fa-info"></i>
+                    </button>
+                </li>  
+        </ul> 
+          
+        <div class="modal" id="details" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- JavaScript -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="" crossorigin="anonymous"></script>
     </body>
 </html>
