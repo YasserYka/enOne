@@ -24,27 +24,34 @@
             background-size: cover;
             -o-background-size: cover;
         }
-        .list-group-item{
+        .list-group-item, .pagination > li > a, .pagination > li > a:hover{
             background-color: rgba(255, 255, 255, 0.2);
+        }
+        .pagination {
+            padding-top: 1rem;
+        }
+        .pagination > li > a, .pagination > li > a:hover{
+            color: black;
+            border-color: rgba(0, 0, 0, 0.1);
         }
     </style>
     </head>
     <body>
         <nav class="navbar fixed-top navbar-light">
             <div class="dropdown">
-                <button class="btn" id="navbardropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"></i></button>
+                <button class="btn" id="navbardropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars fa-lg"></i></button>
                 <div class="dropdown-menu" aria-labelledby="navbardropdown">
                     <a class="dropdown-item" href="#">Account</a>
                     <a class="dropdown-item" href="#">Settings</a>
                     <a class="dropdown-item" href="#">Manage Extensions</a>
                 </div>
             </div>
-            <button class="btn"><i class="fa fa-home"></i></button>
+            <button class="btn"><i class="fa fa-home fa-lg"></i></button>
         </nav>
 
         <div class="container">  
             <h3>Marketplace <i class="fa fa-shopping-cart"></i> </h3>    
-            <ul class="list-group  text-left">  
+            <ul class="list-group text-left">  
                 <li class="list-group-item">
                     Weather API 
                     <button class="btn ml-1 float-right">
@@ -72,7 +79,18 @@
                         <i class="fa fa-info"></i>
                     </button>
                 </li>  
-        </ul> 
+            </ul> 
+            
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+        </div>
           
         <div class="modal" id="details" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">
@@ -86,7 +104,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-secondary">Add</button>
                     </div>
                 </div>
             </div>
