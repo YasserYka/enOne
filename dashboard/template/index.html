@@ -21,7 +21,7 @@
       .navbar {
         background-color: transparent !important;
       }
-      .btn, .list-group-item, .card, .dropdown-item, .dropdown-item:active{
+      .btn, .card, .dropdown-item, .dropdown-item:active, .close, .close:hover{
         color: var(--white);
       }
       .btn, .card, .dropdown-menu {
@@ -49,40 +49,92 @@
         height: 20rem;
         object-fit: cover;
       }
+      .prf-img {
+        padding: 0.5rem;
+        width: 7rem;
+        height: 7rem;
+        border-radius: 15px;
+      }
+      .pagination {
+        padding-top: 1rem;
+      }
+      .pagination > li > a, .pagination > li > a:hover{
+        color: black;
+        border-color: rgba(0, 0, 0, 0.1);
+      }
     </style>
   </head>
   <body>
     <nav class="navbar fixed-top navbar-light">
-        <button class="btn"><i class="fa fa-plus"></i></button>
+        <button class="btn"><i class="fa fa-plus fa-lg"></i></button>
         <div class="dropdown">
-            <button class="btn" id="navbardropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"></i></button>
+            <button class="btn" id="navbardropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars fa-lg"></i></button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbardropdown">
-                <a class="dropdown-item" href="#">Account</a>
-                <a class="dropdown-item" href="#">Settings</a>
                 <a class="dropdown-item" href="#sidebar" data-toggle="collapse">Preferences</a>
-                <a class="dropdown-item" href="#">Manage Extensions</a>
+                <a class="dropdown-item" data-toggle="modal" data-target="#details">Manage Plugins</a>
             </div>
         </div>
     </nav>
 
+    <div class="modal" id="details" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Manage Plugins</h5>
+                  <buttun class="btn" data-dismiss="modal"><span aria-hidden="true">&times;</span></buttun>
+                </div>
+              <div class="modal-body">
+                <div class="container">  
+                  <ul class="list-group text-left">  
+                      <li class="list-group-item">
+                          Weather API 
+                          <button class="btn ml-1 mr-1 float-right">
+                              <i class="fa fa-trash-o fa-xs"></i>
+                          </button>
+                      </li>
+                      <li class="list-group-item">
+                          Indeed Jobs 
+                          <button class="btn ml-1 mr-1 float-right">
+                              <i class="fa fa-trash-o fa-xs"></i>
+                          </button>
+                      </li>  
+                      <li class="list-group-item">
+                          Spotify Recommendtion
+                          <button class="btn ml-1 mr-1 float-right">
+                              <i class="fa fa-trash-o fa-xs"></i>
+                          </button> 
+                      </li>  
+                  </ul> 
+                  
+                  <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                      </ul>
+                  </nav>
+              </div>
+              </div>
+          </div>
+      </div>
+  </div>
 
     <div class="container">
       <div class="row">
         <div class="col col-xs-1 p-l-0 p-r-0 collapse in" id="sidebar">
-          <div class="card" style="width: 16rem;">
+          <div class="card" style="width: 15rem;">
             <div class="card-header">
               <a href="#sidebar" class="close" data-toggle="collapse"><span aria-hidden="true">&times;</span></a>
             </div>
             <ul class="list-group list-group-flush panel">
-              <a href="#menu1" class="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-tree mr-2"></i> <span class="hidden-sm-down">change background</span> </a>
+              <a href="#menu1" class="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-tree fa-lg mr-2"></i> <span class="hidden-sm-down">change background</span> </a>
               <div class="collapse" id="menu1">
-                <div class="card float-left m-1" style="width: 7rem;height: 7rem;">
-                  <img class="card-img-top pref-img" onClick="changebackground(this.src)" src="https://i.imgur.com/VG2UvcY.jpg" style="width: 7rem;height: 7rem;">
+                  <img class="float-left prf-img" onClick="changebackground(this.src)" src="https://i.imgur.com/VG2UvcY.jpg">
+                  <img class="float-right prf-img" onClick="changebackground(this.src)" src="https://cutewallpaper.org/21/high-quality-background/Gallery-High-Quality-HD-Desktop-Backgrounds-Cool-Images-High-.jpg">
+                  <img class="float-left prf-img" onClick="changebackground(this.src)" src="https://source.unsplash.com/twukN12EN7c/1920x1080">
                 </div>
-                <div class="card float-right m-1" style="width: 7rem;height: 7rem;">
-                  <img class="card-img-top" onClick="changebackground(this.src)" src="https://cutewallpaper.org/21/high-quality-background/Gallery-High-Quality-HD-Desktop-Backgrounds-Cool-Images-High-.jpg" style="width: 7rem;height: 7rem;">
-                </div>
-              </div>
             </ul>
           </div>
         </div>
