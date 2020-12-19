@@ -14,11 +14,6 @@ module.exports = class Title extends Container {
         this.child = child;
     }
 
-    toString() {
-
-        return {[this.constructor.name]: {'children': this.childrenToString()}};
-    }
-
     // TODO: work around this please?
     safeType(child) {
 

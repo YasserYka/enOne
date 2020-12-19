@@ -27,12 +27,6 @@ module.exports = class FontAwesome extends TextualConatiner {
         }[size];
     }
 
-    toString(){
-
-        return {[this.constructor.name]: {'icon': this.icon, 'size': this.size}};
-    }
-
-
     toHtml() {
 
         return `

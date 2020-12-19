@@ -15,11 +15,6 @@ module.exports = class Anchor extends TextualConatiner {
         this.text = text ? text : url;
     }
 
-    toString(){
-
-        return {[this.constructor.name]: {'url': this.url, 'text': this.text}};
-    }
-
     toHtml() {
 
         return `

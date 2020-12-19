@@ -16,11 +16,6 @@ module.exports = class TableItem extends TextualConatiner {
         return typeof item === 'object';
     }
 
-    toString(){
-
-        return {[this.constructor.name]: {'item': this.item}};
-    }
-
     getHead(){
 
         return Object.keys(this.item).map(key => `<th scope="col">${key}</th>`).join(' ');

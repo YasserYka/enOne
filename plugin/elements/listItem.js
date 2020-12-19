@@ -18,11 +18,6 @@ module.exports = class ListItem extends Conatiner {
             item.constructor.name === 'Text';
     }
 
-    toString(){
-
-        return {[this.constructor.name]: {'item': this.item}};
-    }
-
     toHtml() {
 
         return typeof this.item === 'string' ? 

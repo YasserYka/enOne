@@ -16,11 +16,6 @@ module.exports = class List extends Conatiner {
         return child.constructor.name === 'ListItem';
     }
 
-    toString() {
-
-        return {[this.constructor.name]: {'children': this.childrenToString()}};
-    }
-
     toHtml() {
 
         return `

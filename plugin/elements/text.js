@@ -12,11 +12,6 @@ module.exports = class Text extends TextualConatiner {
 
         this.text = text;
     }
-    
-    toString(){
-
-        return {[this.constructor.name]: {'text': this.text}};
-    }
 
     toHtml() {
 

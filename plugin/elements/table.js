@@ -16,11 +16,6 @@ module.exports = class Table extends Conatiner {
         return child.constructor.name === 'TableItem';
     }
 
-    toString() {
-
-        return {[this.constructor.name]: {'children': this.childrenToString()}};
-    }
-
     toHtml() {
 
         return `
