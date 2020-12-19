@@ -1,0 +1,24 @@
+html, body { 
+    z-index: 1;
+    height:100%
+}           
+body{
+    text-align: center;
+    display:flex;
+    align-items:center;
+    background: url('https://source.unsplash.com/twukN12EN7c/1920x1080') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.list-group-item, .pagination > li > a, .pagination > li > a:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.pagination {
+    padding-top: 1rem;
+}
+.pagination > li > a, .pagination > li > a:hover{
+    color: black;
+    border-color: rgba(0, 0, 0, 0.1);
+}
