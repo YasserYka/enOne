@@ -1,7 +1,7 @@
 "use strict";
 
 const TextualConatiner = require("./containers/textualcontainer");
-const CardClass = require('../style/cardclass');
+const CardClass = require('../style/styleclass');
 
 module.exports = class Anchor extends TextualConatiner {
 

@@ -1,7 +1,7 @@
 "use strict";
 
 const Conatiner = require('./containers/container');
-const CardClass = require('../style/cardclass');
+const CardClass = require('../style/styleclass');
 
 module.exports = class List extends Conatiner {
 
@@ -9,11 +9,6 @@ module.exports = class List extends Conatiner {
         
         super();
         this.addTypes(['ListItem']);
-    }
-
-    safeType(child) {
-
-        return this.safeType(child);
     }
 
     toHtml() {

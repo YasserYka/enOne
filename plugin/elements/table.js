@@ -1,7 +1,7 @@
 "use strict";
 
 const Conatiner = require('./containers/container');
-const CardClass = require('../style/cardclass');
+const CardClass = require('../style/styleclass');
 
 module.exports = class Table extends Conatiner {
 
@@ -10,12 +10,6 @@ module.exports = class Table extends Conatiner {
         super();
         // TODO: set instead of append
         this.addTypes(['TableItem']);
-    }
-
-    // check the type of child because some objects can't be nested
-    safeType(child) {
-
-        return this.safeType(child);
     }
 
     toHtml() {

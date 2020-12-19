@@ -1,7 +1,7 @@
 "use strict";
 
 const Container = require('./containers/container');
-const CardClass = require('../style/cardclass');
+const CardClass = require('../style/styleclass');
 
 module.exports = class Card extends Container {
 
@@ -9,11 +9,6 @@ module.exports = class Card extends Container {
         
         super();
         this.addTypes(['Title', 'Header', 'Footer', 'Body', 'Image']);
-    }
-
-    safeType(child) {
-
-        return this.safeType(child);
     }
 
     toHtml() {

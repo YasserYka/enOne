@@ -1,7 +1,6 @@
 "use strict";
 
 const TextualConatiner = require('./containers/textualcontainer');
-const CardClass = require('../style/cardclass');
 
 const DEFAULT_ICON_SIZE = 3;
 
