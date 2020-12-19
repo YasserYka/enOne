@@ -9,7 +9,7 @@ module.exports = class Image extends TextualConatiner {
         super();
 
         if (!this.safeType(src))
-            throw new Error(`The URL can't be of type ${typeof url}`);
+            throw new Error(`The URL can't be of type ${url.constructor.name}`);
 
         this.src = src;
         this.alt = alt ? alt : "Card-Image";

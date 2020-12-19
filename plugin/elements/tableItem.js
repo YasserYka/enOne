@@ -7,13 +7,13 @@ module.exports = class TableItem extends TextualConatiner {
     constructor(item) {
         super();
 
-        this.item = item;
-    }
-    
-    // item can be an anchor or string
-    safeType(item) {
+        // TODO: set instead of append
+        this.addTypes(['TableItem']);
 
-        return typeof item === 'object';
+        if (this.safeType(item))
+            throw new Error(`The table item can't be of type ${item.constructor.name}`);
+
+        this.item = item;
     }
 
     getHead(){

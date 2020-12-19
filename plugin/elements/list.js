@@ -8,12 +8,12 @@ module.exports = class List extends Conatiner {
     constructor() {
         
         super();
+        this.addTypes(['ListItem']);
     }
 
-    // check the type of child because some objects can't be nested
     safeType(child) {
 
-        return child.constructor.name === 'ListItem';
+        return this.safeType(child);
     }
 
     toHtml() {

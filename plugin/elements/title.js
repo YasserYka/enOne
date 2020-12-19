@@ -7,17 +7,18 @@ module.exports = class Title extends Container {
 
     constructor(child) {
         super();
+        // TODO: set instead of append
+        this.addTypes(['Anchor']);
 
         if (!this.safeType(child))
-            throw new Error(`The text can't be of type ${typeof text}`);
+            throw new Error(`The child of Container can't be of type ${child.constructor.name}`);
 
         this.child = child;
     }
 
-    // TODO: work around this please?
     safeType(child) {
 
-        return typeof child === 'string' || child.constructor.name == 'Anchor';        ;
+        return this.safeType(child);
     }
 
     toHtml() {

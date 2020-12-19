@@ -9,16 +9,12 @@ module.exports = class Body extends Container {
     constructor() {
         
         super();
+        this.addTypes(['Title', 'List', 'Table']);
     }
 
     safeType(child) {
 
-        return child.constructor.name == 'Paragraph' ||
-            child.constructor.name == 'Anchor' ||
-            child.constructor.name == 'Text' ||
-            child.constructor.name == 'Title' ||
-            child.constructor.name == 'List' || 
-            child.constructor.name == 'Table';
+        return this.safeType(child);
     }
 
     toHtml() {

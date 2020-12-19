@@ -8,19 +8,12 @@ module.exports = class Card extends Container {
     constructor() {
         
         super();
+        this.addTypes(['Title', 'Header', 'Footer', 'Body', 'Image']);
     }
 
-    // TODO: work around this please?
     safeType(child) {
 
-        return child.constructor.name == 'Paragraph' ||
-            child.constructor.name == 'Anchor' ||
-            child.constructor.name == 'Text' ||
-            child.constructor.name == 'Title' ||
-            child.constructor.name == 'Header' || 
-            child.constructor.name == 'Footer' || 
-            child.constructor.name == 'Body' ||
-            child.constructor.name == 'Image'
+        return this.safeType(child);
     }
 
     toHtml() {

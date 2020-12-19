@@ -8,7 +8,7 @@ module.exports = class Text extends TextualConatiner {
         super();
 
         if (!this.safeType(text))
-            throw new Error(`The text can't be of type ${typeof text}`);
+            throw new Error(`The text can't be of type ${text.constructor.name}`);
 
         this.text = text;
     }

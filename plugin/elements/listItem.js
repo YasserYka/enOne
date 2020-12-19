@@ -10,13 +10,7 @@ module.exports = class ListItem extends Conatiner {
 
         this.item = item;
     }
-    
-    // item can be an anchor or string
-    safeType(item) {
 
-        return item.constructor.name === 'Anchor' ||
-            item.constructor.name === 'Text';
-    }
 
     toHtml() {
 

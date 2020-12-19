@@ -8,8 +8,8 @@ module.exports = class Paragraph extends TextualConatiner {
     constructor(text) {
         super();
 
-        if (!this.safeType(text))
-            throw new Error(`The text can't be of type ${typeof text}`);
+        if (this.safeType(text))
+            throw new Error(`The text can't be of type ${text.constructor.name}`);
 
         this.text = text;
     }

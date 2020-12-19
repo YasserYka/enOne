@@ -8,12 +8,14 @@ module.exports = class Table extends Conatiner {
     constructor() {
         
         super();
+        // TODO: set instead of append
+        this.addTypes(['TableItem']);
     }
 
     // check the type of child because some objects can't be nested
     safeType(child) {
 
-        return child.constructor.name === 'TableItem';
+        return this.safeType(child);
     }
 
     toHtml() {

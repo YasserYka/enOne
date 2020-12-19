@@ -22,7 +22,7 @@ module.exports = class Container {
 
     add(child) {
 
-        if (!this.safeType(child))
+        if (this.safeType(child))
             throw new Error(`child of type ${child.constructor.name} can't be nested in ${this.constructor.name}`);
 
         if (!this.children.includes(child)) 
@@ -38,7 +38,7 @@ module.exports = class Container {
     // check the type of child because some objects can't be nested
     safeType(child) {
 
-        return this.safeConstructorTypesChildren.some(type => type === child.constructor.name);
+        return !this.safeConstructorTypesChildren.some(type => type === child.constructor.name);
     }
 
 }
