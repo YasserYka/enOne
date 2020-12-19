@@ -8,7 +8,7 @@ module.exports = class List extends Conatiner {
     constructor() {
         
         super();
-        this.addTypes(['ListItem']);
+        this.setTypes(['ListItem']);
     }
 
     toHtml() {

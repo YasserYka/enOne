@@ -7,9 +7,7 @@ module.exports = class Title extends Container {
 
     constructor(child) {
         super();
-        // TODO: set instead of append
-        this.addTypes(['Anchor']);
-
+        
         this.child = child;
     }
 

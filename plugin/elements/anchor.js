@@ -11,8 +11,11 @@ module.exports = class Anchor extends TextualConatiner {
         if (!this.safeType(url))
             throw new Error(`The URL can't be of type ${url.constructor.name}`);
 
+        if (!this.safeType(text))
+            throw new Error(`The URL can't be of type ${text.constructor.name}`);
+
         this.url = url;
-        this.text = text ? text : url;
+        this.text = text;
     }
 
     toHtml() {

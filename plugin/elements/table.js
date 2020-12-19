@@ -8,8 +8,7 @@ module.exports = class Table extends Conatiner {
     constructor() {
         
         super();
-        // TODO: set instead of append
-        this.addTypes(['TableItem']);
+        this.setTypes(['TableItem']);
     }
 
     toHtml() {

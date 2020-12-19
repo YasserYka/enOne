@@ -7,9 +7,6 @@ module.exports = class TableItem extends TextualConatiner {
     constructor(item) {
         super();
 
-        // TODO: set instead of append
-        this.addTypes(['TableItem']);
-
         if (this.safeType(item))
             throw new Error(`The table item can't be of type ${item.constructor.name}`);
 
