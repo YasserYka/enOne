@@ -1,6 +1,7 @@
 "use strict";
 
 const Container = require('./containers/container');
+const CardClass = require('../style/cardclass');
 
 module.exports = class Footer extends Container {
 
@@ -17,7 +18,7 @@ module.exports = class Footer extends Container {
     toHtml() {
 
         return `
-            <div class="card-footer text-white">
+            <div class="${CardClass[this.constructor.name]}">
                 ${this.childrenToHtml()}
             </div>
         `;

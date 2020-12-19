@@ -1,6 +1,7 @@
 "use strict";
 
 const TextualConatiner = require("./containers/textualcontainer");
+const CardClass = require('../style/cardclass');
 
 module.exports = class Paragraph extends TextualConatiner {
 
@@ -21,7 +22,7 @@ module.exports = class Paragraph extends TextualConatiner {
     toHtml() {
 
         return `
-            <p class="card-text">
+            <p class="${CardClass[this.constructor.name]}">
                 ${this.text}
             </p>
         `;

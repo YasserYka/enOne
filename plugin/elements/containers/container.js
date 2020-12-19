@@ -20,7 +20,7 @@ module.exports = class Container {
 
     childrenToString() {
 
-        return this.children.map(child => child.toString()).join(' ');
+        return this.children.map(child => child.toString());
     }
 
     childrenToHtml() {

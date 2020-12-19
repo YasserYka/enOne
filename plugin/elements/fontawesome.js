@@ -1,6 +1,8 @@
 "use strict";
 
 const TextualConatiner = require('./containers/textualcontainer');
+const CardClass = require('../style/cardclass');
+
 const DEFAULT_ICON_SIZE = 3;
 
 module.exports = class FontAwesome extends TextualConatiner {
@@ -12,7 +14,6 @@ module.exports = class FontAwesome extends TextualConatiner {
             throw new Error('size must be of type int or size must be of type between 1 and 5')
 
         this.icon = icon;
-        console.log('size: ', size)
         this.size = this.getSizeFor(size);
     }
 

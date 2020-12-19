@@ -1,7 +1,7 @@
 "use strict";
 
 const Container = require('./containers/container');
-const cardcolor = require('../stylie/cardcolor');
+const CardClass = require('../style/cardclass');
 
 module.exports = class Card extends Container {
 
@@ -31,7 +31,7 @@ module.exports = class Card extends Container {
     toHtml() {
         
         return `
-            <div class="card mt-2 shadow bg-dark text-center" style="margin: 0 auto;">
+            <div class="${CardClass[this.constructor.name]}" style="margin: 0 auto;">
                 ${this.childrenToHtml()}
             </div>
         `;

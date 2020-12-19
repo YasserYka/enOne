@@ -1,6 +1,7 @@
 "use strict";
 
 const Conatiner = require('./containers/container');
+const CardClass = require('../style/cardclass');
 
 module.exports = class Table extends Conatiner {
 
@@ -15,11 +16,16 @@ module.exports = class Table extends Conatiner {
         return child.constructor.name === 'TableItem';
     }
 
+    toString() {
+
+        return {[this.constructor.name]: {'children': this.childrenToString()}};
+    }
+
     toHtml() {
 
         return `
             <div class="table-responsive">
-            <table class="table table-borderless table-sm table-dark">
+            <table class="${CardClass[this.constructor.name]}">
                 <thead>
                     <tr>
                         ${this.children[0].getHead()}

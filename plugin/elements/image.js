@@ -1,6 +1,7 @@
 "use strict";
 
 const TextualConatiner = require("./containers/textualcontainer");
+const CardClass = require('../style/cardclass');
 
 module.exports = class Image extends TextualConatiner {
 
@@ -22,8 +23,7 @@ module.exports = class Image extends TextualConatiner {
     toHtml() {
 
         return `
-        
-            <img src="${this.src}" class="card-img-top" alt="${this.alt}" />
+            <img src="${this.src}" class="${CardClass[this.constructor.name]}" alt="${this.alt}" />
         `;
     }
 

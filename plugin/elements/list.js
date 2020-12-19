@@ -1,6 +1,7 @@
 "use strict";
 
 const Conatiner = require('./containers/container');
+const CardClass = require('../style/cardclass');
 
 module.exports = class List extends Conatiner {
 
@@ -23,7 +24,7 @@ module.exports = class List extends Conatiner {
     toHtml() {
 
         return `
-            <ul class="list-group list-group-flush">
+            <ul class="${CardClass[this.constructor.name]}">
                 ${this.childrenToHtml()}
             </ul>
         `;

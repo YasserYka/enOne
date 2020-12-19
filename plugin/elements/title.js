@@ -1,8 +1,9 @@
 "use strict";
 
-const TextualConatiner = require("./containers/textualcontainer");
+const Container = require("./containers/container");
+const CardClass = require('../style/cardclass');
 
-module.exports = class Title extends TextualConatiner {
+module.exports = class Title extends Container {
 
     constructor(child) {
         super();
@@ -27,7 +28,7 @@ module.exports = class Title extends TextualConatiner {
     toHtml() {
 
         return `
-            <h5 class="card-title">
+            <h5 class="${CardClass[this.constructor.name]}">
                 ${this.child.constructor.name === 'Anchor' ? this.child.toHtml() : this.child}
             </h5>
         `;

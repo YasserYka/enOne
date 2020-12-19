@@ -1,6 +1,7 @@
 "use strict";
 
 const TextualConatiner = require("./containers/textualcontainer");
+const CardClass = require('../style/cardclass');
 
 module.exports = class Anchor extends TextualConatiner {
 
@@ -22,7 +23,7 @@ module.exports = class Anchor extends TextualConatiner {
     toHtml() {
 
         return `
-            <a target="_blank" href=${this.url} class="text-white card-link">
+            <a target="_blank" href=${this.url} class="${CardClass[this.constructor.name]}">
                 ${this.text}
             </a>
         `;

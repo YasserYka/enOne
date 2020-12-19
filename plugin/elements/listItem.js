@@ -1,6 +1,7 @@
 "use strict";
 
 const Conatiner = require('./containers/container');
+const CardClass = require('../style/cardclass');
 
 module.exports = class ListItem extends Conatiner {
 
@@ -25,9 +26,9 @@ module.exports = class ListItem extends Conatiner {
     toHtml() {
 
         return typeof this.item === 'string' ? 
-            `<li class="list-group-item"> ${this.item.text} </li>`    
+            `<li class="${CardClass[this.constructor.name]['li']}"> ${this.item.text} </li>`    
                 :
-            `<a target="_blank" href="${this.item.url}" class="list-group-item list-group-item-action"> ${this.item.text} </a>`;
+            `<a target="_blank" href="${this.item.url}" class="${CardClass[this.constructor.name]['a']}"> ${this.item.text} </a>`;
 
     }
 
