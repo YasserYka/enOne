@@ -6,6 +6,18 @@ module.exports = class Container {
     constructor(){
 
         this.children = []
+        this.safeConstructorTypesChildren = [
+            'Paragraph',
+            'Anchor',
+            'Text',
+            'FontAwesome',
+            'String'
+        ];
+    }
+
+    addTypes(types){
+
+        this.safeConstructorTypesChildren.push(...types);
     }
 
     add(child) {
@@ -18,11 +30,6 @@ module.exports = class Container {
 
     }
 
-    childrenToString() {
-
-        return this.children.map(child => child.toString());
-    }
-
     childrenToHtml() {
 
         return this.children.map(child => child.toHtml()).join(' ');
@@ -31,11 +38,7 @@ module.exports = class Container {
     // check the type of child because some objects can't be nested
     safeType(child) {
 
-        return child.constructor.name == 'Paragraph' ||
-            child.constructor.name == 'Anchor' ||
-            child.constructor.name == 'Text' || 
-            typeof child == 'string' ||
-            child.constructor.name == 'FontAwesome';
+        return this.safeConstructorTypesChildren.some(type => type === child.constructor.name);
     }
 
 }
