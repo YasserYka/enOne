@@ -1,9 +1,9 @@
 "use strict";
 
-const TextualConatiner = require("./containers/textualcontainer");
+const Conatiner = require("./containers/container");
 const CardClass = require('../style/styleclass');
 
-module.exports = class Image extends TextualConatiner {
+module.exports = class Image extends Conatiner {
 
     constructor(src, alt) {
         super();
