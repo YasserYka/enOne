@@ -1,13 +1,14 @@
 "use strict";
 
-const Conatiner = require('./containers/textualcontainer');
+const Container = require("./container");
 
 const DEFAULT_ICON_SIZE = 3;
 
-module.exports = class FontAwesome extends Conatiner {
+module.exports = class FontAwesome extends Container {
 
     constructor(icon, size = DEFAULT_ICON_SIZE) {
         super();
+        this.setTypes(['String']);
 
         if(typeof size != "number" || size < 1 || size > 5)
             throw new Error('size must be of type int or size must be of type between 1 and 5')

@@ -1,8 +1,8 @@
 "use strict";
 
-const Conatiner = require('./containers/textualcontainer');
+const Container = require("./container");
 
-module.exports = class Bold extends Conatiner {
+module.exports = class Bold extends Container {
 
     constructor(text) {
         super();

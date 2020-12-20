@@ -1,6 +1,6 @@
 "use strict";
 
-const Container = require('./containers/container');
+const Container = require("./container");
 const CardClass = require('../style/styleclass');
 
 module.exports = class Footer extends Container {

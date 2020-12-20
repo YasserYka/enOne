@@ -1,13 +1,14 @@
 "use strict";
 
-const Container = require("./containers/container");
+const Container = require("./container");
 const CardClass = require('../style/styleclass');
 
 module.exports = class Title extends Container {
 
     constructor(child) {
         super();
-        
+        this.setTypes(['String', 'Bold']);
+
         this.child = child;
     }
 

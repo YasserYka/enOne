@@ -1,6 +1,6 @@
 "use strict";
 
-const Container = require("./containers/container");
+const Container = require("./container");
 
 module.exports = class TableItem extends Container {
 
