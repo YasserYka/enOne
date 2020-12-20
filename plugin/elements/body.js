@@ -1,6 +1,6 @@
 "use strict";
 
-const Container = require("./container");
+const Container = require("./container/container");
 const CardClass = require('../style/styleclass');
 
 // holds title, text, paragraph and achor

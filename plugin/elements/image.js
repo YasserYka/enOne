@@ -1,6 +1,6 @@
 "use strict";
 
-const Container = require("./container");
+const Container = require("./container/container");
 const CardClass = require('../style/styleclass');
 
 module.exports = class Image extends Container {
@@ -10,7 +10,7 @@ module.exports = class Image extends Container {
         this.setTypes(['String']);
 
         if (!this.safeType(src))
-            throw new Error(`The URL can't be of type ${url.constructor.name}`);
+            throw new Error(`${this.constructor.name} can't have child of type ${src.constructor.name}`);
 
         this.src = src;
         this.alt = alt ? alt : "Card-Image";

@@ -1,6 +1,6 @@
 "use strict";
 
-const Container = require("./container");
+const Container = require("./container/container");
 const CardClass = require('../style/styleclass');
 
 module.exports = class Anchor extends Container {
@@ -10,10 +10,10 @@ module.exports = class Anchor extends Container {
         this.setTypes(['String', 'Bold']);
 
         if (!this.safeType(url))
-            throw new Error(`The url can't be of type ${url.constructor.name}`);
+            throw new Error(`${this.constructor.name} can't have child of type ${url.constructor.name}`);
 
         if (!this.safeType(text))
-            throw new Error(`The text can't be of type ${text.constructor.name}`);
+            throw new Error(`${this.constructor.name} can't have child of type ${text.constructor.name}`);
 
         this.url = url;
         this.text = text;

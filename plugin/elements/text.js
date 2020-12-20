@@ -1,6 +1,6 @@
 "use strict";
 
-const Container = require("./container");
+const Container = require("./container/container");
 
 module.exports = class Text extends Container {
 
@@ -9,7 +9,7 @@ module.exports = class Text extends Container {
         this.setTypes(['String', 'Bold']);
 
         if (!this.safeType(text))
-            throw new Error(`The text can't be of type ${text.constructor.name}`);
+            throw new Error(`${this.constructor.name} can't have child of type ${text.constructor.name}`);
 
         this.text = text;
     }

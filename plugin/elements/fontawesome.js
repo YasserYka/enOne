@@ -1,6 +1,6 @@
 "use strict";
 
-const Container = require("./container");
+const Container = require("./container/container");
 
 const DEFAULT_ICON_SIZE = 3;
 
@@ -10,8 +10,11 @@ module.exports = class FontAwesome extends Container {
         super();
         this.setTypes(['String']);
 
-        if(typeof size != "number" || size < 1 || size > 5)
+        if(size.constructor.name !== "Number" || size < 1 || size > 5)
             throw new Error('size must be of type int or size must be of type between 1 and 5')
+   
+        if (!this.safeType(icon))
+            throw new Error(`${this.constructor.name} can't have child of type ${icon.constructor.name}`);
 
         this.icon = icon;
         this.size = this.getSizeFor(size);
