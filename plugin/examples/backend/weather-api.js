@@ -1,5 +1,6 @@
-const plugin = require('../plugin');
-const engine = require('../engine');
+const plugin = require('../../plugin');
+const engine = require('../../engine');
+const environment = require('../../environment');
 
 // TODO: handle submitting packages
 const got = require('got');
@@ -28,7 +29,7 @@ getWeather().then(weatherdata => {
     plugin.title(weatherdata.weather_state_name);
 
     // paragraph to display temperature
-    plugin.body(plugin.paragraph(`Temperature ${weatherdata.min_temp | 0}-${weatherdata.max_temp | 0}°C`));
+    plugin.body(plugin.paragraph(plugin.bold(`Temperature ${weatherdata.min_temp | 0}-${weatherdata.max_temp | 0}°C`));
 
     // paragraph to display humidity
     plugin.body(plugin.paragraph(`Humidity ${weatherdata.humidity | 0} %`));
@@ -43,5 +44,5 @@ getWeather().then(weatherdata => {
     plugin.footer(plugin.anchor('https://www.metaweather.com/api/', 'Weather API'));
     
     // compile and launch the plugin
-    engine.engine(plugin);
+    engine.engine(plugin, environment.TESTING);
 });

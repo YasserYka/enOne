@@ -1,11 +1,9 @@
 const plugin = require('../plugin');
 const engine = require('../engine');
+const environment = require('../environment');
 
 // display an anchor in card's title
-plugin.header(plugin.anchor('https://opensource.indeedeng.io/api-documentation/', 'Indeed API'));
-
-// small sized icon in card's header
-plugin.header(plugin.fontawesome('briefcase', 1));
+plugin.header(plugin.text('Today\'s jobs'));
 
 // create a table from an array of objects 
 plugin.table(
@@ -16,7 +14,10 @@ plugin.table(
     ].map(job => plugin.tableItem(job))
 );
 
-plugin.footer(plugin.text("Jobs in last 24H"));
+plugin.footer(plugin.anchor('https://opensource.indeedeng.io/api-documentation/', 'Indeed API'));
+
+// small sized icon in card's header
+plugin.footer(plugin.fontawesome('briefcase', 1));
 
 // pass your external packages used and your card object into our plugin engine
-engine.engine(plugin);
+engine.engine(plugin, environment.TESTING);

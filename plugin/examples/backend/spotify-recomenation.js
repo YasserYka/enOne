@@ -1,11 +1,12 @@
 const plugin = require('../plugin');
 const engine = require('../engine');
+const environment = require('../environment');
 
 // display an image (so far only external images are supported)
 plugin.image('https://pngimg.com/uploads/triangle/triangle_PNG30.png');
 
 // display a title in card's body
-plugin.title('Music For Your Morning');
+plugin.title('Songs to lighten up your mood');
 
 // adds a list in card's body
 plugin.list(
@@ -20,4 +21,4 @@ plugin.list(
 plugin.footer(plugin.fontawesome('spotify'));
 
 // compile and launch the plugin
-engine.engine(plugin);
+engine.engine(plugin, environment.TESTING);
