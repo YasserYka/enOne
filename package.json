@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "got": "^11.8.0",
+    "npm": "^6.14.9",
     "open": "^7.3.0"
   },
   "devDependencies": {},
