@@ -92,14 +92,14 @@ const Paragraph = text => {
     `;
 }
 
-const Table = () => {
+const Table = children => {
 
     return `
         <div class="table-responsive">
             <table class="table table-borderless table-sm table-dark">
                 <thead>
                     <tr>
-                        ${children[0].getHead()}
+                        ${tableItemHead(children[0])}
                     </tr>
                 </thead>
                 <tbody>
@@ -110,11 +110,28 @@ const Table = () => {
     `;
 }
 
-const TableItem = (item) => {
+const TableItem = item => {
+
+    return `<tr>
+        ${Object.values(item).map(value => `<td>${value}</td>`).join(' ')}
+    </tr>`;
 }
 
-const Text = (text) => {
+const tableItemHead = item => {
+
+    return Object.keys(item).map(key => `<th scope="col">${key}</th>`).join(' ');
 }
 
-const Title = (text) => {
+const Text = text => {
+
+    return text;
+}
+
+const Title = text => {
+
+    return `
+        <h5 class="card-title">
+            ${text}
+        </h5>
+    `;
 }
