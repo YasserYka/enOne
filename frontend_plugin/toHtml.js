@@ -1,17 +1,17 @@
 
-const anchor = () => {
+const anchor = (url, text) => {
 }
 
 const body = () => {
 }
 
-const Bold = () => {
+const Bold = (text) => {
 }
 
 const Card = () => {
 }
 
-const FontAwesome = () => {
+const FontAwesome = (icon) => {
 }
 
 const Footer = () => {
@@ -20,29 +20,26 @@ const Footer = () => {
 const Header = () => {
 }
 
-const Image = () => {
+const Image = (src) => {
 }
 
 const List = () => {
 }
 
-const ListItem = () => {
+const ListItem = (item) => {
 }
 
-const ListItem = () => {
+const Paragraph = (text) => {
 }
 
-const Paragraph = () => {
+const Table = () => {
 }
 
-const Table= () => {
+const TableItem = (item) => {
 }
 
-const TableItem= () => {
+const Text = (text) => {
 }
 
-const Text= () => {
-}
-
-const Title= () => {
+const Title = (text) => {
 }
