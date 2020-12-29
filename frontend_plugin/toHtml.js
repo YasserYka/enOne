@@ -1,14 +1,36 @@
 
 const anchor = (url, text) => {
+
+    return `
+        <a target="_blank" href=${url} class="text-white card-link">
+            ${text}
+        </a>
+    `;
 }
 
-const body = () => {
+const body = children => {
+
+    return `
+        <div class="card-body">
+            ${childrenToHtml(children)}
+        </div>
+    `;
 }
 
-const Bold = (text) => {
+const Bold = text => {
+
+    return `
+        <b>${text}</b>
+    `;
 }
 
-const Card = () => {
+const Card = (children) => {
+
+    return `
+        <div class="card mt-2 shadow bg-dark text-center">
+            ${childrenToHtml(children)}
+        </div>
+    `;
 }
 
 const FontAwesome = (icon) => {
