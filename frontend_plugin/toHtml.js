@@ -17,14 +17,14 @@ const body = children => {
     `;
 }
 
-const Bold = text => {
+const bold = text => {
 
     return `
         <b>${text}</b>
     `;
 }
 
-const Card = (children) => {
+const card = (children) => {
 
     return `
         <div class="card mt-2 shadow bg-dark text-center">
@@ -33,16 +33,36 @@ const Card = (children) => {
     `;
 }
 
-const FontAwesome = (icon) => {
+const fontAwesome = (icon) => {
+
+    return `
+        <i class="fa fa-${icon}"></i>
+    `;
 }
 
-const Footer = () => {
+const Footer = (children) => {
+    
+    return `
+        <div class="card-footer">
+            ${childrenToHtml(children)}
+        </div>
+    `;
 }
 
 const Header = () => {
+
+    return `
+        <div class="card-header">
+            ${childrenToHtml(children)}
+        </div>
+    `;
 }
 
 const Image = (src) => {
+
+    return `
+        <img src="${src}" class="card-img-top" alt="plugin image" />
+    `;
 }
 
 const List = () => {
