@@ -1,7 +1,7 @@
 "use strict";
 
 const Container = require("./container/container");
-const CardClass = require('../style/styleclass');
+const CardClass = require('../stylie/cardclass');
 
 // holds title, text, paragraph and achor
 module.exports = class Body extends Container {

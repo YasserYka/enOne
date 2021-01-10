@@ -1,7 +1,7 @@
 const fs = require('fs');
 const environment = require('./environment');
 
-const FILE_PATH = __dirname + '/../development/';
+const FILE_PATH = __dirname + '/development/';
 const GENERATED_HTML_FILENAME = "outputcard.html";
 const GENERATED_JS_FILENAME = "outputcard.js";
 
@@ -11,6 +11,9 @@ const generatefile = (file, env) => {
 }
 
 const writefile = (filepath, data) => {
+
+    if (!fs.existsSync(FILE_PATH))
+        fs.mkdirSync(FILE_PATH);
 
     fs.writeFileSync(filepath, data, (err) => {
         if (err)
