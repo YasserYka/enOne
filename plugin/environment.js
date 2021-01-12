@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     TESTING: 'TESTING',
     RELEASE: 'RELEASE'
 }

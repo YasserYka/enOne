@@ -5,7 +5,7 @@
 // makes user's code ready for plugin runner
 const preprocess = file => {
 
-    return cleanEmptyLines(addReturnStatmen(cleanImports(file)));
+    return cleanEmptyLines(addReturnStatmen(cleanimport(file)));
 }
 
 // remove duplicate newlinens 
@@ -14,8 +14,8 @@ const cleanEmptyLines = file => {
     return file.replace(/\n\s*\n/g, '\n');
 }
 
-// because all plugins will have the same plugin, engine and environment imports, I add these imports inside plugin runner
-const cleanImports = file => {
+// because all plugins will have the same plugin, engine and environment import *s, I add these import *s inside plugin runner
+const cleanimport = file => {
 
     // match 'const *word* = require("*word*");'
     return file.replace(/const[\s\r\n]+\w+[\s\r\n]=[\s\r\n]require\(['"].*\/(plugin|engine|environment)['"]\);*/g, '')       
@@ -28,6 +28,6 @@ const addReturnStatmen = file => {
     return file.replace(/engine.engine\(plugin,[\s\r\n]environment\.\w+\);*/g, 'return plugin.toString();');
 }
 
-module.exports = {
+export default {
     preprocess: preprocess
 };

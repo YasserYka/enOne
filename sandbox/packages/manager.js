@@ -1,5 +1,5 @@
-const got = require('got');
-const npm = require('npm');
+import got from 'got';
+import npm from 'npm';
 
 
 // minimal weekly installation count of packages for security reasons
@@ -33,5 +33,5 @@ const install = packages => {
     });
 }
 
-module.exports = {
+export default {
 };

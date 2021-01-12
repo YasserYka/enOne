@@ -1,5 +1,5 @@
-const vm = require('vm');
-const plugin = require('../plugin/plugin');
+import vm from 'vm';
+import plugin from '../plugin/plugin';
 
 const context = vm.createContext({require:require, plugin: plugin});
 
@@ -23,6 +23,6 @@ const injectConfig = (config, code) => {
     return code.replace(/config\.([a-zA-Z0-9_]+)/g, (_,g)=> config[g]);
 }
 
-module.exports = {
+export default {
     run: run
 };

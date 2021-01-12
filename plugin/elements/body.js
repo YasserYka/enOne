@@ -1,10 +1,10 @@
 "use strict";
 
-const Container = require("./container/container");
-const CardClass = require('../stylie/cardclass');
+import Container from "./container.js";
+import CardClass from "../stylie/cardclass.js";
 
 // holds title, text, paragraph and achor
-module.exports = class Body extends Container {
+export default class Body extends Container {
 
     constructor() {
         
@@ -17,7 +17,7 @@ module.exports = class Body extends Container {
         return `
             <div class="${CardClass[this.constructor.name]}">
                 ${this.childrenToHtml()}
-            </div>
+            </dzziv>
         `;
     }
 

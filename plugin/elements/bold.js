@@ -1,8 +1,8 @@
 "use strict";
 
-const Container = require("./container/container");
+import Container from "./container.js";
 
-module.exports = class Bold extends Container {
+export default class Bold extends Container {
 
     constructor(text) {
         super();

@@ -1,9 +1,9 @@
-const plugin = require('../../plugin');
-const engine = require('../../engine');
-const environment = require('../../environment');
+import plugin from '../../plugin.js';
+import engine from '../../engine.js';
+import environment from '../../environment.js';
 
 // TODO: handle submitting packages
-const got = require('got');
+import got from 'got';
 
 // call weather API
 const getWeather = async () => {
@@ -29,7 +29,7 @@ getWeather().then(weatherdata => {
     plugin.title(weatherdata.weather_state_name);
 
     // paragraph to display temperature
-    plugin.body(plugin.paragraph(plugin.bold(`Temperature ${weatherdata.min_temp | 0}-${weatherdata.max_temp | 0}°C`));
+    plugin.body(plugin.paragraph(plugin.bold(`Temperature ${weatherdata.min_temp | 0}-${weatherdata.max_temp | 0}°C`)));
 
     // paragraph to display humidity
     plugin.body(plugin.paragraph(`Humidity ${weatherdata.humidity | 0} %`));

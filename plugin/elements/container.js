@@ -1,7 +1,6 @@
-"use strict";
 
 // super class for nestedable elements
-module.exports = class Container {
+export default class Container {
 
     constructor(){
 

@@ -1,6 +1,6 @@
-const plugin = require('../plugin');
-const engine = require('../engine');
-const environment = require('../environment');
+import plugin from '../plugin.js';
+import engine from '../engine.js';
+import environment from '../environment.js';
 
 // display an image (so far only external images are supported)
 plugin.image('https://pngimg.com/uploads/triangle/triangle_PNG30.png');

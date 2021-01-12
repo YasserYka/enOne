@@ -1,5 +1,5 @@
-const fs = require('fs');
-const HTML_FILE_PATH = '../development';
+import fs from 'fs';
+const HTML_FILE_PATH = '../development.js';
 const GENERATED_HTML_FILENAME = "outputcard.html";
 
 
@@ -33,7 +33,7 @@ const getPath = () => {
     return `${HTML_FILE_PATH}${GENERATED_HTML_FILENAME}`;
 }
 
-module.exports = {
+export default {
     generate: generatefile,
     getPath: getPath
 };

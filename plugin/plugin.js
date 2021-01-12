@@ -1,21 +1,21 @@
 "use strict";
 
-const Paragraph = require('./elements/paragraph');
-const Anchor = require('./elements/anchor');
-const Header = require('./elements/header');
-const Footer = require('./elements/footer');
-const Title = require('./elements/title');
-const Image = require('./elements/image');
-const Card = require('./elements/card');
-const Body = require('./elements/body');
-const Text = require('./elements/text');
-const ListItem = require('./elements/listItem');
-const List = require('./elements/list');
-const TableItem = require('./elements/tableItem');
-const Table = require('./elements/table');
-const FontAwesome = require('./elements/fontawesome');
+import Paragraph from './elements/paragraph.js';
+import Anchor from './elements/anchor.js';
+import Header from './elements/header.js';
+import Footer from './elements/footer.js';
+import Title from './elements/title.js';
+import Image from './elements/image.js';
+import Card from './elements/card.js';
+import Body from './elements/body.js';
+import Text from './elements/text.js';
+import ListItem from './elements/listItem.js';
+import List from './elements/list.js';
+import TableItem from './elements/tableItem.js';
+import Table from './elements/table.js';
+import FontAwesome from './elements/fontawesome.js';
 
-module.exports = class Plugin {
+export default class Plugin {
     
     static _initializer = (() => {
         
@@ -117,7 +117,6 @@ module.exports = class Plugin {
 
         items.forEach(item => {
             (this._table || (this._table = new Table())).add(item);
-            console.log(item)
         });
 
         this.body(this._table);   

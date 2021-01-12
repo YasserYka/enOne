@@ -1,9 +1,9 @@
 "use strict";
 
-const Container = require("./container/container");
-const CardClass = require('../stylie/cardclass');
+import Container from "./container.js";
+import CardClass from "../stylie/cardclass.js";
 
-module.exports = class Table extends Container {
+export default class Table extends Container {
 
     constructor() {
         

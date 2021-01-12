@@ -8,13 +8,13 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .navbar {
-    background-color: transparent !important;
+    background-color: transparent !import *ant;
 }
-.btn, .card, .dropdown-item, .dropdown-item:active, .list-group-item, .close, .close:hover, a{
+.btn, .card, .dropdown-item, .dropdown-item:active, .list-group-item, .close, .close:hover, a:active{
     color: var(--white);
 }
 .btn, .card, .dropdown-menu {
-    background-color: rgba(0, 0, 0, 0.4) !important;
+    background-color: rgba(0, 0, 0, 0.4) !import *ant;
 }
 .dropdown-item:active{
     background-color: white;
@@ -26,16 +26,16 @@ body {
 }
 .card-columns > .card {
     border-radius: 15px;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3) !import *ant;
 }
 .list-group-item, .table {
-    background-color: transparent !important;
+    background-color: transparent !import *ant;
 }
 .table th, .table td{
-    border-color:  rgba(255, 255, 255, 0.3) !important;
+    border-color:  rgba(0, 0, 0, 0.1) !import *ant;
 }
 .table {
-    border-color: var(--white) !important;
+    border-color: var(--white) !import *ant;
 }
 .card-img-top {
     height: 15rem;
@@ -53,4 +53,7 @@ body {
 .pagination > li > a, .pagination > li > a:hover{
     color: black;
     border-color: rgba(0, 0, 0, 0.2);
+}
+.card-footer  > * {
+    margin: 0 0.2rem 0 0.2rem;
 }

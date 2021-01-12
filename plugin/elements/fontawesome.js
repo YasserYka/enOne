@@ -1,10 +1,10 @@
 "use strict";
 
-const Container = require("./container/container");
+import Container from "./container.js";
 
 const DEFAULT_ICON_SIZE = 3;
 
-module.exports = class FontAwesome extends Container {
+export default class FontAwesome extends Container {
 
     constructor(icon, size = DEFAULT_ICON_SIZE) {
         super();

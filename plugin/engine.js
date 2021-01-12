@@ -1,9 +1,9 @@
-const generatefile = require('./generatefile');
-const boilerplate = require('./html/boilerplate');
-const browser = require('./browser');
-const environment = require('./environment');
-const fs = require('fs');
-const preprocessor = require('./release/preprocessor');
+import generatefile from './generatefile.js';
+import boilerplate from './html/boilerplate.js';
+import browser from './browser.js';
+import environment from './environment.js';
+import  fs from 'fs';
+import preprocessor from './release/preprocessor.js';
 
 const engine = (plugin, env) => {
 
@@ -26,6 +26,6 @@ const release = () => {
 
 }
 
-module.exports = {
+export default {
     engine: engine
 };

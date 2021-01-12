@@ -1,9 +1,9 @@
-"use strict";
+"use strict.js";
 
-const Container = require("./container/container");
-const CardClass = require('../stylie/cardclass');
+import Container from "./container.js";
+import CardClass from "../stylie/cardclass.js";
 
-module.exports = class Image extends Container {
+export default class Image extends Container {
 
     constructor(src, alt) {
         super();
@@ -13,7 +13,7 @@ module.exports = class Image extends Container {
             throw new Error(`${this.constructor.name} can't have child of type ${src.constructor.name}`);
 
         this.src = src;
-        this.alt = alt ? alt : "Card-Image";
+        this.alt = alt ? alt : "Card-Image.js";
     }
 
     toHtml() {

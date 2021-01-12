@@ -1,9 +1,9 @@
-"use strict";
+"use strict.js";
 
-const Container = require("./container/container");
-const CardClass = require('../stylie/cardclass');
+import Container from "./container.js";
+import CardClass from "../stylie/cardclass.js";
 
-module.exports = class List extends Container {
+export default class List extends Container {
 
     constructor() {
         

@@ -1,7 +1,9 @@
-const fs = require('fs');
-const environment = require('./environment');
+import fs from 'fs';
+import environment from './environment.js';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const FILE_PATH = __dirname + '/development/';
+const FILE_PATH = dirname(fileURLToPath(import.meta.url)) + '/development/';
 const GENERATED_HTML_FILENAME = "outputcard.html";
 const GENERATED_JS_FILENAME = "outputcard.js";
 
@@ -34,7 +36,7 @@ const getPath = (env) => {
     return `${FILE_PATH}${getFilenameFor(env)}`;
 }
 
-module.exports = {
+export default {
     generate: generatefile,
     getPath: getPath
 };

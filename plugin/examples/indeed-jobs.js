@@ -1,6 +1,6 @@
-const plugin = require('../plugin');
-const engine = require('../engine');
-const environment = require('../environment');
+import plugin from '../plugin.js';
+import engine from '../engine.js';
+import environment from '../environment.js';
 
 // display an anchor in card's title
 plugin.header(plugin.text('Today\'s jobs'));

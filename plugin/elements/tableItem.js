@@ -1,8 +1,8 @@
 "use strict";
 
-const Container = require("./container/container");
+import Container from "./container.js";
 
-module.exports = class TableItem extends Container {
+export default class TableItem extends Container {
 
     constructor(item) {
         super();

@@ -1,8 +1,8 @@
-const plugin = require('../plugin');
-const engine = require('../engine');
-const environment = require('../environment');
+import plugin from '../plugin.js';
+import engine from '../engine.js';
+import environment from '../environment.js';
 
-const got = require('got');
+import got from 'got';
 
 // get list of top stories id
 const getStoriesId = async () => {
