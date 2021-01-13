@@ -9,11 +9,13 @@ import Image from './elements/image.js';
 import Card from './elements/card.js';
 import Body from './elements/body.js';
 import Text from './elements/text.js';
+import Bold from './elements/bold.js';
 import ListItem from './elements/listItem.js';
 import List from './elements/list.js';
 import TableItem from './elements/tableItem.js';
 import Table from './elements/table.js';
 import FontAwesome from './elements/fontawesome.js';
+import Input from './elements/input.js';
 
 export default class Plugin {
     
@@ -122,6 +124,12 @@ export default class Plugin {
         this.body(this._table);   
     }
 
+    static input(placeholder) {
+
+        
+        this.card(new Input(placeholder));
+    }
+
     /**
      * @param {function} child of type ~
      */
@@ -137,6 +145,14 @@ export default class Plugin {
     static text(text) {
 
         return new Text(text);
+    }
+
+    /**
+     * @param {string} text
+     */
+    static bold(text) {
+
+        return new Bold(text);
     }
 
     /**
