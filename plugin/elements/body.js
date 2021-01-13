@@ -9,7 +9,7 @@ export default class Body extends Container {
     constructor() {
         
         super();
-        this.addTypes(['Title', 'List', 'Table']);
+        this.addTypes(['Title', 'List', 'Table', 'Text', 'Bold']);
     }
 
     toHtml() {
@@ -17,7 +17,7 @@ export default class Body extends Container {
         return `
             <div class="${CardClass[this.constructor.name]}">
                 ${this.childrenToHtml()}
-            </dzziv>
+            </div>
         `;
     }
 
