@@ -16,6 +16,7 @@ import TableItem from './elements/tableItem.js';
 import Table from './elements/table.js';
 import FontAwesome from './elements/fontawesome.js';
 import Input from './elements/input.js';
+import IFrame from './elements/iframe.js';
 
 export default class Plugin {
     
@@ -128,6 +129,11 @@ export default class Plugin {
 
         
         this.card(new Input(placeholder));
+    }
+
+    static iframe(url){
+
+        this.card(new IFrame(url)); 
     }
 
     /**
