@@ -8,7 +8,7 @@ export default class Card extends Container {
     constructor() {
         
         super();
-        this.addTypes(['Title', 'Header', 'Footer', 'Body', 'Image', 'Input']);
+        this.addTypes(['Title', 'Header', 'Footer', 'Body', 'Image', 'Input', 'IFrame']);
     }
 
     toHtml() {

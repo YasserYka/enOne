@@ -2,9 +2,10 @@ import Container from "./container.js";
 
 export default class IFrame extends Container {
 
-    constructor() {
+    constructor(url) {
         
         super();
+        this.url = url;
     }
 
     toHtml() {

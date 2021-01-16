@@ -7,7 +7,7 @@ export default class Paragraph extends Container {
 
     constructor(text) {
         super();
-        this.setTypes(['String']);
+        this.setTypes(['String', 'Bold']);
 
         if (!this.safeType(text))
             throw new Error(`${this.constructor.name} can't have child of type ${text.constructor.name}`);

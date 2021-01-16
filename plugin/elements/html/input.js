@@ -9,7 +9,7 @@ export default class Input {
     toHtml() {
 
         return `
-            <textarea placeholder="${this.placeholder}" rows="8"></textarea>
+            <textarea placeholder="${this.placeholder}" size="255" rows="8"></textarea>
         `;
     }
 
