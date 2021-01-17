@@ -21,7 +21,7 @@ export default class TableItem extends Container {
 
     toHtml() {
 
-        return `<tr>${Object.values(this.item).map(value => `<td>${value}</td>`).join(' ')}</tr>`;
+        return `<tr href="http://apple.com">${Object.values(this.item).map(value => `<td>${value}</td>`).join(' ')}</tr>`;
     }
 
 }

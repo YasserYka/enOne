@@ -9,8 +9,6 @@ const GENERATED_HTML_FILENAME = "outputcard.html";
 const generatefile = htmlfile => {
 
     writefile(`${HTML_FILE_PATH}${GENERATED_HTML_FILENAME}`, htmlfile);
-
-    console.log('Your browser will be launched shortly..');
 }
 
 /**

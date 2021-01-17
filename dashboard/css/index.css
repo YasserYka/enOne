@@ -40,6 +40,7 @@ body {
 .card-img-top {
     height: 15rem;
     object-fit: contain;
+    padding-top: 0.5rem;
 }
 .prf-img {
     padding: 0.5rem;

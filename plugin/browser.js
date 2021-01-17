@@ -7,6 +7,7 @@ const lanuch = filename => {
 
     (async() => {
 
+        console.log('\nYour browser will be launched shortly..');
         await open(filename);
     })();
 

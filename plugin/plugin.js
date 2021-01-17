@@ -17,6 +17,7 @@ import Table from './elements/table.js';
 import FontAwesome from './elements/fontawesome.js';
 import Input from './elements/input.js';
 import IFrame from './elements/iframe.js';
+import LocalStorage from './elements/script/localstorage/localstorage.js';
 
 export default class Plugin {
     
@@ -49,6 +50,11 @@ export default class Plugin {
 
         return new ListItem(item);
     }
+
+    static localStorage(item) {
+
+        return new LocalStorage(item);
+    }    
 
     /**
      * @param {function} items list or multiple of list item
@@ -96,12 +102,17 @@ export default class Plugin {
         return new Anchor(url, text);
     }
 
+    static localStorageOperation(){
+
+        return LocalStorage.operation();
+    }
+
     /**
      * @param {function} child of type ~
      */
-    static header(child) {
+    static header(...children) {
 
-        (this._header || (this._header = new Header())).add(child);
+        children.forEach(child => (this._header || (this._header = new Header())).add(child));
         this.card(this._header);   
     }
 

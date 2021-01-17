@@ -20,10 +20,9 @@ const writefile = (filepath, data) => {
     fs.writeFileSync(filepath, data, (err) => {
         if (err)
             throw new Error(err);
-
-        console.log(`Your file was generated successfully ${filepath}`);
     });
 
+    console.log(`\nYour file was generated successfully ${filepath}`);
 }
 
 const getFilenameFor = (env) => {

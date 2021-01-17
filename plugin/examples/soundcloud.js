@@ -20,5 +20,4 @@ plugin.header(plugin.text(playlist.title), plugin.fontawesome('soundcloud', 1));
 
 plugin.iframe(playlist.url);
 
-// compile and launch the plugin
 engine.engine(plugin, environment.TESTING);
