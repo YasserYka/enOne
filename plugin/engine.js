@@ -26,6 +26,6 @@ const release = () => {
 
 }
 
-export default {
+module.exports = {
     engine: engine
 };

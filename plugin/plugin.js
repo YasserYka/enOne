@@ -19,7 +19,7 @@ const Input = require('./elements/input.js');
 const IFrame = require('./elements/iframe.js');
 const LocalStorage = require('./elements/script/localstorage/localstorage.js');
 
-export default class Plugin {
+module.exports = class Plugin {
     
     static _initializer = (() => {
         

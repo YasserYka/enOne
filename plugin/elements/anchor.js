@@ -3,7 +3,7 @@
 const Container = require("./container.js");
 const CardClass = require("../stylie/cardclass.js");
 
-export default class Anchor extends Container {
+module.exports = class Anchor extends Container {
 
     constructor(url, text) {
         super();

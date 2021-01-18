@@ -1,6 +1,6 @@
 
 // super class for nestedable elements
-export default class Container {
+module.exports = class Container {
 
     constructor(){
 

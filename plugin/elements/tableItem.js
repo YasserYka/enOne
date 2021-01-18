@@ -2,7 +2,7 @@
 
 const Container = require("./container.js");
 
-export default class TableItem extends Container {
+module.exports = class TableItem extends Container {
 
     constructor(item) {
         super();

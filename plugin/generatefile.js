@@ -35,7 +35,7 @@ const getPath = (env) => {
     return `${FILE_PATH}${getFilenameFor(env)}`;
 }
 
-export default {
+module.exports = {
     generate: generatefile,
     getPath: getPath
 };

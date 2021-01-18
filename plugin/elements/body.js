@@ -4,7 +4,7 @@ const Container = require("./container.js");
 const CardClass = require("../stylie/cardclass.js");
 
 // holds title, text, paragraph and achor
-export default class Body extends Container {
+module.exports = class Body extends Container {
 
     constructor() {
         

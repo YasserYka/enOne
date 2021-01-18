@@ -17,7 +17,7 @@ const color =  Object.freeze({
     MUTED_TEXT: "--muted"
 }); 
 
-export default {
+module.exports = {
     COLOR: color,
     defaultColor: defaultColor,
 }

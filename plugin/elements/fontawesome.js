@@ -4,7 +4,7 @@ const Container = require("./container.js");
 
 const DEFAULT_ICON_SIZE = 3;
 
-export default class FontAwesome extends Container {
+module.exports = class FontAwesome extends Container {
 
     constructor(icon, size = DEFAULT_ICON_SIZE) {
         super();

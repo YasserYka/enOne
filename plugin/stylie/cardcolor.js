@@ -11,6 +11,6 @@ const color = Object.freeze({
     DARK: "text-white bg-dark"
 });
 
-export default {
+module.exports = {
     COLOR: color
 }

@@ -31,7 +31,7 @@ const getPath = () => {
     return `${HTML_FILE_PATH}${GENERATED_HTML_FILENAME}`;
 }
 
-export default {
+module.exports = {
     generate: generatefile,
     getPath: getPath
 };

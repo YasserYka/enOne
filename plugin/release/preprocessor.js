@@ -28,6 +28,6 @@ const addReturnStatmen = file => {
     return file.replace(/engine.engine\(plugin,[\s\r\n]environment\.\w+\);*/g, 'return plugin.toString();');
 }
 
-export default {
+module.exports = {
     preprocess: preprocess
 };

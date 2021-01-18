@@ -2,7 +2,7 @@
 
 const Container = require("../../container.js");
 
-export default class LocalStorage extends Container {
+module.exports = class LocalStorage extends Container {
 
     constructor(operation, key, value) {
         super();

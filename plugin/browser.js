@@ -13,6 +13,6 @@ const lanuch = filename => {
 
 }
 
-export default {
+module.exports = {
     lanuch: lanuch
 };

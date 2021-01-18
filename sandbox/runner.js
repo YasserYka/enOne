@@ -23,6 +23,6 @@ const injectConfig = (config, code) => {
     return code.replace(/config\.([a-zA-Z0-9_]+)/g, (_,g)=> config[g]);
 }
 
-export default {
+module.exports = {
     run: run
 };

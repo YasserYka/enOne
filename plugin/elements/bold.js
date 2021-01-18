@@ -2,7 +2,7 @@
 
 const Container = require("./container.js");
 
-export default class Bold extends Container {
+module.exports = class Bold extends Container {
 
     constructor(text) {
         super();

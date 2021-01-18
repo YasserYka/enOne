@@ -1,6 +1,6 @@
 const Container = require("./container.js");
 
-export default class IFrame extends Container {
+module.exports = class IFrame extends Container {
 
     constructor(url) {
         

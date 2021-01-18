@@ -38,6 +38,6 @@ const get = (card, textcolor) => {
     `;
 }
 
-export default {
+module.exports = {
     get: get
 };

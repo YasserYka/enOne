@@ -1,5 +1,5 @@
 
-export default class Input {
+module.exports = class Input {
 
     constructor(placeholder) {
     

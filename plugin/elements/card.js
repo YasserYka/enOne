@@ -3,7 +3,7 @@
 const Container = require("./container.js");
 const CardClass = require("../stylie/cardclass.js");
 
-export default class Card extends Container {
+module.exports = class Card extends Container {
 
     constructor() {
         

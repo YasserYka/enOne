@@ -33,5 +33,5 @@ const install = packages => {
     });
 }
 
-export default {
+module.exports = {
 };

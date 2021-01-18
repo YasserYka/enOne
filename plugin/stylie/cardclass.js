@@ -1,4 +1,4 @@
-export default Object.freeze({
+module.exports = Object.freeze({
     Anchor: 'text-white card-link',
     Body: 'card-body',
     Card: 'card mt-2 shadow bg-dark text-center',
