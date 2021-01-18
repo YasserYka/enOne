@@ -1,5 +1,5 @@
-import vm from 'vm';
-import plugin from '../plugin/plugin';
+const vm = require('vm');
+const plugin = require('../plugin/plugin');
 
 const context = vm.createContext({require:require, plugin: plugin});
 

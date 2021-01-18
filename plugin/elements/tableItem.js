@@ -1,6 +1,6 @@
 "use strict";
 
-import Container from "./container.js";
+const Container = require("./container.js");
 
 export default class TableItem extends Container {
 

@@ -1,6 +1,6 @@
 "use strict";
 
-import Container from "./container.js";
+const Container = require("./container.js");
 
 const DEFAULT_ICON_SIZE = 3;
 

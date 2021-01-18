@@ -1,5 +1,5 @@
-import got from 'got';
-import npm from 'npm';
+const got = require('got');
+const npm = require('npm');
 
 
 // minimal weekly installation count of packages for security reasons

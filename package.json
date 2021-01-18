@@ -1,16 +1,18 @@
 {
   "name": "personaldashboard",
   "version": "1.0.0",
-  "type": "module",
   "description": "",
   "main": "index.js",
   "dependencies": {
     "open": "^7.3.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "electron": "^11.2.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "plugin/./setup"
+    "setup": "plugin/./setup",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",

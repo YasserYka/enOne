@@ -1,7 +1,7 @@
-import fs from 'fs';
-import environment from './environment.js';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+const fs = require('fs');
+const environment = require('./environment.js');
+const { dirname } = require('path');
+const { fileURLToPath } = require('url');
 
 const FILE_PATH = dirname(fileURLToPath(import.meta.url)) + '/development/';
 const GENERATED_HTML_FILENAME = "outputcard.html";

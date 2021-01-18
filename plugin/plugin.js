@@ -1,23 +1,23 @@
 "use strict";
 
-import Paragraph from './elements/paragraph.js';
-import Anchor from './elements/anchor.js';
-import Header from './elements/header.js';
-import Footer from './elements/footer.js';
-import Title from './elements/title.js';
-import Image from './elements/image.js';
-import Card from './elements/card.js';
-import Body from './elements/body.js';
-import Text from './elements/text.js';
-import Bold from './elements/bold.js';
-import ListItem from './elements/listItem.js';
-import List from './elements/list.js';
-import TableItem from './elements/tableItem.js';
-import Table from './elements/table.js';
-import FontAwesome from './elements/fontawesome.js';
-import Input from './elements/input.js';
-import IFrame from './elements/iframe.js';
-import LocalStorage from './elements/script/localstorage/localstorage.js';
+const Paragraph = require('./elements/paragraph.js');
+const Anchor = require('./elements/anchor.js');
+const Header = require('./elements/header.js');
+const Footer = require('./elements/footer.js');
+const Title = require('./elements/title.js');
+const Image = require('./elements/image.js');
+const Card = require('./elements/card.js');
+const Body = require('./elements/body.js');
+const Text = require('./elements/text.js');
+const Bold = require('./elements/bold.js');
+const ListItem = require('./elements/listItem.js');
+const List = require('./elements/list.js');
+const TableItem = require('./elements/tableItem.js');
+const Table = require('./elements/table.js');
+const FontAwesome = require('./elements/fontawesome.js');
+const Input = require('./elements/input.js');
+const IFrame = require('./elements/iframe.js');
+const LocalStorage = require('./elements/script/localstorage/localstorage.js');
 
 export default class Plugin {
     

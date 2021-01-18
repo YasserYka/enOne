@@ -1,5 +1,5 @@
-import fs from 'fs';
-const HTML_FILE_PATH = '../development.js';
+const fs = require('fs');
+const HTML_FILE_PATH = '../development.js');
 const GENERATED_HTML_FILENAME = "outputcard.html";
 
 

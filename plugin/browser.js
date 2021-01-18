@@ -1,4 +1,4 @@
-import open from 'open';
+const open = require('open');
 
 /**
  * @param {string} filename is HTML file to be opened in the browser

@@ -1,9 +1,9 @@
-import plugin from '../plugin.js';
-import engine from '../engine.js';
-import environment from '../environment.js';
+const plugin = require('../plugin.js');
+const engine = require('../engine.js');
+const environment = require('../environment.js');
 
 // TODO: handle submitting packages
-import got from 'got';
+const got = require('got');
 
 const request = async url => {
  

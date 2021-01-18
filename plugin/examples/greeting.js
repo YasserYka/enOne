@@ -1,8 +1,8 @@
-import plugin from '../plugin.js';
-import engine from '../engine.js';
-import environment from '../environment.js';
+const plugin = require('../plugin.js');
+const engine = require('../engine.js');
+const environment = require('../environment.js');
 
-import got from 'got';
+const got = require('got');
 
 const getAdvice = async () => {
     return await got('https://api.adviceslip.com/advice', { headers: {'Accept': 'application/json'} }).then(response => {

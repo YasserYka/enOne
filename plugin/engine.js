@@ -1,9 +1,9 @@
-import generatefile from './generatefile.js';
-import boilerplate from './html/boilerplate.js';
-import browser from './browser.js';
-import environment from './environment.js';
-import  fs from 'fs';
-import preprocessor from './release/preprocessor.js';
+const generatefile = require('./generatefile.js');
+const boilerplate = require('./html/boilerplate.js');
+const browser = require('./browser.js');
+const environment = require('./environment.js');
+const  fs = require('fs');
+const preprocessor = require('./release/preprocessor.js');
 
 const engine = (plugin, env) => {
 

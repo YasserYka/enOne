@@ -1,7 +1,7 @@
 "use strict";
 
-import Container from "./container.js";
-import CardClass from "../stylie/cardclass.js";
+const Container = require("./container.js");
+const CardClass = require("../stylie/cardclass.js");
 
 // holds title, text, paragraph and achor
 export default class Body extends Container {

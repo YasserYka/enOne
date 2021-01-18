@@ -1,4 +1,4 @@
-import Container from "./container.js";
+const Container = require("./container.js");
 
 export default class IFrame extends Container {
 
