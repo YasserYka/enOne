@@ -20,8 +20,6 @@ indeed_scraper.query({
 
     jobs = jobs.map(job => (({title, company, postDate}) => ({title, company, postDate}))(job));
 
-    console.log(jobs);
-
     // create a table from an array of objects 
     plugin.table(
         jobs.map(job => plugin.tableItem(job))

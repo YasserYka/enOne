@@ -1,4 +1,4 @@
-"use strict.js";
+
 
 const Container = require("./container.js");
 const CardClass = require("../stylie/cardclass.js");

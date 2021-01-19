@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "gridstack": "^3.1.4",
     "indeed-scraper": "^3.1.2",
     "jquery": "^3.5.1",
     "open": "^7.3.0"

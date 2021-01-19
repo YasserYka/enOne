@@ -1,9 +1,7 @@
 const fs = require('fs');
 const environment = require('./environment.js');
-const { dirname } = require('path');
-const { fileURLToPath } = require('url');
 
-const FILE_PATH = dirname(fileURLToPath(import.meta.url)) + '/development/';
+const FILE_PATH = __dirname + '/development/';
 const GENERATED_HTML_FILENAME = "outputcard.html";
 const GENERATED_JS_FILENAME = "outputcard.js";
 

@@ -34,7 +34,7 @@
             <body>
                 <!-- P3rsonal's Card -->
                 
-            <div class="card mt-2 shadow bg-dark text-center" style="margin: 0 auto;">
+            <div class="card mt-2 shadow bg-dark text-center"     style="margin: 0 auto;">
                 
             <div class="card-header">
                 Today's jobs
