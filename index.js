@@ -9,8 +9,9 @@ function createWindow () {
     },
   });
 
-  window.setMenuBarVisibility(false)
-  window.loadFile('./dashboard/index.html')
+  window.setMenuBarVisibility(false);
+  window.loadFile('./dashboard/index.html');
+  window.webContents.openDevTools();
 }
 
 app.whenReady().then(createWindow)
