@@ -1,11 +1,6 @@
 
 PLUGIN_POSITION_KEY = 'pluginsposition';
 
-const getPluginsPosition = () => {
-
-    return JSON.parse(localStorage.getItem(PLUGIN_POSITION_KEY));
-}
-
 const setPluginsPosition = positions => {
 
     localStorage.setItem(PLUGIN_POSITION_KEY, JSON.stringify(positions));

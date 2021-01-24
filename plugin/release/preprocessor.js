@@ -1,3 +1,5 @@
+const { h } = require('vhtml');
+
 /*
     TODO: Replace hardcoded words in regex with variables 
 */

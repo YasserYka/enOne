@@ -4,10 +4,14 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-react-jsx": "^7.12.12",
     "gridstack": "^3.1.4",
     "indeed-scraper": "^3.1.2",
     "jquery": "^3.5.1",
-    "open": "^7.3.0"
+    "open": "^7.3.0",
+    "vhtml": "^2.2.0"
   },
   "devDependencies": {
     "electron": "^11.2.0"

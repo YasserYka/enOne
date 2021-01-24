@@ -11,10 +11,18 @@ const load = () => {
 
 const loadPlugin = filename => {
 
-    return require(filename);
+    return require(`${PLUGINS_FOLDER}/${filename}`);
 }
 
 const getPlugins = () => {
+
+    let plugins = getFilenamesIn(PLUGINS_FOLDER).map(filename => loadPlugin(filename));
+
+    console.log(plugins);
+}
+
+
+const getFilenamesIn = dir => {
 
     return fs.readdirSync(PLUGINS_FOLDER);
 }
@@ -23,3 +31,5 @@ const initPlugins = plugins => {
 
     plugins.forEach(plugin => plugin.init());
 }
+
+getPlugins();

@@ -74,9 +74,9 @@ textarea {
     background-color:  transparent !important;
     color: white;
 }
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder {
     color: white;
-    opacity: 0.5; /* Firefox */
+    opacity: 0.5;
 }
 body::-webkit-scrollbar       {background-color:transparent;width:16px}
 body::-webkit-scrollbar-track {background-color:transparent}
