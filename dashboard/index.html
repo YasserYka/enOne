@@ -3,81 +3,122 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/index.css">
-    <link href="../node_modules/gridstack/dist/gridstack.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="./css/index.css" />
 
     <!-- Javascript -->
-    <script>window.$ = window.jQuery = require('jquery');</script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    <script src="../node_modules/gridstack/dist/gridstack-h5.js"></script>
+    <script>
+      window.$ = window.jQuery = require("jquery");
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.3/dist/muuri.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+      integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+      crossorigin="anonymous"
+    ></script>
     <script src="./js/index.js"></script>
-
   </head>
   <body>
-
     <nav class="navbar fixed-top navbar-light">
-        <button class="btn"><i class="fa fa-plus fa-lg"></i></button>
-        <div class="dropdown">
-            <button class="btn" id="navbardropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars fa-lg"></i></button>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbardropdown">
-                <a class="dropdown-item" href="#sidebar" data-toggle="collapse">Preferences</a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#details">Manage Plugins</a>
-            </div>
+      <button class="btn"><i class="fa fa-plus fa-lg"></i></button>
+      <div class="dropdown">
+        <button
+          class="btn"
+          id="navbardropdown"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <i class="fa fa-bars fa-lg"></i>
+        </button>
+        <div
+          class="dropdown-menu dropdown-menu-right"
+          aria-labelledby="navbardropdown"
+        >
+          <a class="dropdown-item" href="#sidebar" data-toggle="collapse"
+            >Preferences</a
+          >
+          <a
+            class="dropdown-item"
+            href="#"
+            data-toggle="modal"
+            data-target="#details"
+            >Manage Plugins</a
+          >
         </div>
+      </div>
     </nav>
 
     <div class="modal" id="details" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Manage Plugins</h5>
-                  <buttun class="btn" data-dismiss="modal"><span aria-hidden="true">&times;</span></buttun>
-                </div>
-              <div class="modal-body">
-                <div class="container">  
-                  <ul class="list-group text-left">  
-                      <li class="list-group-item mng-item">
-                          Weather API 
-                          <button class="btn ml-1 mr-1 float-right">
-                              <i class="fa fa-trash-o fa-xs"></i>
-                          </button>
-                      </li>
-                      <li class="list-group-item mng-item">
-                          Indeed Jobs 
-                          <button class="btn ml-1 mr-1 float-right">
-                              <i class="fa fa-trash-o fa-xs"></i>
-                          </button>
-                      </li>  
-                      <li class="list-group-item mng-item">
-                          Spotify Recommendtion
-                          <button class="btn ml-1 mr-1 float-right">
-                              <i class="fa fa-trash-o fa-xs"></i>
-                          </button> 
-                      </li>  
-                  </ul> 
-                  
-                  <nav aria-label="Page navigation example">
-                      <ul class="pagination justify-content-center">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                      </ul>
-                  </nav>
-              </div>
-              </div>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Manage Plugins</h5>
+            <buttun class="btn" data-dismiss="modal"
+              ><span aria-hidden="true">&times;</span></buttun
+            >
           </div>
+          <div class="modal-body">
+            <div class="container">
+              <ul class="list-group text-left">
+                <li class="list-group-item mng-item">
+                  Weather API
+                  <button class="btn ml-1 mr-1 float-right">
+                    <i class="fa fa-trash-o fa-xs"></i>
+                  </button>
+                </li>
+                <li class="list-group-item mng-item">
+                  Indeed Jobs
+                  <button class="btn ml-1 mr-1 float-right">
+                    <i class="fa fa-trash-o fa-xs"></i>
+                  </button>
+                </li>
+                <li class="list-group-item mng-item">
+                  Spotify Recommendtion
+                  <button class="btn ml-1 mr-1 float-right">
+                    <i class="fa fa-trash-o fa-xs"></i>
+                  </button>
+                </li>
+              </ul>
+
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <a class="page-link" href="#">Previous</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
       </div>
-  </div>
+    </div>
 
     <div class="container">
       <div class="row">
@@ -85,249 +126,45 @@
           <div class="card">
             <div class="card-header">
               Preferences
-              <a href="#sidebar" class="close" data-toggle="collapse"><span aria-hidden="true">&times;</span></a>
+              <a href="#sidebar" class="close" data-toggle="collapse"
+                ><span aria-hidden="true">&times;</span></a
+              >
             </div>
             <ul class="list-group list-group-flush panel">
-              <a href="#menu1" class="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-tree fa-lg mr-2"></i> <span class="hidden-sm-down">change background</span> </a>
+              <a
+                href="#menu1"
+                class="list-group-item collapsed"
+                data-toggle="collapse"
+                data-parent="#sidebar"
+                aria-expanded="false"
+                ><i class="fa fa-tree fa-lg mr-2"></i>
+                <span class="hidden-sm-down">change background</span>
+              </a>
               <div class="collapse" id="menu1">
-                  <img class="prf-img" onClick="changebackground(this.src)" src="https://i.imgur.com/VG2UvcY.jpg">
-                  <img class="prf-img" onClick="changebackground(this.src)" src="https://cutewallpaper.org/21/high-quality-background/Gallery-High-Quality-HD-Desktop-Backgrounds-Cool-Images-High-.jpg">
-                  <img class="prf-img" onClick="changebackground(this.src)" src="https://source.unsplash.com/twukN12EN7c/1920x1080">
-                </div>
+                <img
+                  class="prf-img"
+                  onClick="changebackground(this.src)"
+                  src="https://i.imgur.com/VG2UvcY.jpg"
+                />
+                <img
+                  class="prf-img"
+                  onClick="changebackground(this.src)"
+                  src="https://cutewallpaper.org/21/high-quality-background/Gallery-High-Quality-HD-Desktop-Backgrounds-Cool-Images-High-.jpg"
+                />
+                <img
+                  class="prf-img"
+                  onClick="changebackground(this.src)"
+                  src="https://source.unsplash.com/twukN12EN7c/1920x1080"
+                />
+              </div>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-      <div class="grid-stack">
-        <div  class="grid-stack-item" gs-w="2" gs-h="6">
-            <div class="card grid-stack-item-content mt-2 shadow bg-dark text-center"    >
-                
-            <div class="card-header">
-                Today's hottest stories!
-            </div>
-         
-            <div class="card-body">
-                
-            <ul class="list-group list-group-flush">
-                <a target="_blank" href="https://arstechnica.com/tech-policy/2021/01/whatsapp-users-must-share-their-data-with-facebook-or-stop-using-the-app/" class="list-group-item list-group-item-action"> WhatsApp gives users an ultimatum: Share data with Facebook or stop using app </a> <a target="_blank" href="https://www.npr.org/sections/congress-electoral-college-tally-live-updates/2021/01/06/954028436/u-s-capitol-locked-down-amid-escalating-far-right-protests" class="list-group-item list-group-item-action"> U.S. Capitol Locked Down Amid Escalating Protests </a> <a target="_blank" href="https://blog.twitter.com/en_us/topics/company/2020/suspension.html" class="list-group-item list-group-item-action"> Permanent suspension of @realDonaldTrump </a> <a target="_blank" href="https://sahillavingia.com/work" class="list-group-item list-group-item-action"> No meetings, no deadlines, no full-time employees </a> <a target="_blank" href="https://www.bti360.com/what-ive-learned-in-45-years-in-the-software-industry/" class="list-group-item list-group-item-action"> What I’ve Learned in 45 Years in the Software Industry </a> <a target="_blank" href="undefined" class="list-group-item list-group-item-action"> undefined </a>
-            </ul>
-        
-            </div>
-         
-            <div class="card-footer text-white">
-                
-            <a target="_blank" href="https://news.ycombinator.com" class="text-white card-link">
-                Hacker News
-            </a>
-         
-            <i class="fa fa-hacker-news fa-lg" aria-hidden="true"></i>
-        
-            </div>
-        
-            </div>
-        </div>
-
-            
-        <div  class="grid-stack-item" gs-w="2" gs-h="6">
-
-                <div class="card grid-stack-item-content mt-2 shadow bg-dark text-center"     style="margin: 0 auto;">
-                
-                    <div class="card-body">
-                        
-                    <h5 class="undefined">
-                        Good afternoon, Yasser
-                    </h5>
-                 
-                    <b>15:4 PM</b>
-                 
-                    <p class="card-text">
-                        "If you need cheering up, try searching online for photos of kittens."
-                    </p>
-                
-                    </div>
-                
-                    </div>
-        </div>
-        <div  class="grid-stack-item" gs-w="2" gs-h="6">
-
-          <div class="card grid-stack-item-content mt-2 shadow bg-dark text-center"    >
-                
-            <div class="card-header">
-                Twitter list
-            </div>
-         
-            <a class="twitter-timeline" data-height="500" data-theme="dark" href="https://twitter.com/the1certificate/lists/dev-16567?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>        
-            <div class="card-footer text-white">
-
-                <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
-            
-            </div>    
-        </div>
-
-        </div>
-        <div  class="grid-stack-item" gs-w="2" gs-h="6">
-
-            <div class="card grid-stack-item-content mt-2 shadow bg-dark text-center"     style="margin: 0 auto;">
-                
-                <div class="card-header">
-                    Today's Weather
-                </div>
-             
-                <img src="https://www.metaweather.com/static/img/weather/png/c.png" class="card-img-top" alt="Card-Image.js">
-             
-                <div class="card-body">
-                    
-                <h5 class="undefined">
-                    In Riyadh The Weather Is Clear
-                </h5>
-             
-                <b>Temperature 11-25°C</b>
-            
-                </div>
-             
-                <div class="card-footer text-white">
-                    
-                <a target="_blank" href="https://www.metaweather.com/api/" class="text-white card-link">
-                    Weather API
-                </a>
-            
-                </div>
-
-            </div>
-        </div>
-        <div  class="grid-stack-item" gs-w="2" gs-h="6">
-
-            <div class="card grid-stack-item-content mt-2 shadow bg-dark text-center"     style="margin: 0 auto;">   
-                <div class="card-header">
-                        Note
-                </div>
-                <textarea placeholder="Your thoughts?" size="50" rows="8"></textarea>
-            </div>
-        </div>
-        <div  class="grid-stack-item" gs-w="2" gs-h="6">
-
-            <div class="card grid-stack-item-content mt-2 shadow bg-dark text-center"    >
-                
-                <div class="card-header">
-                    Dad's jokes
-                </div>
-             
-                <div class="card-body">
-                    
-                <b>
-                    Why are skeletons so calm? Because nothing gets under their skin.
-                </b>
-                </div>
-                
-             
-                <div class="card-footer text-white">
-                    
-                <a target="_blank" href="https://icanhazdadjoke.com/api" class="text-white card-link">
-                    Icanhazdadjoke API
-                </a>
-            
-                </div>
-            
-            </div>
-        </div>
-        <div  class="grid-stack-item" gs-w="2" gs-h="6">
-
-            <div class="card grid-stack-item-content mt-2 shadow bg-dark text-center"     style="margin: 0 auto;">
-                
-                <div class="card-header">
-                    
-                <a target="_blank" href="http://www.boredapi.comi" class="text-white card-link">
-                    Bored?
-                </a>
-            
-                </div>
-             
-                <div class="card-body">
-                    
-                <b>
-                    Paint the first thing you see
-                </b>
-            
-                </div>
-            
-            </div>
-        </div>
-        <div  class="grid-stack-item" gs-w="2" gs-h="6">
-
-            <div class="card grid-stack-item-content mt-2 shadow bg-dark text-center"     style="margin: 0 auto;">
-                
-                <div class="card-header">
-                    
-                <a target="_blank" href="https://jikan.docs.apiary.io" class="text-white card-link">
-                    Daily anime recommendation
-                </a>
-            
-                </div>
-             
-                <div class="card-body">
-                    
-                <ul class="list-group list-group-flush">
-                    <a target="_blank" href="https://myanimelist.net/anime/205/Samurai_Champloo" class="list-group-item list-group-item-action"> Samurai Champloo </a> <a target="_blank" href="https://myanimelist.net/anime/6/Trigun" class="list-group-item list-group-item-action"> Trigun </a> <a target="_blank" href="https://myanimelist.net/anime/889/Black_Lagoon" class="list-group-item list-group-item-action"> Black Lagoon </a> <a target="_blank" href="https://myanimelist.net/anime/400/Seihou_Bukyou_Outlaw_Star" class="list-group-item list-group-item-action"> Seihou Bukyou Outlaw Star </a> <a target="_blank" href="https://myanimelist.net/anime/20057/Space☆Dandy" class="list-group-item list-group-item-action"> Space☆Dandy </a> <a target="_blank" href="https://myanimelist.net/anime/2251/Baccano" class="list-group-item list-group-item-action"> Baccano! </a> <a target="_blank" href="https://myanimelist.net/anime/4087/Michiko_to_Hatchin" class="list-group-item list-group-item-action"> Michiko to Hatchin </a> <a target="_blank" href="https://myanimelist.net/anime/2025/Darker_than_Black__Kuro_no_Keiyakusha" class="list-group-item list-group-item-action"> Darker than Black: Kuro no Keiyakusha </a> <a target="_blank" href="https://myanimelist.net/anime/13601/Psycho-Pass" class="list-group-item list-group-item-action"> Psycho-Pass </a>
-                </ul>
-            
-                </div>
-            
-            </div>
-        </div>
-        <div  class="grid-stack-item" gs-w="2" gs-h="6">
-
-            <div class="card grid-stack-item-content mt-2 shadow bg-dark text-center"     style="margin: 0 auto;">
-                
-                <div class="card-header">
-                    Late Night Vibes 
-                <i class="fa fa-soundcloud fa-sm" aria-hidden="true"></i>
-            
-                </div>
-             
-                <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive-item" scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/272741983&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true" width="100%" height="300" frameborder="no"></iframe>
-                </div>
-            
-            </div>
-        </div>
-        <div  class="grid-stack-item" gs-w="2" gs-h="6">
-
-            <div class="card grid-stack-item-content mt-2 shadow bg-dark text-center"   gs-da  style="margin: 0 auto;">
-                
-                <div class="card-header">
-                    
-                <a target="_blank" href="https://opensource.indeedeng.io/api-documentation/" class="text-white card-link">
-                    Indeed Scraper
-                </a>
-            
-                </div>
-             
-                <div class="card-body">
-                    
-                <div class="table-responsive">
-                <table class="table table-borderless table-sm table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col">title</th> <th scope="col">company</th> <th scope="col">postDate</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr href="http://apple.com"><td>2021-01-18 Desktop Support Technician at MSP</td> <td>Computer Performance Unlimited</td> <td>Just posted</td></tr> <tr href="http://apple.com"><td>LTE Test Engineer</td> <td>Akshaya Inc</td> <td>Just posted</td></tr> <tr href="http://apple.com"><td>Software Dev Engineer I</td> <td>Amazon.com Services LLC</td> <td>1 day ago</td></tr> <tr href="http://apple.com"><td>Software Data Operations Engineer</td> <td>MAQ Software</td> <td>1 day ago</td></tr> <tr href="http://apple.com"><td>Game Designer II - Halo</td> <td>Microsoft</td> <td>1 day ago</td></tr> <tr href="http://apple.com"><td>DSP Software Engineer I</td> <td>FUJIFILM</td> <td>2 days ago</td></tr> <tr href="http://apple.com"><td>Staff Software Test Engineer</td> <td>Siemens</td> <td>2 days ago</td></tr> <tr href="http://apple.com"><td>IT Helpdesk Specialist</td> <td>Performance Systems Integration LLC</td> <td>2 days ago</td></tr>
-                    </tbody>
-                </table>
-                </div>
-            
-                </div>
-             
-                <div class="card-footer text-white">
-                    Jobs in last 24H
-                </div>
-            
-            </div>
-        </div>
-      </div>
-
-</body>
+    <div class="grid">
+      
+    </div>
+  </body>
 </html>
