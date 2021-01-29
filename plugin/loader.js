@@ -1,35 +1,19 @@
 const fs = require('fs');
 
-const PLUGINS_FOLDER = __dirname + '/examples';
+const PLUGINS_FOLDER = __dirname + '/compiled';
 
-const load = () => {
+const loadAndInstantiatePlugins = () => {
+    
+    // get filesname of plugin files
+    const filenames = fs.readdirSync(PLUGINS_FOLDER);
 
-    const plugins = getPlugins();
+    // map file name into object
+    const plugins = filenames.map(filename => require(`${PLUGINS_FOLDER}/${filename}`));
 
-
+    // instantiate each plugin
+    return plugins.map(Plugin => new Plugin());
 }
 
-const loadPlugin = filename => {
-
-    return require(`${PLUGINS_FOLDER}/${filename}`);
-}
-
-const getPlugins = () => {
-
-    let plugins = getFilenamesIn(PLUGINS_FOLDER).map(filename => loadPlugin(filename));
-
-    console.log(plugins);
-}
-
-
-const getFilenamesIn = dir => {
-
-    return fs.readdirSync(PLUGINS_FOLDER);
-}
-
-const initPlugins = plugins => {
-
-    plugins.forEach(plugin => plugin.init());
-}
-
-getPlugins();
+module.exports = {
+    load: loadAndInstantiatePlugins
+};
