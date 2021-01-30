@@ -29,31 +29,26 @@ elif [[ "$plugin_file_name" == .js ]]; then
 	plugin_file_name="${plugin_file_name%.}"
 fi
 
-read -rep $'Enter author name:\n> ' plugin_author
+read -rep $'Enter author name or your github account name:\n> ' plugin_author
 
 read -rep $'What\'s the description of your plugin?\n> ' plugin_description
-
-read -rep $'Would you like to include your Github account in plugin details? \n(y/n) > ' accept_github_link
-
-# covert accept github link to lowercase and compare 
-if [[ ${accept_github_link,,} == 'y' ]]; then
-	read -rep $'Enter your Github account:\n> ' github_link
-fi
 
 # gets output directory according to this file location
 SETUP_FILE_LOCATION="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )/../../output"
 
-mkdir -p $SETUP_FILE_LOCATION
-
-rm -f $SETUP_FILE_LOCATION/$plugin_file_name.js && touch $SETUP_FILE_LOCATION/$plugin_file_name.js
-
-cat plugin/template.js > $SETUP_FILE_LOCATION/$plugin_file_name.js
-
-rm -f $SETUP_FILE_LOCATION/meta.js && touch $SETUP_FILE_LOCATION/meta.json
-
-echo '{"author":"'"$plugin_author"'","description":"'"$plugin_description"'","targetlocation":"'"$plugin_file_name"'"}' > $SETUP_FILE_LOCATION/meta.json
-
 # relative to absolute path
 ABSOLUTE_SETUP_PATH="$(cd ${SETUP_FILE_LOCATION}; pwd)"
 
-echo 'your setup file was generated in '"$ABSOLUTE_SETUP_PATH/${plugin_file_name}.js"' '
+FILE_NAME_PATH="${ABSOLUTE_SETUP_PATH}/${plugin_file_name}.js"
+
+mkdir -p $ABSOLUTE_SETUP_PATH
+
+rm -f $FILE_NAME_PATH && touch $FILE_NAME_PATH
+
+# copy template and change class name to the plugin name
+sed "s/Template/${plugin_name// /_}/" $ABSOLUTE_SETUP_PATH/../plugin/development/template.js > $FILE_NAME_PATH
+
+# metadata about plugin
+echo '{"author":"'"$plugin_author"'","description":"'"$plugin_description"'","verion":"1.0"}' > $ABSOLUTE_SETUP_PATH/config.json
+
+echo -e '\nYour setup file was generated in '"$ABSOLUTE_SETUP_PATH/${plugin_file_name}.js"' '
