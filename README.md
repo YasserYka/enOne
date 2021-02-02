@@ -1,6 +1,8 @@
 # In0ne
 
-In0ne is extendable personal dashboard, it provides various of plugins to show you information interested-in in daily pases. In0ne aslo provides easy ways to write your own plugins.  
+Extendable personal dashboard, with various of plugins to show you information interested-in in daily pases.  
+
+![Maintenance](https://img.shields.io/maintenance/yes/2021)
 
 # Development
 
