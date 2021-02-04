@@ -10,8 +10,10 @@ const initiate = () => {
 
             plugin.render().then(renderedPlugin => {
 
-                muuriAdd(renderedPlugin);
+                let wrappedElement = muuriAdd(renderedPlugin);
                 
+                observeElement(wrappedElement);
+
                 plugin.script().then(() =>
     
                     console.log("Finished executing " + plugin.constructor.name)
