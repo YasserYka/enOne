@@ -11,7 +11,7 @@ const muuriGrid = new Muuri(".grid", {
 
 const muuriSerialize = (grid) => {
   const serializedGrid = JSON.stringify(
-    grid.getItems().map((item) => {
+    muuriGrid.getItems().map((item) => {
       return item.getElement().getAttribute("data-id");
     })
   );
@@ -24,13 +24,26 @@ const muuriWrap = element => {
   const item = document.createElement('div');
 
   item.className = "item";
-  item.innerHTML = `<div class="item-content">${element}</div>`;
+
+  const itemcontent = document.createElement('div');
+  itemcontent.className = "item-content";
+  itemcontent.appendChild(element);
+
+  item.appendChild(itemcontent);
 
   return item;
 };
 
 const muuriAdd = element => {
 
-  grid.add(muuriWrap(element));
-  grid.refreshItems().layout();
+  let wrappedElement = muuriWrap(element);
+  
+  muuriGrid.add(wrappedElement);
+
+  return wrappedElement;
+}
+
+const muuriRefresh = () => {
+
+  muuriGrid.refreshItems().layout();
 }
