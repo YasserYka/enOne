@@ -1,34 +1,49 @@
 {
   "name": "personaldashboard",
+  "author": "YasserYka <YasserYka@gmail.com>",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "electron.js",
   "dependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-react-jsx": "^7.12.12",
+    "got": "^11.8.1",
     "indeed-scraper": "^3.1.2",
     "jquery": "^3.5.1",
+    "muuri": "^0.9.3",
     "open": "^7.3.0",
     "vhtml": "^2.2.0"
   },
   "devDependencies": {
-    "electron": "^11.2.0"
+    "@babel/plugin-transform-react-jsx-self": "^7.12.1",
+    "electron": "^11.2.0",
+    "electron-builder": "^22.9.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup": "plugin/./setup",
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/YasserYka/Personal-Dashboard.git"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/YasserYka/Personal-Dashboard/issues"
   },
-  "homepage": "https://github.com/YasserYka/Personal-Dashboard#readme"
+  "homepage": "https://github.com/YasserYka/Personal-Dashboard#readme",
+  "build": {
+    "appId": "com.notyet",
+    "win": {
+      "target": [
+        "zip"
+      ]
+    }
+  }
 }
