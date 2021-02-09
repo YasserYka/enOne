@@ -24,15 +24,13 @@ plugin_name=${plugin_name// /_}
 plugin_name="${plugin_name,,}"
 
 # ask for file name and suggest a default file name
-read -rep $'setup\'s file name:\n> '"(${plugin_name// /_}.js)"' ' plugin_file_name
+read -rep $'setup\'s file name:\n> '"($plugin_name.js)"' ' plugin_file_name
 
-# default filename if file name is empty
-if [[ -z "$plugin_file_name" ]]; then
-	# replace spaces with underscore
-	plugin_file_name=${plugin_name// /_}
-# remove .js extension if extension exist
-elif [[ "$plugin_file_name" == .js ]]; then
-	plugin_file_name="${plugin_file_name%.}"
+# default filename if file name is not empty
+if [[ ! -z "$plugin_file_name" ]]; then
+	# remove .js extension if extension exist
+	plugin_name="${plugin_file_name%.}"
+	plugin_name=${plugin_name// /_}
 fi
 
 read -rep $'Enter author name or your github account name:\n> ' plugin_author
