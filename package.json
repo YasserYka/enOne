@@ -12,7 +12,6 @@
     "indeed-scraper": "^3.1.2",
     "jquery": "^3.5.1",
     "muuri": "^0.9.3",
-    "open": "^7.3.0",
     "vhtml": "^2.2.0"
   },
   "devDependencies": {
@@ -24,9 +23,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup": "plugin/./setup",
     "start": "electron .",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder",
-    "postinstall": "electron-builder install-app-deps"
+    "postinstall": "cd In0ne-plugins && npm install"
   },
   "repository": {
     "type": "git",
