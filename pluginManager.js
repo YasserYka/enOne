@@ -34,9 +34,17 @@ module.exports = class PluginManager {
     });
   }
 
-  static stop(plugin) {}
+  static stop(pluginName) {
 
-  static remove(pluginName) {}
+  }
+
+  static remove(pluginName) {
+
+    let element = document.getElementById(pluginName);
+
+    this.stop(pluginName);
+    muuriRemove(element);
+  }
 
   static add(pluginName) {}
 };
