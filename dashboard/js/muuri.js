@@ -27,7 +27,7 @@ const muuriWrap = element => {
 
   const itemcontent = document.createElement('div');
   itemcontent.className = "item-content";
-  itemcontent.appendChild(element);
+  itemcontent.innerHTML = element;
 
   item.appendChild(itemcontent);
 
@@ -37,10 +37,15 @@ const muuriWrap = element => {
 const muuriAdd = element => {
 
   let wrappedElement = muuriWrap(element);
-  
+
   muuriGrid.add(wrappedElement);
 
   return wrappedElement;
+}
+
+const muuriRemove = element => {
+
+  muuriGrid.remove(element);
 }
 
 const muuriRefresh = () => {
