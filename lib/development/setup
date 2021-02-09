@@ -57,4 +57,7 @@ sed "s/Template/$plugin_name/" $OUTPUT_DIRECTORY_PATH/../lib/development/templat
 # metadata about plugin
 echo '{"author":"'"$plugin_author"'", "verion":"1.0"}' > $OUTPUT_DIRECTORY_PATH/config.json
 
+# setup readme
+echo -e "# $plugin_name \n$plugin_description \n\n# contributors \n\n* Author $plugin_author" > $OUTPUT_DIRECTORY_PATH/README.md
+
 echo -e '\nYour setup file was generated in '"$OUTPUT_DIRECTORY_PATH/${plugin_name}.js"' '
