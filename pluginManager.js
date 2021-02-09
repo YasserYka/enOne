@@ -1,30 +1,39 @@
-const loader = require('./plugin/loader');
+const loader = require("./plugin/loader");
 
 module.exports = class PluginManager {
+  static load() {
+    this.plugins = loader.loadAllPlugins();
+  }
 
-    static load(){
+  static initiateAll() {
 
-        this.plugins = loader.loadAllPlugins();
-    }
+    this.plugins.forEach((plugin) => {
 
-    static initiateAll(){
+      plugin.object.initialize({}).then(() => {
 
-    }
+        plugin.object.render().then((renderedPlugin) => {
 
-    static initiate(plugin){
+          plugin.object.script().then(() => {
 
-    }
+            let wrappedElement = muuriAdd(renderedPlugin);
 
-    static stop(plugin){
+            observeElement(wrappedElement);
 
-    }
+            console.log("Finished executing " + plugin.object.constructor.name);
+          });
 
-    static remove(pluginName){
+        });
 
-    }
+      });
 
-    static add(pluginName){
+    });
+  }
 
-    }
+  static initiate(plugin) {}
 
-}
+  static stop(plugin) {}
+
+  static remove(pluginName) {}
+
+  static add(pluginName) {}
+};
