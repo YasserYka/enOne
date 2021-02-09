@@ -40,11 +40,18 @@ module.exports = class PluginManager {
 
   static remove(pluginName) {
 
-    let element = document.getElementById(pluginName);
+    const element = document.getElementById(pluginName);
 
     this.stop(pluginName);
     muuriRemove(element);
   }
 
-  static add(pluginName) {}
+  static add(pluginName) {
+
+    const plugin = loader.loadPlugin(pluginName);
+
+    this.plugins.push(plugin);
+
+    this.initiate(plugin);
+  }
 };
