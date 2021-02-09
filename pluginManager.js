@@ -1,28 +1,29 @@
-
+const loader = require('./plugin/loader');
 
 module.exports = class PluginManager {
 
-    load(){
+    static load(){
+
+        this.plugins = loader.loadAllPlugins();
+    }
+
+    static initiateAll(){
 
     }
 
-    initiateAll(){
+    static initiate(plugin){
 
     }
 
-    initiate(plugin){
+    static stop(plugin){
 
     }
 
-    stop(plugin){
+    static remove(pluginName){
 
     }
 
-    remove(pluginName){
-
-    }
-
-    add(pluginName){
+    static add(pluginName){
 
     }
 
