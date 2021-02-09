@@ -7,9 +7,16 @@ module.exports = class PluginManager {
 
   static initiateAll() {
 
-    this.plugins.forEach((plugin) => {
+    Promise.all(this.plugins.map( async plugin => {
 
-      plugin.object.initialize({}).then(() => {
+        this.initiate(plugin);
+    }));
+
+  }
+
+  static initiate(plugin) {
+
+    plugin.object.initialize({}).then(() => {
 
         plugin.object.render().then((renderedPlugin) => {
 
@@ -24,12 +31,8 @@ module.exports = class PluginManager {
 
         });
 
-      });
-
     });
   }
-
-  static initiate(plugin) {}
 
   static stop(plugin) {}
 
