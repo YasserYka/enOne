@@ -47,7 +47,11 @@ mkdir -p $OUTPUT_DIRECTORY_PATH
 # relative to absolute path
 OUTPUT_DIRECTORY_PATH="$(cd ${OUTPUT_DIRECTORY_PATH}; pwd)"
 
-PLUGIN_FILE_PATH="${OUTPUT_DIRECTORY_PATH}/${plugin_name}.js"
+PLUGIN_DIRECTORY_PATH="${OUTPUT_DIRECTORY_PATH}/${plugin_name}"
+
+mkdir -p $PLUGIN_DIRECTORY_PATH
+
+PLUGIN_FILE_PATH="${PLUGIN_DIRECTORY_PATH}/${plugin_name}.js"
 
 rm -f $PLUGIN_FILE_PATH && touch $PLUGIN_FILE_PATH
 
@@ -55,9 +59,9 @@ rm -f $PLUGIN_FILE_PATH && touch $PLUGIN_FILE_PATH
 sed "s/Template/$plugin_name/" $OUTPUT_DIRECTORY_PATH/../lib/development/template.js > $PLUGIN_FILE_PATH
 
 # metadata about plugin
-echo '{"author":"'"$plugin_author"'", "verion":"1.0"}' > $OUTPUT_DIRECTORY_PATH/config.json
+echo '{"author":"'"$plugin_author"'", "verion":"1.0"}' > $PLUGIN_DIRECTORY_PATH/config.json
 
 # setup readme
-echo -e "# $plugin_name \n$plugin_description \n\n# contributors \n\n* Author $plugin_author" > $OUTPUT_DIRECTORY_PATH/README.md
+echo -e "# $plugin_name \n\n$plugin_description \n\n# contributors \n\n* Author $plugin_author" > $PLUGIN_DIRECTORY_PATH/README.md
 
-echo -e '\nYour setup file was generated in '"$OUTPUT_DIRECTORY_PATH/${plugin_name}.js"' '
+echo -e '\nYour setup file was generated in '"$PLUGIN_FILE_PATH.js"' '
