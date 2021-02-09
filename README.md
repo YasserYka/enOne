@@ -4,64 +4,12 @@ Extendable personal dashboard, with various of plugins to show you information i
 
 ![Maintenance](https://img.shields.io/maintenance/yes/2021)
 
-# Development
+## Development Setup
 
-To start writing your own plugin, run
-
-```
-$ npm setup
-```
-
-Then answer some simple questions to generate starter folder, it will create a folder with your plugin name and generate the following initial structure in it.
+The following commands install and run the application
 
 ```
-📂YourPluginName
-├── 📜YourPluginName.js
-├── 📜configuration.json
-├── 📜README.md  
-```
-
-##### *YourPluginName.js*
-
-```
-module.exports = class YourPluginName {
-  
-  // called when the module is initialize
-  async initialize() {
-
-  }
-
-  // return JSX code to generates dom to be displayed
-  async render() {
-
-    return (
-        <div></div>
-    );
-  }
-
-  // scripts to make plugin dynamic
-  async script() {
-
-  }
-  
-};
-```
-
-##### *configuration.json*
-
-```
-{
-  "author": "YourName",
-  "verion": "1.0"
-}
-```
-
-##### *README.md*
-
-```
-# YourPluginName
-Your plugin description
-
-# Guide
-How to configure
+$ git clone --recursive URL
+$ npm run install
+$ npm start
 ```
