@@ -41,20 +41,20 @@ read -rep $'What\'s the description of your plugin?\n> ' plugin_description
 # gets output directory according to this file location
 OUTPUT_DIRECTORY_PATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )/../../output"
 
-# relative to absolute path
-OUTPUT_DIRECTORY_PATH="$(cd ${OUTPUT_DIRECTORY_PATH}; pwd)"
-
 # create output directory if not exists
 mkdir -p $OUTPUT_DIRECTORY_PATH
+
+# relative to absolute path
+OUTPUT_DIRECTORY_PATH="$(cd ${OUTPUT_DIRECTORY_PATH}; pwd)"
 
 PLUGIN_FILE_PATH="${OUTPUT_DIRECTORY_PATH}/${plugin_name}.js"
 
 rm -f $PLUGIN_FILE_PATH && touch $PLUGIN_FILE_PATH
 
 # copy template and change class name to the plugin name
-sed "s/Template/$plugin_name/" $ABSOLUTE_SETUP_PATH/../lib/development/template.js > $FILE_NAME_PATH
+sed "s/Template/$plugin_name/" $OUTPUT_DIRECTORY_PATH/../lib/development/template.js > $PLUGIN_FILE_PATH
 
 # metadata about plugin
-echo '{"author":"'"$plugin_author"'","description":"'"$plugin_description"'","verion":"1.0"}' > $ABSOLUTE_SETUP_PATH/config.json
+echo '{"author":"'"$plugin_author"'", "verion":"1.0"}' > $OUTPUT_DIRECTORY_PATH/config.json
 
-echo -e '\nYour setup file was generated in '"$ABSOLUTE_SETUP_PATH/${plugin_file_name}.js"' '
+echo -e '\nYour setup file was generated in '"$OUTPUT_DIRECTORY_PATH/${plugin_name}.js"' '
