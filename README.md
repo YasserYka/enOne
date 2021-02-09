@@ -4,7 +4,17 @@ Extendable personal dashboard, with various of plugins to show you information i
 
 ![Maintenance](https://img.shields.io/maintenance/yes/2021)
 
-# Development
+## Development Setup
+
+The following commands install and run the application
+
+```
+$ git clone --recursive URL
+$ npm run install ( install && cd in0ne-plugins && npm install TODO: add it to package scripts )
+$ npm start
+```
+
+## TODO: Move to In-0ne-Plugin. Development
 
 To start writing your own plugin, run
 
