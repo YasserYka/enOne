@@ -13,9 +13,12 @@ const loadAndInstantiatePlugins = () => {
 
 const loadPlugin = filename => {
 
+    const Plugin = require(`${PLUGINS_FOLDER}/${filename}/${filename}.js`);
+    const config = require(`${PLUGINS_FOLDER}/${filename}/config.json`);
+
     return {
-        object: new require(`${PLUGINS_FOLDER}/${filename}/${filename}.js`),
-        config: require(`${PLUGINS_FOLDER}/${filename}/config.json`),
+        object: new Plugin(),
+        config: config,
         name: filename
     };
 }
