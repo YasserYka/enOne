@@ -1,5 +1,5 @@
 {
-  "name": "personaldashboard",
+  "name": "in0ne",
   "author": "YasserYka <YasserYka@gmail.com>",
   "version": "1.0.0",
   "description": "",
@@ -21,7 +21,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "plugin/./setup",
+    "setup": "lib/development/./setup",
     "start": "electron .",
     "postinstall": "cd In0ne-plugins && npm install"
   },
@@ -30,7 +30,7 @@
     "url": "git+https://github.com/YasserYka/Personal-Dashboard.git"
   },
   "keywords": [],
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/YasserYka/Personal-Dashboard/issues"
   },
