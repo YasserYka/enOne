@@ -1,8 +1,6 @@
 const { app, BrowserWindow } = require('electron')
 const config = require(__dirname + '/config.json');
 
-console.log(config)
-
 function createWindow () {
   const window = new BrowserWindow({
     width: 1200,
