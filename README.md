@@ -1,4 +1,4 @@
-# In0ne
+![logo](logo.png)
 
 Extendable personal dashboard, with various of plugins to show you information interested-in in daily pases.  
 
