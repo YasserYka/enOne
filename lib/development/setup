@@ -64,4 +64,4 @@ echo '{"author":"'"$plugin_author"'", "verion":"1.0"}' > $PLUGIN_DIRECTORY_PATH/
 # setup readme
 echo -e "# $plugin_name \n\n$plugin_description \n\n# contributors \n\n* Author $plugin_author" > $PLUGIN_DIRECTORY_PATH/README.md
 
-echo -e '\nYour setup file was generated in '"$PLUGIN_FILE_PATH.js"' '
+echo -e '\nYour setup file was generated in '"$PLUGIN_FILE_PATH"' '
