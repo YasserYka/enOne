@@ -5,19 +5,15 @@
   "description": "",
   "main": "electron.js",
   "dependencies": {
-    "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-react-jsx": "^7.12.12",
     "got": "^11.8.1",
-    "indeed-scraper": "^3.1.2",
     "jquery": "^3.5.1",
     "muuri": "^0.9.3",
     "vhtml": "^2.2.0"
   },
   "devDependencies": {
-    "@babel/plugin-transform-react-jsx-self": "^7.12.1",
-    "electron": "^11.2.0",
-    "electron-builder": "^22.9.1"
+    "electron": "^11.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
