@@ -15,7 +15,8 @@
     "jsx-dom": "^7.0.0-beta.1",
     "muuri": "^0.9.3",
     "style-loader": "^2.0.0",
-    "vhtml": "^2.2.0"
+    "vhtml": "^2.2.0",
+    "webpack": "^5.24.2"
   },
   "devDependencies": {
     "electron": "^11.2.0"
