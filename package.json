@@ -5,10 +5,12 @@
   "description": "",
   "main": "electron.js",
   "dependencies": {
-    "@babel/core": "^7.12.10",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
     "@babel/plugin-transform-react-jsx": "^7.12.12",
     "got": "^11.8.1",
     "jquery": "^3.5.1",
+    "jsx-dom": "^7.0.0-beta.1",
     "muuri": "^0.9.3",
     "vhtml": "^2.2.0"
   },
@@ -19,7 +21,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup": "lib/development/./setup",
     "start": "electron .",
-    "postinstall": "cd In0ne-plugins && npm install",
     "plugindev": "electron ./lib/development/development.js"
   },
   "repository": {
@@ -31,13 +32,5 @@
   "bugs": {
     "url": "https://github.com/YasserYka/Personal-Dashboard/issues"
   },
-  "homepage": "https://github.com/YasserYka/Personal-Dashboard#readme",
-  "build": {
-    "appId": "com.notyet",
-    "win": {
-      "target": [
-        "zip"
-      ]
-    }
-  }
+  "homepage": "https://github.com/YasserYka/Personal-Dashboard#readme"
 }
