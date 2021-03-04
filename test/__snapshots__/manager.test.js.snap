@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Load all plugins function 1`] = `
+Object {
+  "config": Any<Object>,
+  "name": Any<String>,
+  "object": Any<Object>,
+}
+`;
