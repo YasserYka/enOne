@@ -15,17 +15,9 @@ describe("Load plugin function", () => {
 
     test("Successfully load existing plugin", () => {
 
-        /* 
-            Please fix me!
-             (awful fact) I had to write exact relative path the load function produces 
-             for plugin path, config path and readme path if 
-             this pluginPath '/home/yasser/Documents/js/enOne/../enOne/lib/../output/compiled/testPlugin.js'
-             won't work.
-        */
+        jest.mock(resolve(__dirname + '/../../enOne-plugins/plugins/testPlugin/config.json'), () => ({author:"AuthorName", verion:"1.0"}), { virtual: true });
 
-        jest.mock('/home/yasser/Documents/js/enOne/lib/../enOne-plugins/plugins/testPlugin/config.json', () => ({author:"AuthorName", verion:"1.0"}), { virtual: true });
-
-        jest.mock('/home/yasser/Documents/js/enOne/lib/../output/compiled/testPlugin.js', () => {
+        jest.mock(resolve(__dirname + '/../../output/compiled/testPlugin.js'), () => {
 
             return class testPlugin {
                 async initialize() {}
@@ -36,8 +28,8 @@ describe("Load plugin function", () => {
 
         // for mocking existsSync purpose
         require('fs').__setMockedFiles({
-            '/home/yasser/Documents/js/enOne/lib/../output/compiled/testPlugin.js': true,
-            '/home/yasser/Documents/js/enOne/lib/../enOne-plugins/plugins/testPlugin/config.json': true,
+            [resolve(__dirname + '/../../output/compiled/testPlugin.js')]: true,
+            [resolve(__dirname + '/../../enOne-plugins/plugins/testPlugin/config.json')]: true,
         });
        
         const plugin = loadPlugin("testPlugin");
