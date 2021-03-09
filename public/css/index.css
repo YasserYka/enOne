@@ -11,7 +11,13 @@ body {
   background-color: transparent !important;
 }
 
-/* textarea */
+.prf-img {
+  padding: 0.5rem;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 15px;
+}
+
 textarea {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -75,8 +81,4 @@ body::-webkit-scrollbar-thumb {
 }
 .item-content {
   position: relative;
-}
-
-#preferences {
-    width: 80%;
 }

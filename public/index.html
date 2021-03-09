@@ -23,7 +23,7 @@
   </head>
   <body>
     <nav class="navbar fixed-top navbar-light">
-      <button class="btn"><i class="fa fa-plus fa-lg"></i></button>
+      <button class="btn"><a data-target="#addplugins" href="#" data-toggle="modal"><i class="fa fa-plus fa-lg"></i></a></button>
       <div class="dropdown">
         <button class="btn" id="navbardropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-bars fa-lg"></i>
@@ -34,6 +34,55 @@
         </div>
       </div>
     </nav>
+
+    <div class="modal" id="addplugins" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Manage Plugins</h5>
+            <buttun class="btn" data-dismiss="modal"><span aria-hidden="true">&times;</span></buttun>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <ul class="list-group text-left">
+                <li class="list-group-item mng-item">
+                  Weather API
+                  <button class="btn ml-1 mr-1 float-right">
+                    <i class="fa fa-trash-o fa-xs"></i>
+                  </button>
+                </li>
+                <li class="list-group-item mng-item">
+                  Indeed Jobs
+                  <button class="btn ml-1 mr-1 float-right">
+                    <i class="fa fa-trash-o fa-xs"></i>
+                  </button>
+                </li>
+                <li class="list-group-item mng-item">
+                  Spotify Recommendtion
+                  <button class="btn ml-1 mr-1 float-right">
+                    <i class="fa fa-trash-o fa-xs"></i>
+                  </button>
+                </li>
+              </ul>
+
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <a class="page-link" href="#">Previous</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="modal" id="details" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog">
@@ -108,61 +157,13 @@
     </div>
 
     <div class="grid">
-      <div class="item">
-        <div class="item-content">
-          <div class="card mt-2 shadow bg-dark text-center">
-            <div class="card-header">Today's hottest stories!</div>
-
-            <div class="card-body">
-              <ul class="list-group list-group-flush">
-                <a target="_blank" href="https://arstechnica.com/tech-policy/2021/01/whatsapp-users-must-share-their-data-with-facebook-or-stop-using-the-app/" class="list-group-item list-group-item-action"> WhatsApp gives users an ultimatum: Share data with Facebook or stop using app </a>
-                <a target="_blank" href="https://www.npr.org/sections/congress-electoral-college-tally-live-updates/2021/01/06/954028436/u-s-capitol-locked-down-amid-escalating-far-right-protests" class="list-group-item list-group-item-action"> U.S. Capitol Locked Down Amid Escalating Protests </a>
-                <a target="_blank" href="https://blog.twitter.com/en_us/topics/company/2020/suspension.html" class="list-group-item list-group-item-action"> Permanent suspension of @realDonaldTrump </a>
-                <a target="_blank" href="https://sahillavingia.com/work" class="list-group-item list-group-item-action"> No meetings, no deadlines, no full-time employees </a>
-                <a target="_blank" href="https://www.bti360.com/what-ive-learned-in-45-years-in-the-software-industry/" class="list-group-item list-group-item-action"> What I’ve Learned in 45 Years in the Software Industry </a>
-                <a target="_blank" href="undefined" class="list-group-item list-group-item-action"> undefined </a>
-              </ul>
-            </div>
-
-            <div class="card-footer text-white">
-              <a target="_blank" href="https://news.ycombinator.com" class="text-white card-link"> Hacker News </a>
-
-              <i class="fa fa-hacker-news fa-lg" aria-hidden="true"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="item-content">
-          <div class="card grid-stack-item-content mt-2 shadow bg-dark text-center" style="margin: 0 auto">
-            <div class="card-header">
-              <a target="_blank" href="https://jikan.docs.apiary.io" class="text-white card-link"> Daily anime recommendation </a>
-            </div>
-
-            <div class="card-body">
-              <ul class="list-group list-group-flush">
-                <a target="_blank" href="https://myanimelist.net/anime/205/Samurai_Champloo" class="list-group-item list-group-item-action"> Samurai Champloo </a>
-                <a target="_blank" href="https://myanimelist.net/anime/6/Trigun" class="list-group-item list-group-item-action"> Trigun </a>
-                <a target="_blank" href="https://myanimelist.net/anime/889/Black_Lagoon" class="list-group-item list-group-item-action"> Black Lagoon </a>
-                <a target="_blank" href="https://myanimelist.net/anime/400/Seihou_Bukyou_Outlaw_Star" class="list-group-item list-group-item-action"> Seihou Bukyou Outlaw Star </a>
-                <a target="_blank" href="https://myanimelist.net/anime/20057/Space☆Dandy" class="list-group-item list-group-item-action"> Space☆Dandy </a>
-                <a target="_blank" href="https://myanimelist.net/anime/2251/Baccano" class="list-group-item list-group-item-action"> Baccano! </a>
-                <a target="_blank" href="https://myanimelist.net/anime/4087/Michiko_to_Hatchin" class="list-group-item list-group-item-action"> Michiko to Hatchin </a>
-                <a target="_blank" href="https://myanimelist.net/anime/2025/Darker_than_Black__Kuro_no_Keiyakusha" class="list-group-item list-group-item-action"> Darker than Black: Kuro no Keiyakusha </a>
-                <a target="_blank" href="https://myanimelist.net/anime/13601/Psycho-Pass" class="list-group-item list-group-item-action"> Psycho-Pass </a>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     
-    <script src="./js/observer.js"></script>
-    <script src="./js/muuri.js"></script>
-    <script src="./js/index.js"></script>
-    <script src="../app.js"></script>
+    <script src="../lib/observer.js"></script>
+    <script src="../lib/muuri.js"></script>
+    <script src="../lib/index.js"></script>
+    <script src="../lib/app.js"></script>
 
   </body>
 </html>
