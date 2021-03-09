@@ -1,27 +1,27 @@
 const fs = jest.createMockFromModule('fs');
-const path = require('path');
+const { resolve } = require('path');
 
-let mockedFiles=  Object.create(null);
+let mockedFiles;
 
-__addMockedFiles = (files) => {
+const __setMockedFiles = (files) => {
     
-    files.forEach(file => {
-        const dirname = path.dirname(file);
-
-        if (!mockedFiles[dirname])
-            mockedFiles[dirname] = [];
-
-        mockedFiles[dirname].push(path.basename(file));
-    });
-
+    mockedFiles = Object.assign({}, ...Object.keys(files).map(key => 
+        ({[resolve(key)]: files[key]})
+    ));
 }
 
-readdirSync = (path) => {
+const existsSync = (filepath) => {
 
-  return mockedFiles[path] || [];
+    return resolve(filepath) in mockedFiles;
 }
 
-fs.__setMockFiles = __addMockedFiles;
+const readdirSync = (filepath) => {
+
+    return mockedFiles[resolve(filepath)] || [];
+}
+
+fs.__setMockedFiles = __setMockedFiles;
 fs.readdirSync = readdirSync;
+fs.existsSync = existsSync;
 
 module.exports = fs;
