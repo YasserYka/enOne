@@ -6,6 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Maintenance](https://img.shields.io/maintenance/Yes/2021)](https://github.com/Naereen/badges)
 [![tested with](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![Unit Tests](https://github.com/YasserYka/enOne/actions/workflows/ci.yml/badge.svg)](https://github.com/YasserYka/enOne/actions/workflows/ci.yml)
 </p>
 
 ![screenshot](screenshot.png)
