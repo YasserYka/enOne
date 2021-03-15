@@ -1,38 +1,41 @@
 const fs = require('fs');
-const { color } = require('./util');
-const Plugin = require('./widget');
+const Widget = require('./widget');
 const { resolve } = require('path');
 const { transform } = require('./compile');
 
-const PLUGINS_SUBMODULE_DIRECTORY = resolve(__dirname + "/../enOne-plugins/plugins");
-const COMPILED_PLUGINS_DIRECTORU = resolve(__dirname + "/../output/compiled");
+const WIDGETS_SUBMODULE_DIRECTORY = resolve(__dirname + "/../enOne-widgets/widgets");
+const COMPILED_WIDGETS_DIRECTORU = resolve(__dirname + "/../output");
 
-const load = pluginName => {
+const load = widgetName => {
 
-    const configPath = `${PLUGINS_SUBMODULE_DIRECTORY}/${pluginName}/config.json`; 
+    const configPath = `${WIDGETS_SUBMODULE_DIRECTORY}/${widgetName}/config.json`; 
 
     if (!fs.existsSync(configPath))
-        return new Error(color.red("Couldn't find plugin's config file for plugin " + pluginName + " at " + configPath));
+        return new Error("Couldn't find widget's config file for widget " + widgetName + " at " + configPath);
 
     const config = require(configPath);
         
-    const pluginPath = `${COMPILED_PLUGINS_DIRECTORU}/${pluginName}.js`;
+    const widgetPath = `${COMPILED_WIDGETS_DIRECTORU}/${widgetName}.js`;
 
-    if (!fs.existsSync(pluginPath)){
-        
-        const rawWidgetPath = `${PLUGINS_SUBMODULE_DIRECTORY}/${pluginName}/config.json`;
+    if (!fs.existsSync(widgetPath))
+        return new Error("Couldn't find compiled widget file");
 
-        if (!fs.existsSync(rawWidgetPath))
-            return new Error(color.red("Couldn't find plugin's main file in " + pluginPath + " please make sure to have identical folder and main name of plugin"));
+    const widgetInstance = new (require(widgetPath));  
 
-        transform(rawWidgetPath, widgetName);
-    }
+    return new Widget(widgetName, widgetInstance, config);
+}
 
-    const pluginInstance = new (require(pluginPath));  
+const listLocal = () => {
 
-    return new Plugin(pluginName, pluginInstance, config);
+    if (!fs.existsSync(WIDGETS_SUBMODULE_DIRECTORY))
+        return new Error("Couldn't find widget directory: " + WIDGETS_SUBMODULE_DIRECTORY);
+    
+    const widgetNames = fs.readdirSync(WIDGETS_SUBMODULE_DIRECTORY);
+
+    return widgetNames;
 }
 
 module.exports = {
-    loadWidget: load,
+    listLocal: listLocal,
+    loadWidgetByName: load
 };

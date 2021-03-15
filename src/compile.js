@@ -1,5 +1,4 @@
 const babel = require("@babel/core");
-const { color } = require("./util");
 const fs = require('fs');
 
 const BABEL_OPTIONS = { plugins: [["@babel/plugin-transform-react-jsx", { pragma: "h" }]], comments: false };
@@ -13,7 +12,8 @@ const transform = (filepath, outputpath, callback) => {
     fs.writeFile(outputpath, result.code, (err) => {
 
         if (err) throw err;
-    
+        
+        callback();
     });
   });
 

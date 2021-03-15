@@ -5,18 +5,38 @@ const { color } = require("./util");
 const { transform } = require("./compile");
 const fs = require("fs");
 
-const WIDGETS_SUBMODULE_DIRECTORY = __dirname + "/../enOne-plugins/plugins"
+const COMPILED_WIDGETS_DIRECTORU = __dirname + "/../output";
+const WIDGETS_SUBMODULE_DIRECTORY = __dirname + "/../enOne-widgets/widgets";
 
 class Manager {
 
-  loadWidgetsByName(widgets){
+  constructor(){
 
-    this.widgets = widgets.map(widgetName => loader.loadWidgetByName(widgetName));
+    this.widgets = [];
   }
 
-  initiateAll(){
+  loadWidgetsByName(widgets){
 
-    this.widgets.forEach(widget => { this.initiate(widget); })
+    widgets.forEach(widgetName => {
+      
+      const widget = loader.loadWidgetByName(widgetName);
+
+      if (widget instanceof Error && widget.message == "Couldn't find compiled widget file"){
+        transform(`${WIDGETS_SUBMODULE_DIRECTORY}/${widgetName}/${widgetName}.js`, COMPILED_WIDGETS_DIRECTORU + "/" + widgetName + ".js", ()=>{
+          const compiledWidget = loader.loadWidgetByName(widgetName);
+
+          this.initiateAndPushWidget(compiledWidget);
+        });
+      }
+      else
+        this.initiateAndPushWidget(widget);
+    });
+  }
+
+  initiateAndPushWidget(widget){
+    this.initiate(widget);
+
+    this.widgets.push(widget);
   }
 
   initiate(widget) {

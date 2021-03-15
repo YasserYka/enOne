@@ -3,13 +3,13 @@
 const { h } = require('jsx-dom');
 
 const { existsSync } = require('fs');
-const { color, generateDefaultUserdataFile, checkLatestVersion } = require(__dirname + '/../lib/util');
+const { color, generateDefaultUserdataFile, checkLatestVersion } = require(__dirname + '/../src/util');
 const remote = require('electron').remote
-const manager = require(__dirname + '/../lib/manager');
+const manager = require(__dirname + '/../src/manager');
 
 const ROOT_DIRECTORY = __dirname + "/..";
 const WIDGETS_SUBMODULE_DIRECTORY = ROOT_DIRECTORY + "/enOne-widgets"; 
-const userWidgets = [];
+let userWidgets = [];
 
 const setup = () => {
 
@@ -18,13 +18,13 @@ const setup = () => {
         console.error('Can\'t find widgets submodule directory file at ' + WIDGETS_SUBMODULE_DIRECTORY + '/nwill attempt to clone it from remote repository');
         cloneWidgetsSubmoduleRepository();
     
-        if (!existsSync(WIDGETS_SUBMODULE_DIRECTORY + "/plugins")){
+        if (!existsSync(WIDGETS_SUBMODULE_DIRECTORY + "/widgets")){
     
-            console.error('Can\'t find widgets directory file at ' + WIDGETS_SUBMODULE_DIRECTORY + '/plugins/nwill attempt to pull it from remote repository');
+            console.error('Can\'t find widgets directory file at ' + WIDGETS_SUBMODULE_DIRECTORY + '/widgets/nwill attempt to pull it from remote repository');
             pullWidgetsSubmoduleRepository();
         }
     
-        if (!existsSync(WIDGETS_SUBMODULE_DIRECTORY) || !existsSync(WIDGETS_SUBMODULE_DIRECTORY + "/plugins")){
+        if (!existsSync(WIDGETS_SUBMODULE_DIRECTORY) || !existsSync(WIDGETS_SUBMODULE_DIRECTORY + "/widgets")){
          
             console.error("Failed to pull/clone widgets submodule directory");
             remote.getCurrentWindow().close();
@@ -41,7 +41,7 @@ const setup = () => {
     
     const configuration = require(CONFIG_PATH);
     
-    const USERDATA_PATH = ROOT_DIRECTORY + configuration.userdata;
+    const USERDATA_PATH = ROOT_DIRECTORY + configuration.userdataPath;
     
     if (!existsSync(USERDATA_PATH))
         generateDefaultUserdataFile(USERDATA_PATH);
@@ -53,8 +53,6 @@ const setup = () => {
     userWidgets = userdata.widgets;
     
     manager.loadWidgetsByName(userWidgets.filter(widget => !widget.disabled).map(({name}) => name));
-    
-    manager.initiateAll();
 }
 
 const changebackground = src => {
