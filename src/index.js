@@ -46,7 +46,7 @@ const setup = () => {
     if (!existsSync(USERDATA_PATH))
         generateDefaultUserdataFile(USERDATA_PATH);
     
-    //checkLatestVersion(require(ROOT_DIRECTORY + "/package.json").version);
+    checkLatestVersion(require(ROOT_DIRECTORY + "/package.json").version);
     
     const userdata = require(USERDATA_PATH);
 

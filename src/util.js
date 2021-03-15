@@ -6,18 +6,13 @@ const { execSync } = require('child_process');
 // Fetch version number from master brach and compare it with current version
 const checkIfLatestVersion = async currentVersion => {
 
-    return await got('https://raw.githubusercontent.com/YasserYka/enOne/master/config.json?token=ALEO7DCB6VBDIZHCZTJA4TDAKHJMI').then(response => {
+    return await got('https://raw.githubusercontent.com/YasserYka/enOne/0d5a5f4985dad26cceea4293e54e15ee1ee61eda/package.json?token=ALEO7DFOE67YFLHIHOD2H2TALDQDQ').then(response => {
 
         if(response.statusCode == 200){
 
-            // match "version": "1.0" pattern
-            const match = response.body.match(/"version":\s*"(.*)"/);
+            let remoteVersion = JSON.parse(response.body).version;
 
-            let remoteVersion;
-
-            if(match)
-                remoteVersion = match[1];
-            else
+            if(!remoteVersion)
                 throw Error("Regex's version pattern can't find version in returned Githubusercontent's body");
 
             remoteVersion = parseFloat(remoteVersion);
