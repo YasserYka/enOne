@@ -16,5 +16,5 @@ var observer = new MutationObserver(_ => {
 const observeElement = element => {
 
     // TODO: these options might be an overkill double check
-    observer.observe(element, { attributes: true, childList: true, characterData: true, subtree: false });    
+    observer.observe(element, { attributes: true, childList: true, characterData: true, subtree: true });    
 } 

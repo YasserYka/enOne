@@ -1,6 +1,6 @@
 const got = require("got");
-const { writeFile } = require("fs");
-const manager = require("./manager");
+const { writeFile, writeFileSync } = require("fs");
+const { listLocal } = require("./loader");
 const { execSync } = require('child_process');
 
 // Fetch version number from master brach and compare it with current version
@@ -34,23 +34,20 @@ const checkIfLatestVersion = async currentVersion => {
     });
 }
 
-const generateDefaultUserdataFile = async userdataPath => {
+const generateDefaultUserdataFile = userdataPath => {
 
-    const widgetNames = manager.listLocal();
+    const widgetNames = listLocal();
 
-    writeFile(userdataPath, JSON.stringify({
+    writeFileSync(userdataPath, JSON.stringify({
         widgets: widgetNames.map(name => ({name: name, disabled: true})),
-    }), err => {
-        if (err)
-            console.error("Couldn't generate UserData file!");
-    });
+    }));
 }
 
 const excecuteCommand = (command, currentDirectory) => {
 
     try {
-        let res= execSync(command, {cwd: currentDirectory});
-        console.log(res.toString());
+        let result = execSync(command, {cwd: currentDirectory});
+        console.log(result.toString());
 
     } catch (err){ console.error(err); }
 }

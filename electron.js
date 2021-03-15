@@ -9,7 +9,8 @@ function createWindow () {
     width: 1200,
     height: 1000,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      zoomFactor: 0.8
     },
     darkTheme: true,
   });
