@@ -10,7 +10,7 @@
 
 var observer = new MutationObserver(_ => {
 
-    muuriRefresh();
+    refreshGrid();
 });
 
 const observeElement = element => {

@@ -10,7 +10,7 @@ const muuriGrid = new Muuri(".grid", {
 });
 
 // TODO: broken please fix me );
-const muuriSerialize = (grid) => {
+const serializeGrid = (grid) => {
   const serializedGrid = JSON.stringify(
     muuriGrid.getItems().map((item) => {
       return item.getElement().getAttribute("data-id");
@@ -21,11 +21,11 @@ const muuriSerialize = (grid) => {
 };
 
 // to wrap plugin to make them draggable
-const muuriWrap = (element, id) => {
+const wrapGridItem = (element, id) => {
   const item = document.createElement("div");
 
   item.className = "item";
-  item.id = id;
+  item.id = "widget_#" + id;
 
   const itemcontent = document.createElement("div");
   itemcontent.className = "item-content";
@@ -36,20 +36,20 @@ const muuriWrap = (element, id) => {
   return item;
 };
 
-const muuriAdd = (element, id) => {
-  let wrappedElement = muuriWrap(element, id);
+const addGridItem = (element, id) => {
+  let wrappedElement = wrapGridItem(element, id);
 
   muuriGrid.add(wrappedElement);
 
   return wrappedElement;
 };
 
-const muuriRemove = id => {
+const removeGridItem = id => {
   
   muuriGrid.remove(muuriGrid.getItems().filter(item => item.getElement().id == id), { removeElements: true });
 };
 
-const muuriRefresh = () => {
+const refreshGrid = () => {
 
   muuriGrid.refreshItems().layout();
 };

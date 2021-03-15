@@ -39,15 +39,14 @@ const generateDefaultUserdataFile = userdataPath => {
     const widgetNames = listLocal();
 
     writeFileSync(userdataPath, JSON.stringify({
-        widgets: widgetNames.map(name => ({name: name, disabled: true})),
+        widgets: widgetNames.map(name => ({name: name, disabled: false})),
     }));
 }
 
 const excecuteCommand = (command, currentDirectory) => {
 
     try {
-        let result = execSync(command, {cwd: currentDirectory});
-        console.log(result.toString());
+        execSync(command, {cwd: currentDirectory});
 
     } catch (err){ console.error(err); }
 }
@@ -87,5 +86,6 @@ module.exports = {
     color: colors,
     checkLatestVersion: checkIfLatestVersion,
     generateDefaultUserdataFile: generateDefaultUserdataFile,
-    pullWidgetsSubmoduleRepository: pullWidgetsSubmoduleRepository
+    pullWidgetsSubmoduleRepository: pullWidgetsSubmoduleRepository,
+    cloneWidgetsSubmoduleRepository: cloneWidgetsSubmoduleRepository
 }

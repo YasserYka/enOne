@@ -45,13 +45,13 @@ class Manager {
 
       widget.object.render().then((renderedWidget) => {
 
-          let wrappedElement = muuriAdd(renderedWidget);
+          let wrappedElement = addGridItem(renderedWidget, widget.name);
 
           observeElement(wrappedElement);
           
           widget.object.script().then(() => {
 
-            console.log(color.green("Finished executing " + widget.object.constructor.name));
+            console.log("Finished executing " + widget.object.constructor.name);
           });
 
         });
@@ -63,19 +63,19 @@ class Manager {
   add(widgetName){ 
 
     if (this.widgets.some(widget => widgetName === widget.name))
-      console.log(color.blue("Widget name " + widgetName + " was already added!"));
+      console.log("Widget name " + widgetName + " was already added!");
     else {
 
-      const widget = loader.load(widgetName);
+      const widget = loader.loadWidgetByName(widgetName);
       
       if (widget instanceof Error)
-        console.error(color.red("Couldn't instantiate widget: " + widgetName + "\n" + widget))
+        console.error("Couldn't instantiate widget: " + widgetName + "\n" + widget);
       else {
 
         this.initiate(widget);
         this.widgets.push(widget);
 
-        console.log(color.green("Widget name " + widgetName + " was added successfully!"));
+        console.log("Widget name " + widgetName + " was added successfully!");
       }
     }
   }
@@ -86,15 +86,15 @@ class Manager {
     const widgetIndex = this.widgets.findIndex(widget => widget.name === widgetName);
 
     if(widgetIndex === -1)
-      console.error(color.red("Couldn't find widget named " + widgetName));
+      console.error("Couldn't find widget named " + widgetName);
     else {
       
       // TODO: setInterval might be still running find a workaround
 
       this.widgets.splice(widgetIndex, 1);
-      muuriRemove(widgetName);
+      removeGridItem(widgetName);
 
-      console.log(color.green("Widget name " + widgetName + " was removed successfully!"));
+      console.log("Widget name " + widgetName + " was removed successfully!");
     }
   }
 

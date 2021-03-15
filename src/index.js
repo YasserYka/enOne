@@ -3,7 +3,7 @@
 const { h } = require('jsx-dom');
 
 const { existsSync } = require('fs');
-const { color, generateDefaultUserdataFile, checkLatestVersion } = require(__dirname + '/../src/util');
+const { color, generateDefaultUserdataFile, checkLatestVersion, cloneWidgetsSubmoduleRepository, pullWidgetsSubmoduleRepository } = require(__dirname + '/../src/util');
 const remote = require('electron').remote
 const manager = require(__dirname + '/../src/manager');
 
@@ -46,7 +46,7 @@ const setup = () => {
     if (!existsSync(USERDATA_PATH))
         generateDefaultUserdataFile(USERDATA_PATH);
     
-    checkLatestVersion(require(ROOT_DIRECTORY + "/package.json").version);
+    //checkLatestVersion(require(ROOT_DIRECTORY + "/package.json").version);
     
     const userdata = require(USERDATA_PATH);
 
@@ -57,13 +57,14 @@ const setup = () => {
 
 const changebackground = src => {
 
+    console.log(src);
     const imageURL = "url('" + src + "')";
     document.body.style.backgroundImage = imageURL;
 }
 
 const populateWidgetManager = () => {
 
-    const manageWidgetsListELement = document.getElementById(manageWidgetsList);
+    const manageWidgetsListELement = document.getElementById("manageWidgetsList");
 
     manageWidgetsListELement.innerHTML = "";
 
@@ -96,5 +97,5 @@ window.onload = () => {
 
     document.querySelectorAll('.prf-img').forEach(element => element.onclick = () => changebackground(element.src));
 
-    document.getElementById("manageWidgetsModal").onclick = () => populateWidgetManager();
+    document.getElementById("manageWidgetsButton").onclick = () => populateWidgetManager();
 }

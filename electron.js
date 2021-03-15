@@ -10,7 +10,8 @@ function createWindow () {
     height: 1000,
     webPreferences: {
       nodeIntegration: true,
-      zoomFactor: 0.8
+      zoomFactor: 0.8,
+      
     },
     darkTheme: true,
     show: false
@@ -28,7 +29,7 @@ function createWindow () {
     setTimeout(() => { 
       splash.destroy();
       window.show();  
-    }, 4000);
+    }, 5000);
   });
 }
 
