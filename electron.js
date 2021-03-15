@@ -13,35 +13,31 @@ function createWindow () {
       zoomFactor: 0.8
     },
     darkTheme: true,
+    show: false
   });
+
+  const splash = new BrowserWindow({width: 810, height: 610, transparent: true, frame: false, alwaysOnTop: true});
+
+  splash.loadFile('./frontend/splash.html');
 
   window.setMenuBarVisibility(false);
   window.loadFile('./frontend/index.html');
 
-  if (config.environment === 'dev')
-    window.webContents.openDevTools();
-}
+  window.once('ready-to-show', () => {
 
-function updateCheck (currentVersion) {
-
-  got('https://raw.githubusercontent.com/YasserYka/enOne/master/config.json?token=ALEO7DGKQ5QIJIJDZPWSXYLAGVSVU', { json: true }).then(response => {
-      const remoteVersion = response.body.version;
-
-      if (currentVersion < remoteVersion)
-        console.log("\n\x1b[33mA new version is avaliable, your current version is " + currentVersion + " lates version is " + remoteVersion + "\x1b[0m\n");
-      
-  }).catch(error => {
-    console.log(error.response.body);
+    setTimeout(() => { 
+      splash.destroy();
+      window.show();  
+    }, 4000);
   });
 }
 
-const currentVersion = config.version;
+if(process.platform === "linux") {
+  app.commandLine.appendSwitch('enable-transparent-visuals');
+  app.disableHardwareAcceleration();
+}
 
-console.log("\n\x1b[32mVersion " + currentVersion + "\x1b[0m\n");
-
-updateCheck(currentVersion);
-
-app.whenReady().then(createWindow);
+app.on('ready', () => setTimeout(createWindow, 400));
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin')
