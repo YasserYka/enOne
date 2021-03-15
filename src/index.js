@@ -8,6 +8,7 @@ const remote = require('electron').remote
 const manager = require(__dirname + '/../lib/manager');
 
 const ROOT_DIRECTORY = __dirname + "/..";
+const WIDGETS_SUBMODULE_DIRECTORY = ROOT_DIRECTORY + "/enOne-widgets"; 
 const userWidgets = [];
 
 const setup = () => {
