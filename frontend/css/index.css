@@ -39,6 +39,12 @@ textarea {
   color: white;
 }
 
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > a {
+  color: black;
+}
+
 /* remove anchor's default color */
 a, a:hover, a:focus, a:active {
   color: inherit;

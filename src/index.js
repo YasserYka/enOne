@@ -88,7 +88,7 @@ const populateWidgetManager = () => {
 
     manageWidgetsListELement.innerHTML = "";
 
-    paginate(userWidgets, pageNumber).forEach(widget => {
+    userWidgets.forEach(widget => {
 
         const liElement = document.createElement('li');
         liElement.className = "list-group-item mng-item";
@@ -109,11 +109,6 @@ const populateWidgetManager = () => {
 
         manageWidgetsListELement.appendChild(liElement);
     });
-}
-
-const paginate = (list, pageNumber) => {
-
-    return list.slice(pageNumber * 5, pageNumber * 5 + 5);
 }
 
 window.onload = () => {
