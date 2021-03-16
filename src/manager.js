@@ -73,6 +73,8 @@ class Manager {
         this.widgets.push(widget);
 
         console.log("Widget name " + widgetName + " was added successfully!");
+        
+        return widget;
       }
     }
   }

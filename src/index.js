@@ -99,15 +99,24 @@ const populateWidgetManager = () => {
 
         const buttonElement = document.createElement("button");
         buttonElement.className = "btn ml-1 mr-1 float-right";
-        buttonElement.setAttribute("widget-name", widget.name);
-        
-        buttonElement.addEventListener('click', (element) => {
-            element.preventDefault();
-            manager.remove(element.target.getAttribute('widget-name'));
-        }, false);
 
         const iElement = document.createElement("i");
-        iElement.className = "fa fa-trash-o fa-xs";
+        let iElementClassName;
+        
+        if (widget.disabled)
+            iElementClassName = "fa fa-plus fa-xs";
+        else
+            iElementClassName = "fa fa-trash-o fa-xs";
+
+        buttonElement.onclick = () => {
+    
+            if (widget.disabled)
+                manager.add(widget.name);
+            else
+                manager.remove(widget.name);
+        }
+           
+        iElement.className = iElementClassName;
 
         buttonElement.appendChild(iElement);
 
