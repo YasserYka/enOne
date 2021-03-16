@@ -33,7 +33,7 @@ $ npm start
 
 ## Widget
 
-To develop your own widget or check out existing widgets, please go to [Widget repository!](https://github.com/YasserYka/enOne-widgets)
+To develop your own widget or check out existing widgets, please go to the [widgets repository](https://github.com/YasserYka/enOne-widgets)!
 
 ## Contribution
 
