@@ -10,15 +10,9 @@ const WIDGETS_SUBMODULE_DIRECTORY = __dirname + "/../enOne-widgets/widgets";
 
 class Manager {
 
-  constructor(){
+  constructor(){ this.widgets = []; }
 
-    this.widgets = [];
-  }
-
-  loadWidgetsByName(widgets){
-
-    if(!fs.existsSync(COMPILED_WIDGETS_DIRECTORU))
-      fs.mkdirSync(COMPILED_WIDGETS_DIRECTORU);
+  loadAndInitiateWidgetsByName(widgets){
 
     widgets.forEach(widgetName => {
       

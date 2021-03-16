@@ -1,5 +1,5 @@
 const got = require("got");
-const { writeFile, writeFileSync } = require("fs");
+const { writeFileSync } = require("fs");
 const { listLocal } = require("./loader");
 const { execSync } = require('child_process');
 

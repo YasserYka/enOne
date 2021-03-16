@@ -6,6 +6,7 @@ const { transform } = require('./compile');
 const WIDGETS_SUBMODULE_DIRECTORY = resolve(__dirname + "/../enOne-widgets/widgets");
 const COMPILED_WIDGETS_DIRECTORU = resolve(__dirname + "/../output");
 
+// loads compiled index file of widget and config file from enOne-widgets folder
 const load = widgetName => {
 
     const configPath = `${WIDGETS_SUBMODULE_DIRECTORY}/${widgetName}/config.json`; 
@@ -25,6 +26,7 @@ const load = widgetName => {
     return new Widget(widgetName, widgetInstance, config);
 }
 
+// reads widgets folder
 const listLocal = () => {
 
     if (!fs.existsSync(WIDGETS_SUBMODULE_DIRECTORY))
