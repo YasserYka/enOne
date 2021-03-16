@@ -11,6 +11,10 @@ body {
   background-color: transparent !important;
 }
 
+#manageWidgetsPagination {
+  margin-top: 0.5rem;
+}
+
 .prf-img {
   padding: 0.5rem;
   width: 7rem;

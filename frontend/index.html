@@ -28,7 +28,7 @@
           <i class="fa fa-bars fa-lg"></i>
         </button>
         <div class="dropdown-menu" aria-labelledby="navbardropdown">
-          <a class="dropdown-item" id="manageWidgetsButton" href="#" data-toggle="modal" data-target="#manageWidgetsList">Manage Plugins</a>
+          <a class="dropdown-item" id="manageWidgetsButton" href="#" data-toggle="modal" data-target="#manageWidgetsModal">Manage Widgets</a>
           <a class="dropdown-item" href="#sidebar" data-toggle="collapse">Preferences</a>
           <a class="dropdown-item" id="refreshGridButton" href="#">Refresh Grid</a>
         </div>
@@ -36,7 +36,7 @@
     </nav>
 
     <!-- Manage Widgets Modal -->
-    <div class="modal" id="manageWidgetsList" tabindex="-1" aria-hidden="true">
+    <div class="modal" id="manageWidgetsModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -45,9 +45,9 @@
           </div>
           <div class="modal-body">
             <div class="container">
-              <ul class="list-group text-left"></ul>
+              <ul id="manageWidgetsList" class="list-group text-left"></ul>
               <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
+                <ul id="manageWidgetsPagination" class="pagination justify-content-center">
                   <li class="page-item">
                     <a class="page-link" href="#">Previous</a>
                   </li>

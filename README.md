@@ -31,6 +31,10 @@ $ npm install
 $ npm start
 ```
 
+## Widget
+
+To develop your own widget or check out existing widgets, please go to [Widget repository!](https://github.com/YasserYka/enOne-widgets)
+
 ## Contribution
 
 Any kind of contribution is more than welcome! feel free to contact me, fix issues, open an issue or suggest a feature. 
