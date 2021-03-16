@@ -99,6 +99,12 @@ const populateWidgetManager = () => {
 
         const buttonElement = document.createElement("button");
         buttonElement.className = "btn ml-1 mr-1 float-right";
+        buttonElement.setAttribute("widget-name", widget.name);
+        
+        buttonElement.addEventListener('click', (element) => {
+            element.preventDefault();
+            manager.remove(element.target.getAttribute('widget-name'));
+        }, false);
 
         const iElement = document.createElement("i");
         iElement.className = "fa fa-trash-o fa-xs";

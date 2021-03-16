@@ -46,6 +46,8 @@ const addGridItem = (element, id) => {
 
 const removeGridItem = id => {
   
+  id = "widget_#" + id;
+
   muuriGrid.remove(muuriGrid.getItems().filter(item => item.getElement().id == id), { removeElements: true });
 };
 
