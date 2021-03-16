@@ -17,6 +17,8 @@ let pageNumber = 0;
 
 const setup = () => {
 
+    getAndSetBackgroundImage();
+
     // when user first install the application this directory will not exists
     if(!fs.existsSync(COMPILED_WIDGETS_DIRECTORU))
       fs.mkdirSync(COMPILED_WIDGETS_DIRECTORU);
@@ -66,10 +68,18 @@ const setup = () => {
     document.getElementById("manageWidgetsButton").onclick = () => populateWidgetManager();
 }
 
-const changebackground = src => {
+const setBackgroundImage = (src) => {
 
     const imageURL = "url('" + src + "')";
     document.body.style.backgroundImage = imageURL;
+}
+
+const getAndSetBackgroundImage = () => {
+
+    const backgroundImageSrc = localStorage.getItem("background-image");
+
+    if (backgroundImageSrc)
+        setBackgroundImage(backgroundImageSrc);
 }
 
 const populateWidgetManager = () => {
@@ -112,5 +122,9 @@ window.onload = () => {
 
     document.getElementById("refreshGridButton").onclick = () => refreshGrid();
 
-    document.querySelectorAll('.prf-img').forEach(element => element.onclick = () => changebackground(element.src));
+    document.querySelectorAll('.prf-img').forEach(element => element.onclick = () => {
+        
+        localStorage.setItem("background-image", element.src);
+        setBackgroundImage(element.src);
+    });
 }
