@@ -17,6 +17,9 @@ class Manager {
 
   loadWidgetsByName(widgets){
 
+    if(!fs.existsSync(COMPILED_WIDGETS_DIRECTORU))
+      fs.mkdirSync(COMPILED_WIDGETS_DIRECTORU);
+
     widgets.forEach(widgetName => {
       
       const widget = loader.loadWidgetByName(widgetName);

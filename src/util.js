@@ -56,8 +56,6 @@ const pullWidgetsSubmoduleRepository = () => {
     excecuteCommand('git pull origin master', __dirname + "/../enOne-widgets");
 }
 
-cloneWidgetsSubmoduleRepository()
-
 const ANSI_CODES = {
     reset: "\x1b[0m",
     bright: "\x1b[1m",
