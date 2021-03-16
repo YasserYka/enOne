@@ -6,12 +6,14 @@ const { existsSync } = require('fs');
 const { color, generateDefaultUserdataFile, checkLatestVersion, cloneWidgetsSubmoduleRepository, pullWidgetsSubmoduleRepository } = require(__dirname + '/../src/util');
 const remote = require('electron').remote
 const manager = require(__dirname + '/../src/manager');
+const fs = require("fs");
 
 const ROOT_DIRECTORY = __dirname + "/..";
 const WIDGETS_SUBMODULE_DIRECTORY = ROOT_DIRECTORY + "/enOne-widgets"; 
 const COMPILED_WIDGETS_DIRECTORU = __dirname + "/../output";
 
 let userWidgets = [];
+let pageNumber = 0;
 
 const setup = () => {
 
@@ -60,6 +62,8 @@ const setup = () => {
     userWidgets = userdata.widgets;
     
     manager.loadAndInitiateWidgetsByName(userWidgets.filter(widget => !widget.disabled).map(({name}) => name));
+
+    document.getElementById("manageWidgetsButton").onclick = () => populateWidgetManager();
 }
 
 const changebackground = src => {
@@ -74,7 +78,7 @@ const populateWidgetManager = () => {
 
     manageWidgetsListELement.innerHTML = "";
 
-    userWidgets.forEach(widget => {
+    paginate(userWidgets, pageNumber).forEach(widget => {
 
         const liElement = document.createElement('li');
         liElement.className = "list-group-item mng-item";
@@ -83,7 +87,7 @@ const populateWidgetManager = () => {
 
         liElement.appendChild(widgetName);
 
-        const buttonElement = document.createElement("");
+        const buttonElement = document.createElement("button");
         buttonElement.className = "btn ml-1 mr-1 float-right";
 
         const iElement = document.createElement("i");
@@ -92,7 +96,14 @@ const populateWidgetManager = () => {
         buttonElement.appendChild(iElement);
 
         liElement.appendChild(buttonElement);
+
+        manageWidgetsListELement.appendChild(liElement);
     });
+}
+
+const paginate = (list, pageNumber) => {
+
+    return list.slice(pageNumber * 5, pageNumber * 5 + 5);
 }
 
 window.onload = () => {
@@ -102,6 +113,4 @@ window.onload = () => {
     document.getElementById("refreshGridButton").onclick = () => refreshGrid();
 
     document.querySelectorAll('.prf-img').forEach(element => element.onclick = () => changebackground(element.src));
-
-    document.getElementById("manageWidgetsButton").onclick = () => populateWidgetManager();
 }
