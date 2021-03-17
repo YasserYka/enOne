@@ -1,0 +1,76 @@
+#!/bin/bash
+
+echo "                                                                       "
+echo "*      .     .  *        *        .          *      .           *     *"
+echo "                                                                       "
+echo "       .                .        .               *      .      *     . "
+echo "                                                                       "
+echo ".  *         .  *           S E T U P    *          *           .      "
+echo "         *               . W I D G E T                      *          "
+echo "    .              *   .        .            *        .            *   "
+echo " .            .                                                        "
+echo "         *          .    *           *     .           *           *   "
+echo "                                                                       "
+
+# keep asking until it gets valid widget name
+while [[ -z $widget_directory_name ]]; do
+	read -rep $'What\'s the name of your widget?\n> ' widget_directory_name
+done
+
+# replace space with underscore
+widget_file_name=${widget_directory_name// /_}
+
+# name of class generated
+widget_class_name=$widget_file_name
+
+# to lowercase
+widget_file_name="${widget_file_name,,}"
+
+# ask for file name and suggest a default file name
+read -rep $'setup\'s file name:\n> '"($widget_file_name.js)"' ' rep_widget_file_name
+
+# default filename if file name is not empty
+if [[ ! -z "$rep_widget_file_name" ]]; then
+	# remove .js extension if extension exist
+	widget_file_name="${rep_widget_file_name%.}"
+
+	widget_file_name=${rep_widget_file_name// /_}
+fi
+
+read -rep $'Enter author name or your github account name:\n> ' widget_author
+
+read -rep $'What\'s the description of your widget?\n> ' widget_description
+
+# gets output directory according to this file location
+OUTPUT_DIRECTORY_PATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )/../enOne-widgets/widgets-dev"
+
+# src directory
+CURRENT_PATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )/"
+
+# create output directory if not exists
+mkdir -p $OUTPUT_DIRECTORY_PATH
+
+# relative to absolute path
+OUTPUT_DIRECTORY_PATH="$(cd ${OUTPUT_DIRECTORY_PATH}; pwd)"
+
+WIDGET_DIRECTORY_PATH="${OUTPUT_DIRECTORY_PATH}/${widget_directory_name,,}"
+
+mkdir -p $WIDGET_DIRECTORY_PATH
+
+# run npm init in plugin directory
+(cd $WIDGET_DIRECTORY_PATH && npm init -y)
+
+WIDGET_FILE_PATH="${WIDGET_DIRECTORY_PATH}/${widget_file_name}.js"
+
+rm -f $WIDGET_FILE_PATH && touch $WIDGET_FILE_PATH
+
+# copy template and change class name to the widget name
+sed "s/Template/${widget_class_name^}/" $CURRENT_PATH/template.js > $WIDGET_FILE_PATH
+
+# metadata about plugin
+echo '{"author":"'"$widget_author"'", "index": "'"$widget_file_name".js'"}' > $WIDGET_DIRECTORY_PATH/config.json
+
+# setup readme
+echo -e "# $widget_directory_name \n\n$widget_description \n\n# contributors \n\n* Author $widget_author" > $WIDGET_DIRECTORY_PATH/README.md
+
+echo -e '\nYour setup file was generated in '"$WIDGET_FILE_PATH"' '
