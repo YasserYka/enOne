@@ -60,10 +60,8 @@ const setup = () => {
     checkLatestVersion(require(ROOT_DIRECTORY + "/package.json").version);
     
     const userdata = require(USERDATA_PATH);
-
-    userWidgets = userdata.widgets;
     
-    manager.loadAndInitiateWidgetsByName(userWidgets.filter(widget => !widget.disabled).map(({name}) => name));
+    manager.loadAndInitiateWidgets(userdata.widgets.filter(widget => !widget.disabled));
 
     document.getElementById("manageWidgetsButton").onclick = () => populateWidgetManager();
 }

@@ -10,11 +10,11 @@
     "@babel/plugin-transform-react-jsx": "^7.12.12",
     "babel-plugin-css-modules-transform": "^1.6.2",
     "got": "^11.8.1",
-    "indeed-scraper": "^3.1.2",
     "jquery": "^3.5.1",
     "jsx-dom": "^7.0.0-beta.1",
     "muuri": "^0.9.3",
     "postcss-modules": "^4.0.0",
+    "trendingrepositories": "file:enOne-widgets/widgets/trendingrepositories",
     "vhtml": "^2.2.0"
   },
   "devDependencies": {
@@ -23,9 +23,9 @@
   },
   "scripts": {
     "test": "jest --forceExit",
-    "setup": "lib/development/./setup",
-    "start": "electron .",
-    "plugindev": "electron ./lib/development/development.js"
+    "setup": "development/./setup",
+    "start": "electron ./src/electron.js",
+    "hotreload": "electron ./development/development.js"
   },
   "repository": {
     "type": "git",

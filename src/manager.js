@@ -1,32 +1,28 @@
 const loader = require("./loader");
-const got = require("got");
-const { exec } = require('child_process');
-const { color } = require("./util");
 const { transform } = require("./compile");
-const fs = require("fs");
 
-const COMPILED_WIDGETS_DIRECTORU = __dirname + "/../output";
-const WIDGETS_SUBMODULE_DIRECTORY = __dirname + "/../enOne-widgets/widgets";
+const WIDGETS_DIRECTORY = __dirname + "/../enOne-widgets/widgets";
 
 class Manager {
 
   constructor(){ this.widgets = []; }
 
-  loadAndInitiateWidgetsByName(widgets){
+  loadAndInitiateWidgets(widgets){
 
-    widgets.forEach(widgetName => {
+    widgets.forEach(widget => {
       
-      const widget = loader.loadWidgetByName(widgetName);
+      const widgetInstance = loader.loadWidget(WIDGETS_DIRECTORY, widget.directoryName);
 
-      if (widget instanceof Error && widget.message == "Couldn't find compiled widget file"){
-        transform(`${WIDGETS_SUBMODULE_DIRECTORY}/${widgetName}/${widgetName}.js`, COMPILED_WIDGETS_DIRECTORU + "/" + widgetName + ".js", ()=>{
-          const compiledWidget = loader.loadWidgetByName(widgetName);
+      if (widget instanceof Error && widget.message.startsWith("Couldn't find compiled widget file for")){
+
+        transform(`${WIDGETS_DIRECTORY}/${widget.directoryName}/index.js`, `${WIDGETS_DIRECTORY}/${widget.directoryName}/compiled.js`, () => {
+          const compiledWidget = loader.loadWidget(WIDGETS_DIRECTORY, widget.directoryName);
 
           this.initiateAndPushWidget(compiledWidget);
         });
       }
       else
-        this.initiateAndPushWidget(widget);
+        this.initiateAndPushWidget(widgetInstance);
     });
   }
 
@@ -63,7 +59,7 @@ class Manager {
       console.log("Widget name " + widgetName + " was already added!");
     else {
 
-      const widget = loader.loadWidgetByName(widgetName);
+      const widget = loader.loadWidget(WIDGETS_DIRECTORY, widgetName);
       
       if (widget instanceof Error)
         console.error("Couldn't instantiate widget: " + widgetName + "\n" + widget);

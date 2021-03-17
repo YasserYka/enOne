@@ -1,10 +1,6 @@
 const { app, BrowserWindow } = require('electron')
-const config = require(__dirname + '/config.json');
-const got = require('got');
 
-global.__root = __dirname;
-
-function createWindow () {
+const createWindow = () => {
   const window = new BrowserWindow({
     width: 1200,
     height: 1000,
@@ -19,10 +15,10 @@ function createWindow () {
 
   const splash = new BrowserWindow({width: 810, height: 610, transparent: true, frame: false, alwaysOnTop: true});
 
-  splash.loadFile('./frontend/splash.html');
+  splash.loadFile('../frontend/splash.html');
 
   window.setMenuBarVisibility(false);
-  window.loadFile('./frontend/index.html');
+  window.loadFile('../frontend/index.html');
 
   window.once('ready-to-show', () => {
 
