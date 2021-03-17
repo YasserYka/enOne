@@ -1,11 +1,16 @@
 const loader = require("./loader");
 const { transform } = require("./compile");
+const FileNotFound = require("./errors/FileNotFound");
+const WidgetNotCompiled = require("./errors/WidgetNotCompiled");
 
 const WIDGETS_DIRECTORY = __dirname + "/../enOne-widgets/widgets";
 
 class Manager {
 
-  constructor(){ this.widgets = []; }
+  constructor(){ 
+  
+    this.widgets = []; 
+  }
 
   loadAndInitiateWidgets(widgets){
 
@@ -13,14 +18,14 @@ class Manager {
       
       const widgetInstance = loader.loadWidget(WIDGETS_DIRECTORY, widget.directoryName);
 
-      if (widget instanceof Error && widget.message.startsWith("Couldn't find compiled widget file for")){
-
+      if (widgetInstance instanceof FileNotFound)
+        console.error(widgetInstance);
+      else if(widgetInstance instanceof WidgetNotCompiled)
         transform(`${WIDGETS_DIRECTORY}/${widget.directoryName}/index.js`, `${WIDGETS_DIRECTORY}/${widget.directoryName}/compiled.js`, () => {
           const compiledWidget = loader.loadWidget(WIDGETS_DIRECTORY, widget.directoryName);
-
+          
           this.initiateAndPushWidget(compiledWidget);
         });
-      }
       else
         this.initiateAndPushWidget(widgetInstance);
     });

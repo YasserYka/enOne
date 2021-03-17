@@ -1,5 +1,7 @@
 const fs = require('fs');
 const Widget = require('./widget');
+const FileNotFound = require('./errors/FileNotFound');
+const WidgetNotCompiled = require('./errors/WidgetNotCompiled');
 
 // loads compiled file of widget and config file from enOne-widgets folder
 const loadWidget = (widgetsDirectory, widgetDirectoryName) => {
@@ -15,7 +17,10 @@ const loadWidget = (widgetsDirectory, widgetDirectoryName) => {
     const compiledWidgetPath = widgetPath + '/compiled.js';
     const indexWidgetPath = widgetPath + '/index.js';
 
-    if (!fs.existsSync(compiledWidgetPath) && fs.existsSync(indexWidgetPath))
+    if(!fs.existsSync(indexWidgetPath))
+        return new FileNotFound(indexWidgetPath);
+
+    if (!fs.existsSync(compiledWidgetPath))
         return new WidgetNotCompiled(widgetDirectoryName);
 
     const widgetInstance = new (require(compiledWidgetPath));  
@@ -24,6 +29,8 @@ const loadWidget = (widgetsDirectory, widgetDirectoryName) => {
 }
 
 const getWidgetsInformation = () => {
+
+    const widgetsDirectory = __dirname + '/../enOne-widgets/widgets';
 
     return fs.readdirSync(widgetsDirectory).map(directoryName => ({
         directoryName: directoryName,

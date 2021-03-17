@@ -7,7 +7,6 @@ const createWindow = () => {
     webPreferences: {
       nodeIntegration: true,
       zoomFactor: 0.8,
-      
     },
     darkTheme: true,
     show: false
