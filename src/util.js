@@ -1,7 +1,7 @@
 const got = require("got");
 const { writeFileSync } = require("fs");
-const { listLocal } = require("./loader");
 const { execSync } = require('child_process');
+const { getWidgetsInformation } = require("./loader");
 
 // Fetch version number from master brach and compare it with current version
 const checkIfLatestVersion = async currentVersion => {
@@ -31,11 +31,7 @@ const checkIfLatestVersion = async currentVersion => {
 
 const generateDefaultUserdataFile = userdataPath => {
 
-    const widgetNames = listLocal();
-
-    writeFileSync(userdataPath, JSON.stringify({
-        widgets: widgetNames.map(name => ({name: name, disabled: false})),
-    }));
+    writeFileSync(userdataPath, JSON.stringify({widgets: getWidgetsInformation()}));
 }
 
 const excecuteCommand = (command, currentDirectory) => {
