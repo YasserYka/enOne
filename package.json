@@ -5,17 +5,11 @@
   "description": "",
   "main": "electron.js",
   "dependencies": {
-    "@babel/cli": "^7.13.0",
     "@babel/core": "^7.13.8",
     "@babel/plugin-transform-react-jsx": "^7.12.12",
-    "babel-plugin-css-modules-transform": "^1.6.2",
     "got": "^11.8.1",
     "jquery": "^3.5.1",
-    "jsx-dom": "^7.0.0-beta.1",
-    "muuri": "^0.9.3",
-    "postcss-modules": "^4.0.0",
-    "trendingrepositories": "file:enOne-widgets/widgets/trendingrepositories",
-    "vhtml": "^2.2.0"
+    "jsx-dom": "^7.0.0-beta.1"
   },
   "devDependencies": {
     "electron": "^11.2.0",
