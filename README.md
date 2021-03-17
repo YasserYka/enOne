@@ -14,6 +14,8 @@
   <a href="https://www.electronjs.org"><img src="https://img.shields.io/badge/Made%20with-Electron-1f425f.svg" alt="electron badge"></a>
 </p>
 
+<p align="center"> <b>enOne</b> is still under testing and in <b>PRE-RELEASE</b> phase, your feedback is much appreciated!</p>
+
 ![screenshot](screenshot.png)
 
 ## Setup
