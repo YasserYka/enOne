@@ -38,9 +38,7 @@ describe("Load widget function", () => {
     test("Successfully load existing widget", () => {
        
         const widget = loadWidget(resolve(__dirname + '/../../enOne-widgets/widgets'), "testWidget");
-       
-        console.log(widget);
-        
+               
         expect(widget.constructor.name).toBe("Widget");
         expect(widget.object.constructor.name).toBe("testWidget");
         expect(widget.name).toBe("testWidget");
