@@ -18,15 +18,28 @@ class Manager {
 
     this.userdata.widgets.forEach(widget => {
     
-      if (!widget.disabled && widget.dependeicesInstalled)
-        this.loadAndInitiateWidget(widget);
+      if (widget.disabled) return; // skip widget
 
-      else if (!widget.disabled && !widget.dependeicesInstalled)
-        this.installWidgetDependencies(`${WIDGETS_DIRECTORY}/${widget.directoryName}`, () => {
+      if (widget.dependeicesInstalled)
+        this.loadAndInitiateWidget(widget);
+      else
+        this.installWidgetDependencies(widget.directoryName, () => {
+
           widget.dependeicesInstalled = true;
           this.loadAndInitiateWidget(widget);
+          persistUserdata(this.userdata);
         });
 
+    });
+  }
+
+  installWidgetDependencies(widgetName, callback) {
+
+    exec(`npm install --no-save ${WIDGETS_DIRECTORY}/${widgetName}`, (err, stdout, stderr) => {
+      if (err)
+        console.error(err);
+      else
+        callback();
     });
   }
 
@@ -35,28 +48,19 @@ class Manager {
 
     if (widgetInstance instanceof FileNotFound)
       console.error(widgetInstance);
-    else if(widgetInstance instanceof WidgetNotCompiled)
-      transform(`${WIDGETS_DIRECTORY}/${widget.directoryName}/index.js`, `${WIDGETS_DIRECTORY}/${widget.directoryName}/compiled.js`, () => {
+    else if(widgetInstance instanceof WidgetNotCompiled){
+
+      const widgetDirectory = `${WIDGETS_DIRECTORY}/${widget.directoryName}`; 
+      
+      transform(widgetDirectory + '/index.js', widgetDirectory + '/compiled.js', () => {
+
         const compiledWidget = loader.loadWidget(WIDGETS_DIRECTORY, widget.directoryName);
         
         this.initiate(compiledWidget);
       });
+    }
     else
       this.initiate(widgetInstance); 
-  }
-
-  installWidgetDependencies(widgetDirectoryPath, callback) {
-
-    exec('npm install --no-save ' + widgetDirectoryPath, {cwd: __dirname + '/..'}, (err, stdout, stderr) => {
-      if (err)
-        console.error(err);
-      else{
-        console.log(stdout);
-
-        persistUserdata(this.userdata);
-        callback();
-      }
-    });
   }
 
   initiate(widget) {
@@ -73,9 +77,7 @@ class Manager {
 
             console.log("Finished executing " + widget.object.constructor.name);
           });
-
         });
-
     });
   }
 
@@ -86,19 +88,19 @@ class Manager {
 
     if (widget && widget.disabled){
 
-      const loadedWidget = loader.loadWidget(WIDGETS_DIRECTORY, widget.directoryName);
-      
-      if (widget instanceof Error)
-        console.error("Couldn't instantiate widget: " + widgetName + "\n" + widget);
-      else {
+      if (widget.dependeicesInstalled)
+        this.loadAndInitiateWidget(widget);
+      else
+        this.installWidgetDependencies(widget.directoryName, () => {
 
-        this.initiate(loadedWidget);
-        widget.instance = loadedWidget;
-        widget.disabled = false;
+          widget.dependeicesInstalled = true;
+          this.loadAndInitiateWidget(widget);
+        });
 
-        console.log("Widget name " + widgetName + " was added successfully!");
-      }
+      widget.disabled = false;
 
+      console.log("Widget name " + widgetName + " was added successfully!");
+        
       persistUserdata(this.userdata);
     }
   }
@@ -108,7 +110,6 @@ class Manager {
 
     const widget = this.userdata.widgets.find(widget => widgetName === widget.directoryName);
 
-    console.log(widget)
     if(widget && !widget.disabled){
       
       // TODO: setInterval might be still running find a workaround

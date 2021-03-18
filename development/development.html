@@ -10,7 +10,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <!-- CSS -->
-    <link rel="stylesheet" href="../../frontend/css/index.css" />
+    <link rel="stylesheet" href="../frontend/css/index.css" />
     <!-- Javascript External Libraries -->
     <script>window.$ = window.jQuery = require("jquery");</script>
     <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.3/dist/muuri.min.js"></script>
@@ -20,21 +20,24 @@
   </head>
   <body>
 
-    <!-- Load Plugin -->
+    <!-- Load Widget -->
     <script>
       // when babel transform jsx into js it generate 'h' object which generate html element
-      const h = require('jsx-dom');
-      const { loadWidget } = require("./loader");
+      const { h } = require('jsx-dom');
+      const { loadWidget } = require("../src/loader");
 
-      const widget = loadWidget(window.process.argv.slice(-1));
+      const widget = loadWidget(__dirname + "/../enOne-widgets/widgets-dev", window.process.argv.slice(-1));
 
-      widget.object.initialize(widget.config).then(() => {
-        widget.object.render().then((renderedWidget) => {
-          widget.object.script().then(() => {
-            document.body.innerHTML += renderedWidget;
+      if (widget instanceof Error)
+        console.error(widget);
+      else
+        widget.object.initialize(widget.config).then(() => {
+          widget.object.render().then((renderedWidget) => {
+            document.body.appendChild(renderedWidget);
+
+            widget.object.script().then();
           });
         });
-      });
     </script>
 
   </body>

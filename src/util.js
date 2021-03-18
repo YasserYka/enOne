@@ -34,24 +34,6 @@ const generateDefaultUserdataFile = userdataPath => {
     writeFileSync(userdataPath, JSON.stringify({widgets: getWidgetsInformation()}));
 }
 
-const excecuteCommand = (command, currentDirectory) => {
-
-    try {
-        return execSync(command, {cwd: currentDirectory});
-
-    } catch (err){ console.error(err); }
-}
-
-const cloneWidgetsSubmoduleRepository = () => {
-
-    excecuteCommand('git submodule update --init --recursive', __dirname + "/../");
-}
-
-const pullWidgetsSubmoduleRepository = () => {
-
-    excecuteCommand('git pull origin master', __dirname + "/../enOne-widgets");
-}
-
 const ANSI_CODES = {
     reset: "\x1b[0m",
     bright: "\x1b[1m",
@@ -84,6 +66,4 @@ module.exports = {
     persistUserdata: persistUserdata,
     checkLatestVersion: checkIfLatestVersion,
     generateDefaultUserdataFile: generateDefaultUserdataFile,
-    pullWidgetsSubmoduleRepository: pullWidgetsSubmoduleRepository,
-    cloneWidgetsSubmoduleRepository: cloneWidgetsSubmoduleRepository,
 }

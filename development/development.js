@@ -1,15 +1,7 @@
 const { app, BrowserWindow } = require('electron');
 const fs = require('fs');
-const { exec } = require('child_process');
 const { resolve } = require('path');
-const { transform } = require('../babel');
-const babel = require('../babel');
-
-const OUTPUT_DIRECTORY_PATH = __dirname + "/../../output";
-const HTML_DEVELOPMENT_PATH = __dirname + '/development.html';
-const COMPILED_PLUGINS_PATH = OUTPUT_DIRECTORY_PATH + '/compiled';
-let PLUGIN_NAME;
-let PLUGIN_DIRECTORY_PATH;
+const { transform } = require('../src/compile');
 
 const createWindow = () => {
 
@@ -18,7 +10,7 @@ const createWindow = () => {
         height: 1000,
         webPreferences: {
             nodeIntegration: true,
-            additionalArguments: [PLUGIN_NAME]
+            additionalArguments: [WIDGET_NAME]
         },
         darkTheme: true,
     });
@@ -26,6 +18,8 @@ const createWindow = () => {
     window.setMenuBarVisibility(false);
 
     window.loadFile(HTML_DEVELOPMENT_PATH);
+
+    window.webContents.openDevTools();
 
     window.webContents.openDevTools();
 
@@ -54,15 +48,14 @@ const setupWindow = () => {
 
 const setupWatcher = (window)  => {
 
-    transform(PLUGIN_DIRECTORY_PATH + '/' + PLUGIN_NAME + '.js', COMPILED_PLUGINS_PATH, () =>  { 
+    transform(WIDGET_DIRECTORY_PATH + '/index.js', COMPILED_WIDGET_PATH, () =>  { 
 
         window.loadFile(HTML_DEVELOPMENT_PATH);
     });
 
-    fs.watch(PLUGIN_DIRECTORY_PATH + '/' + PLUGIN_NAME + '.js').on('change', () => {
+    fs.watch(WIDGET_DIRECTORY_PATH + '/index.js').on('change', () => {
 
-        console.log(COMPILED_PLUGINS_PATH);
-        transform(PLUGIN_DIRECTORY_PATH + '/' + PLUGIN_NAME + '.js', COMPILED_PLUGINS_PATH, async () => { 
+        transform(WIDGET_DIRECTORY_PATH + '/index.js', COMPILED_WIDGET_PATH, () => { 
 
             window.loadFile(HTML_DEVELOPMENT_PATH);
         });
@@ -70,18 +63,19 @@ const setupWatcher = (window)  => {
     });
 }
 
-(() => {
-    const args = process.argv.slice(2);
+const HTML_DEVELOPMENT_PATH = __dirname + '/development.html';
 
-    if (args == 0)
-        throw new Error("Please enter plugin name as argument")
+const args = process.argv.slice(2);
 
-    PLUGIN_NAME = args[0];
-    PLUGIN_DIRECTORY_PATH = resolve(`${OUTPUT_DIRECTORY_PATH}/${PLUGIN_NAME}`);
-    
-    if (!fs.existsSync(PLUGIN_DIRECTORY_PATH))
-        throw new Error(`Plugin name ${PLUGIN_NAME} dose not exists in ${PLUGIN_DIRECTORY_PATH}`)
+if (args == 0)
+    throw new Error("Please enter widget name as argument")
 
-    setupWindow(); 
+const WIDGET_NAME = args[0];
 
-})();
+const WIDGET_DIRECTORY_PATH = resolve(`${__dirname}/../enOne-widgets/widgets-dev/${WIDGET_NAME}`);
+const COMPILED_WIDGET_PATH = WIDGET_DIRECTORY_PATH + '/compiled.js';
+
+if (!fs.existsSync(WIDGET_DIRECTORY_PATH))
+    throw new Error(`Widget name ${WIDGET_NAME} does not exists in ${WIDGET_DIRECTORY_PATH}`)
+
+setupWindow(); 

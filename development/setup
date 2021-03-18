@@ -60,7 +60,7 @@ mkdir -p $WIDGET_DIRECTORY_PATH
 # run npm init in widget directory
 (cd $WIDGET_DIRECTORY_PATH && npm init -y)
 
-WIDGET_FILE_PATH="${WIDGET_DIRECTORY_PATH}/${widget_file_name}.js"
+WIDGET_FILE_PATH="${WIDGET_DIRECTORY_PATH}/index.js"
 
 rm -f $WIDGET_FILE_PATH && touch $WIDGET_FILE_PATH
 

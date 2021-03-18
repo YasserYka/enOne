@@ -9,7 +9,6 @@ const manager = require(__dirname + '/../src/manager');
 const fs = require("fs");
 
 const ROOT_DIRECTORY = __dirname + "/..";
-const WIDGETS_SUBMODULE_DIRECTORY = ROOT_DIRECTORY + "/enOne-widgets"; 
 const COMPILED_WIDGETS_DIRECTORU = __dirname + "/../output";
 
 const setup = () => {
@@ -19,25 +18,6 @@ const setup = () => {
     // when user first install the application this directory will not exists
     if(!fs.existsSync(COMPILED_WIDGETS_DIRECTORU))
       fs.mkdirSync(COMPILED_WIDGETS_DIRECTORU);
-
-    // if widgets directory not found or currepted try to clone it or fetch it
-    if (!existsSync(WIDGETS_SUBMODULE_DIRECTORY)){
-    
-        console.error('Can\'t find widgets submodule directory file at ' + WIDGETS_SUBMODULE_DIRECTORY + '/nwill attempt to clone it from remote repository');
-        cloneWidgetsSubmoduleRepository();
-    
-        if (!existsSync(WIDGETS_SUBMODULE_DIRECTORY + "/widgets")){
-    
-            console.error('Can\'t find widgets directory file at ' + WIDGETS_SUBMODULE_DIRECTORY + '/widgets/nwill attempt to pull it from remote repository');
-            pullWidgetsSubmoduleRepository();
-        }
-    
-        if (!existsSync(WIDGETS_SUBMODULE_DIRECTORY) || !existsSync(WIDGETS_SUBMODULE_DIRECTORY + "/widgets")){
-         
-            console.error("Failed to pull/clone widgets submodule directory");
-            remote.getCurrentWindow().close();
-        }
-    }
 
     const CONFIG_PATH = ROOT_DIRECTORY + "/config.json";
 
