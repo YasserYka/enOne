@@ -1,4 +1,4 @@
-const { checkLatestUpdate, color } = require("../../lib/util");
+const { checkLatestVersion, color } = require("../../src/util");
 
 test("Check latest version function", async () => {
 
@@ -6,7 +6,7 @@ test("Check latest version function", async () => {
 
     const currentVersion = '0.9';
 
-    await checkLatestUpdate(currentVersion);
+    await checkLatestVersion(currentVersion);
     
     expect(log).toHaveBeenCalledWith(expect.stringMatching(/A new version is avaliable, your current version is (.*?) lates version is (.*?)/));
 });
