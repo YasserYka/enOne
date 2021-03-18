@@ -1,5 +1,5 @@
 const got = require("got");
-const { writeFileSync } = require("fs");
+const { writeFileSync, writeFile } = require("fs");
 const { execSync } = require('child_process');
 const { getWidgetsInformation } = require("./loader");
 
@@ -37,7 +37,7 @@ const generateDefaultUserdataFile = userdataPath => {
 const excecuteCommand = (command, currentDirectory) => {
 
     try {
-        execSync(command, {cwd: currentDirectory});
+        return execSync(command, {cwd: currentDirectory});
 
     } catch (err){ console.error(err); }
 }
@@ -71,10 +71,19 @@ const colors = {
     white: (message) => (ANSI_CODES.white + message + ANSI_CODES.reset)
 }
 
+const persistUserdata = userdata => {
+
+    writeFile(__dirname + "/../userdata.json", JSON.stringify(userdata), (err) => {
+        if (err)
+            console.error(err);
+    })
+}
+
 module.exports = {
     color: colors,
+    persistUserdata: persistUserdata,
     checkLatestVersion: checkIfLatestVersion,
     generateDefaultUserdataFile: generateDefaultUserdataFile,
     pullWidgetsSubmoduleRepository: pullWidgetsSubmoduleRepository,
-    cloneWidgetsSubmoduleRepository: cloneWidgetsSubmoduleRepository
+    cloneWidgetsSubmoduleRepository: cloneWidgetsSubmoduleRepository,
 }

@@ -57,7 +57,7 @@ WIDGET_DIRECTORY_PATH="${OUTPUT_DIRECTORY_PATH}/${widget_directory_name,,}"
 
 mkdir -p $WIDGET_DIRECTORY_PATH
 
-# run npm init in plugin directory
+# run npm init in widget directory
 (cd $WIDGET_DIRECTORY_PATH && npm init -y)
 
 WIDGET_FILE_PATH="${WIDGET_DIRECTORY_PATH}/${widget_file_name}.js"
@@ -67,7 +67,7 @@ rm -f $WIDGET_FILE_PATH && touch $WIDGET_FILE_PATH
 # copy template and change class name to the widget name
 sed "s/Template/${widget_class_name^}/" $CURRENT_PATH/template.js > $WIDGET_FILE_PATH
 
-# metadata about plugin
+# metadata about widget
 echo '{"author":"'"$widget_author"'", "index": "'"$widget_file_name".js'"}' > $WIDGET_DIRECTORY_PATH/config.json
 
 # setup readme

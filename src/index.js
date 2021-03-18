@@ -12,9 +12,6 @@ const ROOT_DIRECTORY = __dirname + "/..";
 const WIDGETS_SUBMODULE_DIRECTORY = ROOT_DIRECTORY + "/enOne-widgets"; 
 const COMPILED_WIDGETS_DIRECTORU = __dirname + "/../output";
 
-let userWidgets = [];
-let pageNumber = 0;
-
 const setup = () => {
 
     getAndSetBackgroundImage();
@@ -60,9 +57,11 @@ const setup = () => {
     checkLatestVersion(require(ROOT_DIRECTORY + "/package.json").version);
     
     const userdata = require(USERDATA_PATH);
-    
-    manager.loadAndInitiateWidgets(userdata.widgets.filter(widget => !widget.disabled));
 
+    manager.setUserdata(userdata);
+    
+    manager.loadAndInitiateWidgets();   
+    
     document.getElementById("manageWidgetsButton").onclick = () => populateWidgetManager();
 }
 
@@ -86,12 +85,12 @@ const populateWidgetManager = () => {
 
     manageWidgetsListELement.innerHTML = "";
 
-    userWidgets.forEach(widget => {
+    manager.userdata.widgets.forEach(widget => {
 
         const liElement = document.createElement('li');
         liElement.className = "list-group-item mng-item";
 
-        const widgetName = document.createTextNode(widget.name);
+        const widgetName = document.createTextNode(widget.directoryName);
 
         liElement.appendChild(widgetName);
 
@@ -109,9 +108,11 @@ const populateWidgetManager = () => {
         buttonElement.onclick = () => {
     
             if (widget.disabled)
-                manager.add(widget.name);
+                manager.add(widget.directoryName);
             else
-                manager.remove(widget.name);
+                manager.remove(widget.directoryName);
+
+            populateWidgetManager();
         }
            
         iElement.className = iElementClassName;

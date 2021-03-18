@@ -2,39 +2,61 @@ const loader = require("./loader");
 const { transform } = require("./compile");
 const FileNotFound = require("./errors/FileNotFound");
 const WidgetNotCompiled = require("./errors/WidgetNotCompiled");
+const { persistUserdata } = require('./util');
+const { exec } = require('child_process');
 
 const WIDGETS_DIRECTORY = __dirname + "/../enOne-widgets/widgets";
 
 class Manager {
 
-  constructor(){ 
-  
-    this.widgets = []; 
+  setUserdata(userdata){ 
+
+    this.userdata = userdata;
   }
 
-  loadAndInitiateWidgets(widgets){
+  loadAndInitiateWidgets(){
 
-    widgets.forEach(widget => {
-      
-      const widgetInstance = loader.loadWidget(WIDGETS_DIRECTORY, widget.directoryName);
+    this.userdata.widgets.forEach(widget => {
+    
+      if (!widget.disabled && widget.dependeicesInstalled)
+        this.loadAndInitiateWidget(widget);
 
-      if (widgetInstance instanceof FileNotFound)
-        console.error(widgetInstance);
-      else if(widgetInstance instanceof WidgetNotCompiled)
-        transform(`${WIDGETS_DIRECTORY}/${widget.directoryName}/index.js`, `${WIDGETS_DIRECTORY}/${widget.directoryName}/compiled.js`, () => {
-          const compiledWidget = loader.loadWidget(WIDGETS_DIRECTORY, widget.directoryName);
-          
-          this.initiateAndPushWidget(compiledWidget);
+      else if (!widget.disabled && !widget.dependeicesInstalled)
+        this.installWidgetDependencies(`${WIDGETS_DIRECTORY}/${widget.directoryName}`, () => {
+          widget.dependeicesInstalled = true;
+          this.loadAndInitiateWidget(widget);
         });
-      else
-        this.initiateAndPushWidget(widgetInstance);
+
     });
   }
 
-  initiateAndPushWidget(widget){
-    this.initiate(widget);
+  loadAndInitiateWidget(widget){
+    const widgetInstance = loader.loadWidget(WIDGETS_DIRECTORY, widget.directoryName);
 
-    this.widgets.push(widget);
+    if (widgetInstance instanceof FileNotFound)
+      console.error(widgetInstance);
+    else if(widgetInstance instanceof WidgetNotCompiled)
+      transform(`${WIDGETS_DIRECTORY}/${widget.directoryName}/index.js`, `${WIDGETS_DIRECTORY}/${widget.directoryName}/compiled.js`, () => {
+        const compiledWidget = loader.loadWidget(WIDGETS_DIRECTORY, widget.directoryName);
+        
+        this.initiate(compiledWidget);
+      });
+    else
+      this.initiate(widgetInstance); 
+  }
+
+  installWidgetDependencies(widgetDirectoryPath, callback) {
+
+    exec('npm install --no-save ' + widgetDirectoryPath, {cwd: __dirname + '/..'}, (err, stdout, stderr) => {
+      if (err)
+        console.error(err);
+      else{
+        console.log(stdout);
+
+        persistUserdata(this.userdata);
+        callback();
+      }
+    });
   }
 
   initiate(widget) {
@@ -60,41 +82,43 @@ class Manager {
   // adds a widget at runtime
   add(widgetName){ 
 
-    if (this.widgets.some(widget => widgetName === widget.name))
-      console.log("Widget name " + widgetName + " was already added!");
-    else {
+    const widget = this.userdata.widgets.find(widget => widgetName === widget.directoryName);
 
-      const widget = loader.loadWidget(WIDGETS_DIRECTORY, widgetName);
+    if (widget && widget.disabled){
+
+      const loadedWidget = loader.loadWidget(WIDGETS_DIRECTORY, widget.directoryName);
       
       if (widget instanceof Error)
         console.error("Couldn't instantiate widget: " + widgetName + "\n" + widget);
       else {
 
-        this.initiate(widget);
-        this.widgets.push(widget);
+        this.initiate(loadedWidget);
+        widget.instance = loadedWidget;
+        widget.disabled = false;
 
         console.log("Widget name " + widgetName + " was added successfully!");
-        
-        return widget;
       }
+
+      persistUserdata(this.userdata);
     }
   }
 
   // removes a widget at runtime
   remove(widgetName){ 
 
-    const widgetIndex = this.widgets.findIndex(widget => widget.name === widgetName);
+    const widget = this.userdata.widgets.find(widget => widgetName === widget.directoryName);
 
-    if(widgetIndex === -1)
-      console.error("Couldn't find widget named " + widgetName);
-    else {
+    console.log(widget)
+    if(widget && !widget.disabled){
       
       // TODO: setInterval might be still running find a workaround
 
-      this.widgets.splice(widgetIndex, 1);
+      widget.disabled = true;
       removeGridItem(widgetName);
 
       console.log("Widget name " + widgetName + " was removed successfully!");
+
+      persistUserdata(this.userdata);
     }
   }
 
