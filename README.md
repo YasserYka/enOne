@@ -5,7 +5,7 @@
   <br>
 </h1>
 
-<h4 align="center"> <b>enOne</b> is platform for building your own dashboard, with various of 3rd party widgets.</h4>
+<h4 align="center"> <b>enOne</b> is widgets platform for maintaining and building your own dashboard, with various of 3rd party widgets.</h4>
 
 <p align="center">
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT badge"></a>
@@ -25,7 +25,9 @@ The following commands installs and runs the application
 ```bash
 # Clone the repository
 $ git clone https://github.com/YasserYka/enOne.git
-# go to enOne directory
+# go to enOne's directory
+$ cd enOne
+# clone enOne-widgets's repository 
 $ git clone https://github.com/YasserYka/enOne-widgets.git
 # install dependencies
 $ npm install
