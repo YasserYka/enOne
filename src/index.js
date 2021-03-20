@@ -9,15 +9,16 @@ const manager = require(__dirname + '/../src/manager');
 const fs = require("fs");
 
 const ROOT_DIRECTORY = __dirname + "/..";
-const COMPILED_WIDGETS_DIRECTORU = __dirname + "/../output";
+const COMPILED_WIDGETS_DIRECTORY = __dirname + "/../output";
 
 const setup = () => {
 
     getAndSetBackgroundImage();
 
     // when user first install the application this directory will not exists
-    if(!fs.existsSync(COMPILED_WIDGETS_DIRECTORU))
-      fs.mkdirSync(COMPILED_WIDGETS_DIRECTORU);
+    if(!fs.existsSync(COMPILED_WIDGETS_DIRECTORY)) {
+        fs.mkdirSync(COMPILED_WIDGETS_DIRECTORY);
+    }
 
     const CONFIG_PATH = ROOT_DIRECTORY + "/config.json";
 
@@ -31,8 +32,9 @@ const setup = () => {
     
     const USERDATA_PATH = ROOT_DIRECTORY + configuration.userdataPath;
     
-    if (!existsSync(USERDATA_PATH))
+    if (!existsSync(USERDATA_PATH)) {
         generateDefaultUserdataFile(USERDATA_PATH);
+    }
     
     checkLatestVersion(require(ROOT_DIRECTORY + "/package.json").version);
     
@@ -87,7 +89,6 @@ const populateWidgetManager = () => {
         }
 
         buttonElement.onclick = () => {
-            console.log(widget);
             if (widget.disabled) {
                 manager.add(widget.directoryName);
             } else {

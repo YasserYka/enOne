@@ -96,15 +96,15 @@ class Manager {
 
     if (widget && widget.disabled) {
 
-      if (widget.dependencyInstalled)
+      if (widget.dependencyInstalled) {
         this.loadAndInitiateWidget(widget);
-      else
+      } else {
         this.installWidgetDependencies(widget.directoryName, () => {
 
           widget.dependencyInstalled = true;
           this.loadAndInitiateWidget(widget);
         });
-
+      }
       widget.disabled = false;
 
       console.log("Widget name " + widgetName + " was added successfully!");
