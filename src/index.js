@@ -80,17 +80,19 @@ const populateWidgetManager = () => {
         const iElement = document.createElement("i");
         let iElementClassName;
         
-        if (widget.disabled)
+        if (widget.disabled) {
             iElementClassName = "fa fa-plus fa-xs";
-        else
+        } else {
             iElementClassName = "fa fa-trash-o fa-xs";
+        }
 
         buttonElement.onclick = () => {
-    
-            if (widget.disabled)
+            console.log(widget);
+            if (widget.disabled) {
                 manager.add(widget.directoryName);
-            else
+            } else {
                 manager.remove(widget.directoryName);
+            }
 
             populateWidgetManager();
         }
