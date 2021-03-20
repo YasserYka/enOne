@@ -1,7 +1,5 @@
 const loader = require("./loader");
 const { transform } = require("./compile");
-const FileNotFound = require("./errors/FileNotFound");
-const WidgetNotCompiled = require("./errors/WidgetNotCompiled");
 const { persistUserdata } = require('./util');
 const { exec } = require('child_process');
 
@@ -96,7 +94,6 @@ class Manager {
 
     const widget = this.userdata.widgets.find(widget => widgetName === widget.directoryName);
 
-    console.log({widget,widgetName});
     if (widget && widget.disabled) {
 
       if (widget.dependencyInstalled)

@@ -34,7 +34,6 @@ module.exports = class Widget {
             this.compiled = false;
         }
 
-
         return true;
     }
 
