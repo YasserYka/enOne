@@ -11,7 +11,8 @@
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT badge"></a>
   <a href="https://github.com/Naereen/badges"><img src="https://img.shields.io/maintenance/Yes/2021" alt="Maintenance badge"></a>
   <a href="https://github.com/facebook/jest"><img src="https://img.shields.io/badge/tested_with-jest-99424f.svg" alt="Jest badge"></a>
-  <a href="https://www.electronjs.org"><img src="https://img.shields.io/badge/Made%20with-Electron-1f425f.svg" alt="electron badge"></a>
+  <a href="https://www.electronjs.org"><img src="https://img.shields.io/badge/Made%20with-Electron-1f425f.svg" alt="Electron badge"></a>
+  <a href="https://discord.com/invite/GJWGwwUa"><img src="https://img.shields.io/discord/822040064599130114.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2" alt="Discord badge"></a>
 </p>
 
 <p align="center"> <b>enOne</b> is still under testing and in <b>PRE-RELEASE</b> phase, your feedback is much appreciated!</p>
