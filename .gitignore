@@ -22,3 +22,5 @@ userdata.json
 
 # prettier config file
 .prettierrc
+
+.idea
