@@ -53,24 +53,26 @@ class Manager {
   }
 
   loadAndInitiateWidget(widget){
-    const widgetInstance = loader.loadWidget(widget.directoryName);
+    let widgetInstance = loader.encapsulateWidget(widget.directoryName);
 
     if (!widgetInstance.IsValid) {
-      console.error(widgetInstance.Error)
+      console.error(widgetInstance.Error); 
+      return;
     }
 
     if (!widgetInstance.IsCompiled) {
-      const widgetDirectory = `${WIDGETS_DIRECTORY}/${widget.directoryName}`;
 
-      transform(widgetDirectory + '/index.js', widgetDirectory + '/compiled.js', () => {
+      transform(widgetInstance.indexFile, widgetInstance.compiledFilePath, () => {
 
-        const compiledWidget = loader.loadWidget(widget.directoryName);
+        const compiledWidget = loader.encapsulateWidget(widgetInstance.name);
 
         this.initiate(compiledWidget);
       });
+    } 
+    else {
+      
+      this.initiate(widgetInstance);
     }
-
-    this.initiate(widgetInstance);
   }
 
   initiate(widget) {

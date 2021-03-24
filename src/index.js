@@ -2,8 +2,6 @@
 // when babel transform jsx into js it generate 'h' object which generate html element
 const { h } = require('jsx-dom');
 
-const fs = require("fs");
-
 const { existsSync } = require('fs');
 const manager = require(__dirname + '/../src/manager');
 const { toast } = require(__dirname + '/../src/notification');
@@ -30,7 +28,7 @@ const setup = () => {
         generateDefaultUserdataFile(USERDATA_PATH);
     }
     
-    checkLatestVersion(0.9);
+    checkLatestVersion(require(ROOT_DIRECTORY + "/package.json").version);
     
     const userdata = require(USERDATA_PATH);
 

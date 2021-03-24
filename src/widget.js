@@ -1,10 +1,12 @@
 const fs = require('fs');
+
+const FileNotFound = require('./errors/FileNotFound');
+const WidgetNotCompiled = require('./errors/WidgetNotCompiled');
+
 const WIDGETS_DIRECTORY = __dirname + "/../enOne-widgets/widgets";
 const CONFIG_FILE = 'config.json';
 const COMPILED_FILE = 'compiled.js';
-const INDEX_FILE = 'index.js'
-const FileNotFound = require('./errors/FileNotFound');
-const WidgetNotCompiled = require('./errors/WidgetNotCompiled');
+const INDEX_FILE = 'index.js';
 
 module.exports = class Widget {
 
@@ -12,7 +14,7 @@ module.exports = class Widget {
         this.name = widgetDirectoryName;
         this.widgetDirectory = `${WIDGETS_DIRECTORY}/${widgetDirectoryName}`;
         this.configPath = `${this.widgetDirectory}/${CONFIG_FILE}`;
-        this.compiledFile = `${this.widgetDirectory}/${COMPILED_FILE}`;
+        this.compiledFilePath = `${this.widgetDirectory}/${COMPILED_FILE}`;
         this.indexFile = `${this.widgetDirectory}/${INDEX_FILE}`;
         this.compiled = true;
         this.error = null;
@@ -29,7 +31,7 @@ module.exports = class Widget {
             return false;
         }
 
-        if (!fs.existsSync(this.compiledFile)) {
+        if (!fs.existsSync(this.compiledFilePath)) {
             this.error = new WidgetNotCompiled(this.name);
             this.compiled = false;
         }
@@ -42,7 +44,7 @@ module.exports = class Widget {
     }
 
     get Instance() {
-        return new (require(this.compiledFile));
+        return new (require(this.compiledFilePath));
     }
 
     get Config() {
@@ -58,7 +60,7 @@ module.exports = class Widget {
     }
 
     get WidgetDirectory() {
-        console.log(this.widgetDirectory);
+
         return this.widgetDirectory;
     }
 }

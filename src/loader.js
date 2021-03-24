@@ -1,7 +1,6 @@
 const Widget = require('./widget');
-
-// loads compiled file of widget and config file from enOne-widgets folder
-const loadWidget = (widgetName) => {
+ 
+const encapsulateWidget = (widgetName) => {
 
     return new Widget(widgetName);
 }
@@ -19,5 +18,5 @@ const getWidgetsInformation = () => {
 
 module.exports = {
     getWidgetsInformation: getWidgetsInformation,
-    loadWidget: loadWidget,
+    encapsulateWidget: encapsulateWidget,
 };
