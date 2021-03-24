@@ -2,32 +2,26 @@
 // when babel transform jsx into js it generate 'h' object which generate html element
 const { h } = require('jsx-dom');
 
-const { existsSync } = require('fs');
-const { color, generateDefaultUserdataFile, checkLatestVersion, cloneWidgetsSubmoduleRepository, pullWidgetsSubmoduleRepository } = require(__dirname + '/../src/util');
-const remote = require('electron').remote
-const manager = require(__dirname + '/../src/manager');
 const fs = require("fs");
 
+const { existsSync } = require('fs');
+const manager = require(__dirname + '/../src/manager');
+const { toast } = require(__dirname + '/../src/notification');
+const { generateDefaultUserdataFile, checkLatestVersion } = require(__dirname + '/../src/util');
+
 const ROOT_DIRECTORY = __dirname + "/..";
-const COMPILED_WIDGETS_DIRECTORY = __dirname + "/../output";
 
 const setup = () => {
 
     getAndSetBackgroundImage();
 
-    // when user first install the application this directory will not exists
-    if(!fs.existsSync(COMPILED_WIDGETS_DIRECTORY)) {
-        fs.mkdirSync(COMPILED_WIDGETS_DIRECTORY);
-    }
-
     const CONFIG_PATH = ROOT_DIRECTORY + "/config.json";
 
     if (!existsSync(CONFIG_PATH)){
-        
-        console.error(color.red("Can't find config file at " + CONFIG_PATH));
-        remote.getCurrentWindow().close();
+        toast.error("Can't find configuration file!");
+        return;
     }
-    
+
     const configuration = require(CONFIG_PATH);
     
     const USERDATA_PATH = ROOT_DIRECTORY + configuration.userdataPath;
@@ -36,7 +30,7 @@ const setup = () => {
         generateDefaultUserdataFile(USERDATA_PATH);
     }
     
-    checkLatestVersion(require(ROOT_DIRECTORY + "/package.json").version);
+    checkLatestVersion(0.9);
     
     const userdata = require(USERDATA_PATH);
 
