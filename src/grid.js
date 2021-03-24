@@ -1,3 +1,5 @@
+const Muuri = require('muuri');
+
 const muuriGrid = new Muuri(".grid", {
   dragEnabled: true,
   layout: {
@@ -57,3 +59,12 @@ const refreshGrid = () => {
 
   muuriGrid.refreshItems().layout();
 };
+
+
+module.exports = {
+  addGridItem: addGridItem,
+  refreshGrid: refreshGrid,
+  wrapGridItem: wrapGridItem,
+  serializeGrid: serializeGrid,
+  removeGridItem: removeGridItem,
+}

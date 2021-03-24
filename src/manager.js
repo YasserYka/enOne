@@ -3,6 +3,7 @@ const { transform } = require("./compile");
 const { persistUserdata } = require('./util');
 const { exec } = require('child_process');
 const { observeElement } = require('./observer');
+const { addGridItem, removeGridItem } = require('./grid');
 
 const WIDGETS_DIRECTORY = __dirname + "/../enOne-widgets/widgets";
 
