@@ -1,13 +1,16 @@
 const Widget = require('./widget');
 
 // loads compiled file of widget and config file from enOne-widgets folder
-const loadWidget = (widgetDirectoryName) => {
-    return new Widget(widgetDirectoryName);
+const loadWidget = (widgetName) => {
+
+    return new Widget(widgetName);
 }
 
 const getWidgetsInformation = () => {
 
-    return fs.readdirSync(widget.WidgetDirectory).map(directoryName => ({
+    const widgetsDirectory = __dirname + '/../enOne-widgets/widgets';
+
+    return fs.readdirSync(widgetsDirectory).map(directoryName => ({
         directoryName: directoryName,
         disabled: true,
         dependencyInstalled: false
