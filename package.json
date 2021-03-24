@@ -9,7 +9,8 @@
     "@babel/plugin-transform-react-jsx": "^7.12.12",
     "got": "^11.8.1",
     "jquery": "^3.5.1",
-    "jsx-dom": "^7.0.0-beta.1"
+    "jsx-dom": "^7.0.0-beta.1",
+    "muuri": "^0.9.3"
   },
   "devDependencies": {
     "electron": "^11.2.0",
