@@ -10,57 +10,64 @@ const INDEX_FILE = 'index.js';
 
 module.exports = class Widget {
 
-    constructor(widgetDirectoryName){
-        this.name = widgetDirectoryName;
-        this.widgetDirectory = `${WIDGETS_DIRECTORY}/${widgetDirectoryName}`;
-        this.configPath = `${this.widgetDirectory}/${CONFIG_FILE}`;
-        this.compiledFilePath = `${this.widgetDirectory}/${COMPILED_FILE}`;
+    constructor(widgetName){
+
+        this.errors = [];
+        this.widgetName = widgetName;
+        this.widgetDirectoryPath = `${WIDGETS_DIRECTORY}/${this.widgetName}`;
+        this.configPath = `${this.widgetDirectoryPath}/${CONFIG_FILE}`;
+
+        if (!fs.existsSync(this.configPath))
+            this.errors.push(new FileNotFound(this.configPath));
+
         this.indexFile = `${this.widgetDirectory}/${INDEX_FILE}`;
-        this.compiled = true;
-        this.error = null;
-    }
 
-    get IsValid() {
-        if (!fs.existsSync(this.configPath)) {
-            this.error = new FileNotFound(this.configPath);
-            return false;
+        if(!fs.existsSync(this.indexFile))
+            this.errors.push(new FileNotFound(this.indexFile));
+
+        this.compiledFilePath = `${this.widgetDirectoryPath}/${COMPILED_FILE}`;
+        this.compiled = false;
+        this.instance = null;
+
+        if (fs.existsSync(this.compiledFilePath)){
+            
+            this.instance = new (require(this.compiledFilePath));
+            this.compiled = true;
         }
-
-        if(!fs.existsSync(this.indexFile)) {
-            this.error = new FileNotFound(this.indexFile);
-            return false;
-        }
-
-        if (!fs.existsSync(this.compiledFilePath)) {
-            this.error = new WidgetNotCompiled(this.name);
-            this.compiled = false;
-        }
-
-        return true;
     }
 
-    get Name() {
-        return this.name;
+    get isValid() {
+        
+        return this.errors.length == 0;
     }
 
-    get Instance() {
-        return new (require(this.compiledFilePath));
+    get name() {
+
+        return this.widgetName;
     }
 
-    get Config() {
+    get instance() {
+
+        return this.instance;
+    }
+
+    get config() {
+
         return require(this.configPath);
     }
 
-    get IsCompiled() {
+    get isCompiled() {
+
         return this.compiled;
     }
 
-    get Error() {
-        return this.error;
+    get error() {
+
+        return this.errors.join();
     }
 
-    get WidgetDirectory() {
+    get widgetDirectoryPath() {
 
-        return this.widgetDirectory;
+        return this.widgetDirectoryPath;
     }
 }
