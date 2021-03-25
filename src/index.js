@@ -9,9 +9,6 @@ const { generateDefaultUserdataFile, checkLatestVersion } = require(__dirname + 
 
 const ROOT_DIRECTORY = __dirname + "/..";
 
-// keep track of widgets being loaded 
-const loadingWidgets = {};
-
 const setup = () => {
 
     getAndSetBackgroundImage();
@@ -78,7 +75,7 @@ const populateWidgetManagerModal = () => {
         
         if (widget.disabled) 
             iElement.className = "fa fa-plus fa-xs";
-        else if (loadingWidgets[widget.directoryName])
+        else if (manager.loadingStatsWidgets[widget.directoryName])
             iElement.className = "fa fa-circle-o-notch fa-spin";
         else
             iElement.className = "fa fa-trash-o fa-xs";
@@ -86,10 +83,10 @@ const populateWidgetManagerModal = () => {
         buttonElement.onclick = () => {
             if (widget.disabled){
 
-                loadingWidgets[widget.directoryName] = true;
+                manager.loadingStatsWidgets[widget.directoryName] = true;
 
                 manager.add(widget.directoryName, () => { 
-                    loadingWidgets[widget.directoryName] = false;
+                    delete manager.loadingStatsWidgets[widget.directoryName];
                     populateWidgetManagerModal();
                 });
 

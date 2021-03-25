@@ -14,6 +14,7 @@ class Manager {
   setUserdata(userdata){
 
     this.userdata = userdata;
+    this.loadingStatsWidgets = {};
   }
 
   loadAndInitiateWidgets(){
