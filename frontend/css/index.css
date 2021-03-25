@@ -36,7 +36,6 @@ textarea {
   width: 100%;
   border-radius: 5px;
   background-color: transparent !important;
-  color: white;
 }
 
 .pagination > li > a:focus,

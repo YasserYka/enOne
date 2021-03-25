@@ -1,31 +1,31 @@
 const got = require("got");
 const { writeFileSync, writeFile } = require("fs");
-const { execSync } = require('child_process');
 const { getWidgetsInformation } = require("./loader");
+const { toast } = require('./notification');
 
 // Fetch version number from master brach and compare it with current version
-const checkIfLatestVersion = async currentVersion => {
+const checkIfLatestVersion = currentVersion => {
 
-    return await got('https://raw.githubusercontent.com/YasserYka/enOne/0d5a5f4985dad26cceea4293e54e15ee1ee61eda/package.json?token=ALEO7DFOE67YFLHIHOD2H2TALDQDQ').then(response => {
+    got('https://raw.githubusercontent.com/YasserYka/enOne/0d5a5f4985dad26cceea4293e54e15ee1ee61eda/package.json').then(response => {
 
         if(response.statusCode == 200){
 
             let remoteVersion = JSON.parse(response.body).version;
 
             if(!remoteVersion)
-                throw Error("Regex's version pattern can't find version in returned Githubusercontent's body");
+                throw Error("Can't find version variable in returned Githubusercontent's json");
 
             remoteVersion = parseFloat(remoteVersion);
-
+            
             if (currentVersion < remoteVersion)
-                console.log(colors.yellow("A new version is avaliable, your current version is " + currentVersion + " lates version is " + remoteVersion));
-                
+                toast.warn('new update available, please visit to enOne\'s repository!');
         }
         else
-            console.error(colors.red(Error("Githubusercontent returned non-200 status code!")));
+            console.error("Githubusercontent returned non-200 status code!");
+    
     }).catch(error => {
 
-      console.error(colors.red(error));
+      console.error(error);
     });
 }
 

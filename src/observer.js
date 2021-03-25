@@ -1,4 +1,6 @@
 
+const { refreshGrid } = require('./grid');
+
 /* 
     Muuri's grid can't detect if an item has been changed
     resulting in overlapped elements in case an item got 
@@ -16,4 +18,8 @@ var observer = new MutationObserver(_ => {
 const observeElement = element => {
 
     observer.observe(element, { attributes: true, childList: true, characterData: true, subtree: true });    
-} 
+}
+
+module.exports = {
+    observeElement: observeElement 
+}

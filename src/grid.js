@@ -1,3 +1,5 @@
+const Muuri = require('muuri');
+
 const muuriGrid = new Muuri(".grid", {
   dragEnabled: true,
   layout: {
@@ -48,8 +50,6 @@ const removeGridItem = id => {
   
   id = "widget_#" + id;
 
-  console.log(id, muuriGrid.getItems());
-
   muuriGrid.remove(muuriGrid.getItems().filter(item => item.getElement().id == id), { removeElements: true });
 };
 
@@ -57,3 +57,12 @@ const refreshGrid = () => {
 
   muuriGrid.refreshItems().layout();
 };
+
+
+module.exports = {
+  addGridItem: addGridItem,
+  refreshGrid: refreshGrid,
+  wrapGridItem: wrapGridItem,
+  serializeGrid: serializeGrid,
+  removeGridItem: removeGridItem,
+}

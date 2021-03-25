@@ -3,36 +3,30 @@
 const { h } = require('jsx-dom');
 
 const { existsSync } = require('fs');
-const { color, generateDefaultUserdataFile, checkLatestVersion, cloneWidgetsSubmoduleRepository, pullWidgetsSubmoduleRepository } = require(__dirname + '/../src/util');
-const remote = require('electron').remote
 const manager = require(__dirname + '/../src/manager');
-const fs = require("fs");
+const { toast } = require(__dirname + '/../src/notification');
+const { generateDefaultUserdataFile, checkLatestVersion } = require(__dirname + '/../src/util');
 
 const ROOT_DIRECTORY = __dirname + "/..";
-const COMPILED_WIDGETS_DIRECTORU = __dirname + "/../output";
 
 const setup = () => {
 
     getAndSetBackgroundImage();
 
-    // when user first install the application this directory will not exists
-    if(!fs.existsSync(COMPILED_WIDGETS_DIRECTORU))
-      fs.mkdirSync(COMPILED_WIDGETS_DIRECTORU);
-
     const CONFIG_PATH = ROOT_DIRECTORY + "/config.json";
 
     if (!existsSync(CONFIG_PATH)){
-        
-        console.error(color.red("Can't find config file at " + CONFIG_PATH));
-        remote.getCurrentWindow().close();
+        toast.error("Can't find configuration file!");
+        return;
     }
-    
+
     const configuration = require(CONFIG_PATH);
     
     const USERDATA_PATH = ROOT_DIRECTORY + configuration.userdataPath;
     
-    if (!existsSync(USERDATA_PATH))
+    if (!existsSync(USERDATA_PATH)) {
         generateDefaultUserdataFile(USERDATA_PATH);
+    }
     
     checkLatestVersion(require(ROOT_DIRECTORY + "/package.json").version);
     
@@ -42,7 +36,7 @@ const setup = () => {
     
     manager.loadAndInitiateWidgets();   
     
-    document.getElementById("manageWidgetsButton").onclick = () => populateWidgetManager();
+    document.getElementById("manageWidgetsButton").onclick = () => populateWidgetManagerModal();
 }
 
 const setBackgroundImage = (src) => {
@@ -59,7 +53,7 @@ const getAndSetBackgroundImage = () => {
         setBackgroundImage(backgroundImageSrc);
 }
 
-const populateWidgetManager = () => {
+const populateWidgetManagerModal = () => {
 
     const manageWidgetsListELement = document.getElementById("manageWidgetsList");
 
@@ -78,24 +72,29 @@ const populateWidgetManager = () => {
         buttonElement.className = "btn ml-1 mr-1 float-right";
 
         const iElement = document.createElement("i");
-        let iElementClassName;
         
-        if (widget.disabled)
-            iElementClassName = "fa fa-plus fa-xs";
+        if (widget.disabled) 
+            iElement.className = "fa fa-plus fa-xs";
+        else if (manager.loadingStatsWidgets[widget.directoryName])
+            iElement.className = "fa fa-circle-o-notch fa-spin";
         else
-            iElementClassName = "fa fa-trash-o fa-xs";
+            iElement.className = "fa fa-trash-o fa-xs";
 
         buttonElement.onclick = () => {
-    
-            if (widget.disabled)
-                manager.add(widget.directoryName);
-            else
+            if (widget.disabled){
+
+                manager.loadingStatsWidgets[widget.directoryName] = true;
+
+                manager.add(widget.directoryName, () => { 
+                    delete manager.loadingStatsWidgets[widget.directoryName];
+                    populateWidgetManagerModal();
+                });
+
+            } else 
                 manager.remove(widget.directoryName);
 
-            populateWidgetManager();
+            populateWidgetManagerModal();
         }
-           
-        iElement.className = iElementClassName;
 
         buttonElement.appendChild(iElement);
 
