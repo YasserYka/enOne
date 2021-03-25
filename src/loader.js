@@ -1,5 +1,6 @@
 const Widget = require('./widget');
- 
+const { readdirSync } = require('fs');
+
 const encapsulateWidget = (widgetName) => {
 
     return new Widget(widgetName);
@@ -9,10 +10,11 @@ const getWidgetsInformation = () => {
 
     const widgetsDirectory = __dirname + '/../enOne-widgets/widgets';
 
-    return fs.readdirSync(widgetsDirectory).map(directoryName => ({
+    return readdirSync(widgetsDirectory).map(directoryName => ({
         directoryName: directoryName,
         disabled: true,
-        dependencyInstalled: false
+        dependencyInstalled: false,
+        isLoading: false
     }));
 }
 

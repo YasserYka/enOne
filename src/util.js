@@ -1,6 +1,5 @@
 const got = require("got");
 const { writeFileSync, writeFile } = require("fs");
-const { execSync } = require('child_process');
 const { getWidgetsInformation } = require("./loader");
 const { toast } = require('./notification');
 

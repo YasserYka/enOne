@@ -36,7 +36,7 @@ const setup = () => {
     
     manager.loadAndInitiateWidgets();   
     
-    document.getElementById("manageWidgetsButton").onclick = () => populateWidgetManager();
+    document.getElementById("manageWidgetsButton").onclick = () => populateWidgetManagerModal();
 }
 
 const setBackgroundImage = (src) => {
@@ -53,7 +53,7 @@ const getAndSetBackgroundImage = () => {
         setBackgroundImage(backgroundImageSrc);
 }
 
-const populateWidgetManager = () => {
+const populateWidgetManagerModal = () => {
 
     const manageWidgetsListELement = document.getElementById("manageWidgetsList");
 
@@ -72,25 +72,24 @@ const populateWidgetManager = () => {
         buttonElement.className = "btn ml-1 mr-1 float-right";
 
         const iElement = document.createElement("i");
-        let iElementClassName;
         
-        if (widget.disabled) {
-            iElementClassName = "fa fa-plus fa-xs";
-        } else {
-            iElementClassName = "fa fa-trash-o fa-xs";
-        }
+        if (widget.disabled) 
+            iElement.className = "fa fa-plus fa-xs";
+        else if (widget.isLoading)
+            iElement.className = "fa fa-circle-o-notch fa-spin";
+        else
+            iElement.className = "fa fa-trash-o fa-xs";
 
         buttonElement.onclick = () => {
-            if (widget.disabled) {
-                manager.add(widget.directoryName);
-            } else {
-                manager.remove(widget.directoryName);
-            }
+            if (widget.disabled){
+                widget.isLoading = true;
 
-            populateWidgetManager();
+                manager.add(widget.directoryName, () => { widget.isLoading = false; populateWidgetManagerModal(); });
+            } else 
+                manager.remove(widget.directoryName);
+
+            populateWidgetManagerModal();
         }
-           
-        iElement.className = iElementClassName;
 
         buttonElement.appendChild(iElement);
 

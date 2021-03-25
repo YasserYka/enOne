@@ -4,6 +4,8 @@ const { persistUserdata } = require('./util');
 const { exec } = require('child_process');
 const { observeElement } = require('./observer');
 const { addGridItem, removeGridItem } = require('./grid');
+const { toast } = require('./notification');
+
 
 const WIDGETS_DIRECTORY = __dirname + "/../enOne-widgets/widgets";
 
@@ -25,16 +27,15 @@ class Manager {
 
       // Initiate widget if dependencies are available
       if (widget.dependencyInstalled) {
-        this.loadAndInitiateWidget(widget);
+        this.loadAndInitiateWidget(widget, () => {});
         return;
       }
 
-      // Initiate the widget
+      // Install dependencies of widget then initiate widget
       this.installWidgetDependencies(widget.directoryName, () => {
 
         widget.dependencyInstalled = true;
-        this.loadAndInitiateWidget(widget);
-        persistUserdata(this.userdata);
+        this.loadAndInitiateWidget(widget, () => {});
       });
 
     });
@@ -52,66 +53,71 @@ class Manager {
     });
   }
 
-  loadAndInitiateWidget(widget){
+  loadAndInitiateWidget(widget, callback){
     let widgetInstance = loader.encapsulateWidget(widget.directoryName);
 
-    if (!widgetInstance.IsValid) {
-      console.error(widgetInstance.Error); 
+    if (!widgetInstance.isValid) {
+      console.error(widgetInstance.error); 
       return;
     }
 
-    if (!widgetInstance.IsCompiled) {
+    if (!widgetInstance.isCompiled) {
 
-      transform(widgetInstance.indexFile, widgetInstance.compiledFilePath, () => {
+      transform(widgetInstance.indexFilePath, widgetInstance.compiledFilePath, () => {
 
-        const compiledWidget = loader.encapsulateWidget(widgetInstance.name);
+        const compiledWidgetInstance = loader.encapsulateWidget(widget.directoryName);
 
-        this.initiate(compiledWidget);
+        this.initiate(compiledWidgetInstance, callback);
       });
     } 
     else {
       
-      this.initiate(widgetInstance);
+      this.initiate(widgetInstance, callback);
     }
+
+    persistUserdata(this.userdata);
   }
 
-  initiate(widget) {
+  initiate(widget, callback) {
 
-    widget.Instance.initialize(widget.Config).then(() => {
+    widget.instance.initialize(widget.config).then(() => {
 
-      widget.Instance.render().then((renderedWidget) => {
+      widget.instance.render().then(renderedWidget => {
 
         let wrappedElement = addGridItem(renderedWidget, widget.name);
 
         observeElement(wrappedElement);
 
-        widget.Instance.script().then(() => {
+        widget.instance.script().then(() => {
 
-          console.log("Finished executing " + widget.Instance.constructor.name);
+          callback();
+
+          toast.success("Succefully added " + widget.name);
         });
       });
     });
   }
 
   // adds a widget at runtime
-  add(widgetName){
+  add(widgetName, callback){
 
     const widget = this.userdata.widgets.find(widget => widgetName === widget.directoryName);
 
     if (widget && widget.disabled) {
 
       if (widget.dependencyInstalled) {
-        this.loadAndInitiateWidget(widget);
+        this.loadAndInitiateWidget(widget, callback);
+
       } else {
         this.installWidgetDependencies(widget.directoryName, () => {
 
           widget.dependencyInstalled = true;
-          this.loadAndInitiateWidget(widget);
+          this.loadAndInitiateWidget(widget, callback);
         });
       }
       widget.disabled = false;
 
-      console.log("Widget name " + widgetName + " was added successfully!");
+      toast.warn("It might take longer time the first time you add a new widget");
 
       persistUserdata(this.userdata);
     }
@@ -129,7 +135,7 @@ class Manager {
       widget.disabled = true;
       removeGridItem(widgetName);
 
-      console.log("Widget name " + widgetName + " was removed successfully!");
+      toast(widgetName + " was removed successfully!");
 
       persistUserdata(this.userdata);
     }

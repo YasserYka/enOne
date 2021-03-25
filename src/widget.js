@@ -20,18 +20,18 @@ module.exports = class Widget {
         if (!fs.existsSync(this.configPath))
             this.errors.push(new FileNotFound(this.configPath));
 
-        this.indexFile = `${this.widgetDirectory}/${INDEX_FILE}`;
+        this.indexFilePath = `${this.widgetDirectory}/${INDEX_FILE}`;
 
-        if(!fs.existsSync(this.indexFile))
-            this.errors.push(new FileNotFound(this.indexFile));
+        if(!fs.existsSync(this.indexFilePath))
+            this.errors.push(new FileNotFound(this.indexFilePath));
 
         this.compiledFilePath = `${this.widgetDirectoryPath}/${COMPILED_FILE}`;
         this.compiled = false;
-        this.instance = null;
+        this.object = null;
 
         if (fs.existsSync(this.compiledFilePath)){
             
-            this.instance = new (require(this.compiledFilePath));
+            this.object = new (require(this.compiledFilePath));
             this.compiled = true;
         }
     }
@@ -48,7 +48,7 @@ module.exports = class Widget {
 
     get instance() {
 
-        return this.instance;
+        return this.object;
     }
 
     get config() {
@@ -66,8 +66,9 @@ module.exports = class Widget {
         return this.errors.join();
     }
 
-    get widgetDirectoryPath() {
+    get widgetDirectory() {
 
         return this.widgetDirectoryPath;
     }
+
 }
