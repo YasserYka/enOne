@@ -135,7 +135,7 @@ class Manager {
       widget.disabled = true;
       removeGridItem(widgetName);
 
-      toast(widgetName + " was removed successfully!");
+      toast.success(widgetName + " was removed successfully!");
 
       persistUserdata(this.userdata);
     }

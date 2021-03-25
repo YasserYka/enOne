@@ -1,7 +1,7 @@
 const { Notyf } = require('notyf');
 
 const notyf = new Notyf({
-    duration: 15000, 
+    duration: 3000, 
     position: {x: 'right', y: 'down',},
     types: [{ type: 'warning', background: 'orange'}]
 });
