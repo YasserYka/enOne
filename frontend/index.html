@@ -12,6 +12,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./css/index.css" />
     <link href="../node_modules/notyf/notyf.min.css" rel="stylesheet">
+    <link href="demo/css/demo.css" rel="stylesheet">
+    <link href="../node_modules/chrome-tabs/css/chrome-tabs.css" rel="stylesheet">
 
     <!-- External Javascript -->
     <script>window.$ = window.jQuery = require("jquery");</script>
@@ -21,8 +23,14 @@
   </head>
   <body>
     
+    <!-- Tabs Bar -->
+    <div class="chrome-tabs">
+      <div class="chrome-tabs-content"></div>
+      <div class="chrome-tabs-bottom-bar"></div>
+    </div>
+
     <!-- Menu Button -->
-    <nav class="navbar fixed-top navbar-light">
+    <nav class="navbar navbar-light">
       <div class="dropdown">
         <button class="btn" id="navbardropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-bars fa-lg"></i>
@@ -83,6 +91,7 @@
 
     <!-- Internal Javascript -->
     <script src="../src/index.js"></script>
+    <script src="../src/tabs.js"></script>
 
   </body>
 </html>
